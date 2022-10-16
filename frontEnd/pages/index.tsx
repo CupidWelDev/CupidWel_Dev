@@ -21,7 +21,7 @@ const Home: NextPage = () => {
       <div className="w-full border-solid border-2 border-gray-200 rounded-xl mb-8"></div>
       {/* 큐피트웰 활용법*/}
       <section className="w-11/12 mb-8">
-        <CupidWelGuide />
+        <CategoryScholarship />
       </section>
       {/* 추천 장학금 */}
       <section className="w-11/12 mb-8">
