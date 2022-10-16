@@ -13,7 +13,7 @@ export default function NavLink({
   svg,
 }: IPropsNavLink): JSX.Element {
   const router = useRouter();
-  console.log(typeof router.pathname);
+  // console.log(typeof router.pathname);
 
   return (
     <Link href={link}>
@@ -22,7 +22,7 @@ export default function NavLink({
           router.pathname === link ? "text-black" : "text-black opacity-20"
         }
       >
-        <div className="w-14 h-20 flex flex-col items-center">
+        <div className="w-14 h-20 flex flex-col items-center justify-center pb-2">
           {svg}
           <p className="text-center text-sm w-full h-2/5">{text}</p>
         </div>

@@ -1,7 +1,7 @@
 import NavLink from "./NavLink";
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
+
 export default function NavBar(): JSX.Element {
   const [tabs, setTab] = useState([
     {
@@ -134,14 +134,27 @@ export default function NavBar(): JSX.Element {
     },
   ]);
 
+  const router = useRouter();
+  // console.log(router.pathname);
+  //TODO NavBar 안 띄울 라우터들
+  const isNavBar = ["/SearchScholarship"];
   return (
-    <div className="fixed bottom-8 w-screen h-10">
-      <nav className="flex gap-4 justify-around  items-center text-purple-200">
-        {/*<Image src="/favicon.ico" width="30" height="30" />*/}
-        {tabs.map((tab, idx) => (
-          <NavLink key={idx} link={tab.link} text={tab.name} svg={tab.svg} />
-        ))}
-      </nav>
-    </div>
+    <>
+      {isNavBar.includes(router.pathname) ? null : (
+        <div className="fixed bottom-0 w-screen h-20 bg-white  ">
+          <nav className="flex gap-4 justify-around  items-center text-purple-200">
+            {/*<Image src="/favicon.ico" width="30" height="30" />*/}
+            {tabs.map((tab, idx) => (
+              <NavLink
+                key={idx}
+                link={tab.link}
+                text={tab.name}
+                svg={tab.svg}
+              />
+            ))}
+          </nav>
+        </div>
+      )}
+    </>
   );
 }
