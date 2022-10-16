@@ -1,7 +1,13 @@
-export default function CupidWelGuide() {
+interface IProps {
+  URL?: string;
+  img?: string;
+  text?: string;
+}
+
+export default function CupidWelGuide({ URL, img, text }: IProps) {
   return (
-    <div className="w-full h-32 p-4 border-solid border-2 border-sky-500 rounded-xl">
-      큐피트웰 활용법
+    <div className="w-[335px] h-[70px] p-4 border-solid border-2 border-sky-500 rounded-xl">
+      {text}
     </div>
   );
 }
