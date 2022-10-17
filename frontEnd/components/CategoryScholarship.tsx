@@ -1,7 +1,49 @@
+import { useState } from "react";
+import Image from "next/image";
+import tuitionFee from "../public/category/tuitionFee.svg";
+
 export default function CategoryScholarship() {
+  const [categorys, setCategorys] = useState([
+    { title: "등록금", svg: "/category/tuitionFee.svg", link: "/UserInfo" },
+    { title: "생활비", svg: "/category/livingExpenses.svg", link: "/UserInfo" },
+    {
+      title: "활동 지원금",
+      svg: "/category/activitySupportFund.svg",
+      link: "/UserInfo",
+    },
+    {
+      title: "중복 수혜",
+      svg: "/category/doubleBenefit.svg",
+      link: "/UserInfo",
+    },
+  ]);
+
+  const [login, setLogin] = useState(true);
+
+  const [user, setUser] = useState([
+    { num: 2 },
+    { num: 5 },
+    { num: 8 },
+    { num: 11 },
+  ]);
+
   return (
-    <div className="w-full h-48 p-4 border-solid border-2 border-sky-500 rounded-xl">
-      카테고리별 장학금 / 내 맞춤 장학금
+    <div
+      className="w-full pt-2
+                    flex flex-row gap-6 justify-center"
+    >
+      {categorys.map((category, idx) => (
+        <div className="flex flex-col items-center" key={idx}>
+          <div
+            className="w-[64px] h-[64px] bg-[#F2F2F2] mb-2 rounded-3xl
+                            flex justify-center"
+          >
+            <Image src={category.svg} width="46px" height="46px" />
+          </div>
+          <p className="text-xs opacity-50">{category.title}</p>
+          {login ? <p className="text-xl">{user[idx].num}</p> : null}
+        </div>
+      ))}
     </div>
   );
 }

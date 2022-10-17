@@ -1,0 +1,27 @@
+<svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18.685"
+        height="20.455"
+        viewBox="0 0 18.685 20.455"
+>
+    <g
+            id="그룹_56653"
+            data-name="그룹 56653"
+            transform="translate(-54 -736)"
+    >
+        <circle
+                id="타원_1559"
+                data-name="타원 1559"
+                cx="5.294"
+                cy="5.294"
+                r="5.294"
+                transform="translate(58.048 736)"
+        />
+        <path
+                id="사각형_20892"
+                data-name="사각형 20892"
+                d="M5,0h8.685a5,5,0,0,1,5,5V6.986a1.5,1.5,0,0,1-1.5,1.5H1.5A1.5,1.5,0,0,1,0,6.986V5A5,5,0,0,1,5,0Z"
+                transform="translate(54 747.97)"
+        />
+    </g>
+</svg>

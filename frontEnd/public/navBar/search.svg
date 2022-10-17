@@ -1,0 +1,47 @@
+<svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="21"
+        height="21"
+        viewBox="0 0 21 21"
+>
+    <g
+            id="그룹_57668"
+            data-name="그룹 57668"
+            transform="translate(-1610.476 -496.074)"
+    >
+        <circle
+                id="타원_1564"
+                data-name="타원 1564"
+                cx="10.5"
+                cy="10.5"
+                r="10.5"
+                transform="translate(1610.476 496.074)"
+        />
+        <g
+                id="그룹_57669"
+                data-name="그룹 57669"
+                transform="translate(116.31 1294.683) rotate(-45)"
+        >
+            <path
+                    id="패스_23520"
+                    data-name="패스 23520"
+                    d="M6.985,0,0,2.863,6.985,5.725,13.97,2.863Z"
+                    transform="translate(1623.839 499.958) rotate(90)"
+                    fill="#fff"
+                    stroke="#fff"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1"
+            />
+            <ellipse
+                    id="타원_1565"
+                    data-name="타원 1565"
+                    cx="1.25"
+                    cy="1.25"
+                    rx="1.25"
+                    ry="1.25"
+                    transform="translate(1619.726 505.693)"
+            />
+        </g>
+    </g>
+</svg>
