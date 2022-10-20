@@ -3,11 +3,11 @@ import SEO from "../../../components/SEO";
 
 const Notification: NextPage = () => {
   return (
-    <div className="bg-red-100">
+    <div className="">
       <SEO title="이용약관/개인정보취급방침" />
-      <p className="text-2xl font-bold px-3 py-5">이용약관/개인정보취급방침</p>
+      <p className="text-2xl text-center font-bold px-3 py-5">이용약관 / 개인정보취급방침</p>
       <hr />
-      <div className="bg-yellow-100">
+      <div>
         {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => (
           <div>
             <p className="text-xl font-bold px-3 py-3">제1장 총칙</p>
