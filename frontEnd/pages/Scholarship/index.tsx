@@ -1,13 +1,13 @@
 import type { NextPage } from "next";
 import SEO from "../../components/SEO";
 
-const SearchScholarship: NextPage = () => {
+const Scholarship: NextPage = () => {
   return (
     <div className="bg-red-100">
       <SEO title="탐색" />
-      <p className="text-2xl">탐색 클릭시</p>
+      <p className="text-2xl">모든 장학금</p>
     </div>
   );
 };
 
-export default SearchScholarship;
+export default Scholarship;

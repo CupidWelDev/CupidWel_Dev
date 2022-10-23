@@ -11,7 +11,7 @@ export default function NavBar(): JSX.Element {
     },
     {
       name: "탐색",
-      link: "/SearchScholarship",
+      link: "/Scholarship",
       svg: "/navBar/search.svg",
     },
     {
@@ -29,12 +29,12 @@ export default function NavBar(): JSX.Element {
   const router = useRouter();
   // console.log(router.pathname);
   //TODO NavBar 안 띄울 라우터들
-  const isNavBar = ["/SearchScholarship"];
+  const isNavBar = ["/SearchScholarship", "/Scholarship/[id]"];
 
   return (
     <>
       {isNavBar.includes(router.pathname) ? null : (
-        <div className="fixed -bottom-4 w-screen h-20 bg-white">
+        <div className="fixed -bottom-4 w-[375px] h-20 bg-white">
           <nav className="flex gap-4 justify-around  items-center text-purple-200 shadow">
             {tabs.map((tab, idx) => (
               <NavLink

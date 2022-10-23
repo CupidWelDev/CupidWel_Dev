@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
-import tuitionFee from "../public/category/tuitionFee.svg";
 
+//TODO 카테고리별 Link 달아놓기
 export default function CategoryScholarship() {
   const [categorys, setCategorys] = useState([
     { title: "등록금", svg: "/category/tuitionFee.svg", link: "/UserInfo" },

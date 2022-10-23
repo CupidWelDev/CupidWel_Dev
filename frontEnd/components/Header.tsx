@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <div className="w-screen h-[60px] flex justify-between p-4">
+    <div className="w-full h-[60px] flex justify-between p-4">
       <div className="flex gap-1 justify-center items-center">
         {/*Logo + AppName*/}
         <Link href="/">
