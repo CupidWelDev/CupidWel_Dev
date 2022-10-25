@@ -11,17 +11,17 @@ export default function NavBar(): JSX.Element {
     },
     {
       name: "탐색",
-      link: "/Scholarship",
+      link: "/scholarship",
       svg: "/navBar/search.svg",
     },
     {
       name: "스크랩",
-      link: "/Scrap",
+      link: "/scrap",
       svg: "/navBar/scrap.svg",
     },
     {
       name: "내정보",
-      link: "/UserInfo",
+      link: "/userinfo",
       svg: "/navBar/myInfo.svg",
     },
   ]);
@@ -29,7 +29,7 @@ export default function NavBar(): JSX.Element {
   const router = useRouter();
   // console.log(router.pathname);
   //TODO NavBar 안 띄울 라우터들
-  const isNavBar = ["/SearchScholarship", "/Scholarship/[id]"];
+  const isNavBar = ["/searchscholarship", "/scholarship/[id]"];
 
   return (
     <>

@@ -14,7 +14,7 @@ export default function ScholarshipDetailVer({ ...props }: IProps) {
   const { img, foundation, id } = props;
 
   return (
-    <Link href={`/Scholarship/${id}`}>
+    <Link href={`/scholarship/${id}`}>
       <div>
         <Image src={img} width="140px" height="140px" />
         <p className="text-xs">

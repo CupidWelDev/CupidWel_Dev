@@ -35,7 +35,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="bg-white w-[375px] h-100vh flex flex-col items-center">
-      <Header />
+      {/*<Header />*/}
       <SEO title="홈" />
 
       {/* 광고 화면*/}
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
       <section className="w-11/12 mb-8">
         <div className="flex flex-row justify-between mr-3">
           <p className="text-sm font-semibold">큐피드웰 활용법</p>
-          <Link href="/SearchScholarship">
+          <Link href="/searchscholarship">
             <a>
               <p className="text-xs opacity-30"> 전체보기 {">"} </p>
             </a>

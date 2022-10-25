@@ -4,17 +4,17 @@ import Image from "next/image";
 //TODO 카테고리별 Link 달아놓기
 export default function CategoryScholarship() {
   const [categorys, setCategorys] = useState([
-    { title: "등록금", svg: "/category/tuitionFee.svg", link: "/UserInfo" },
-    { title: "생활비", svg: "/category/livingExpenses.svg", link: "/UserInfo" },
+    { title: "등록금", svg: "/category/tuitionFee.svg", link: "/userinfo" },
+    { title: "생활비", svg: "/category/livingExpenses.svg", link: "/userinfo" },
     {
       title: "활동 지원금",
       svg: "/category/activitySupportFund.svg",
-      link: "/UserInfo",
+      link: "/userinfo",
     },
     {
       title: "중복 수혜",
       svg: "/category/doubleBenefit.svg",
-      link: "/UserInfo",
+      link: "/userinfo",
     },
   ]);
 

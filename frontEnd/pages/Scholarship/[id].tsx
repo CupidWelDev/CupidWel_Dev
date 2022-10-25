@@ -35,6 +35,9 @@ const SearchScholarDetail: NextPage = () => {
       </header>
       <main>
         <div>
+          <br />
+          <p className="text-2xl">상세내용</p>
+          <p>id : {dummyData.id}</p>
           <p>지원 대상: </p>
           <p>제한 조건: </p>
           <p>선발 방법: </p>

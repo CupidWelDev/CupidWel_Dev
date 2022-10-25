@@ -18,14 +18,14 @@ export default function Header() {
 
       {/*searchIco + notificationIco*/}
       <div className="flex gap-4 justify-center items-center ">
-        <Link href="/SearchScholarship">
+        <Link href="/searchscholarship">
           <Image
             src="/header/searchScholarship.svg"
             width="30px"
             height="30px"
           />
         </Link>
-        <Link href="/UserInfo/Notification">
+        <Link href="/userinfo/notification">
           <Image src="/header/notification.svg" width="30px" height="30px" />
         </Link>
       </div>
