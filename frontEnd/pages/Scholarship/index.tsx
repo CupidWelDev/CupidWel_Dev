@@ -3,7 +3,7 @@ import SEO from "../../components/SEO";
 
 const Scholarship: NextPage = () => {
   return (
-    <div className="bg-red-100">
+    <div>
       <SEO title="탐색" />
       <p className="text-2xl">모든 장학금</p>
     </div>

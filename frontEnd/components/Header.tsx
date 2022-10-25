@@ -1,9 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
+import GoBackButton from "./GoBackButton";
+import { useRouter } from "next/router";
 
 export default function Header() {
+  const router = useRouter();
+  // 뒤로가기 안띄울 라우터
+  const isNotGoBack = ["/"];
+
   return (
-    <div className="w-full h-[60px] flex justify-between p-4">
+    <div className="bg-white w-full h-[60px] flex justify-between p-4">
+      {isNotGoBack.includes(router.pathname) ? null : <GoBackButton />}
       <div className="flex gap-1 justify-center items-center">
         {/*Logo + AppName*/}
         <Link href="/">

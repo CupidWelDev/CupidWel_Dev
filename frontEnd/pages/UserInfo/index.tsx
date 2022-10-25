@@ -4,15 +4,15 @@ import Link from "next/link";
 
 const UserInfo: NextPage = () => {
   return (
-    <div className="bg-red-100">
+    <div>
       <SEO title="내 정보" />
       <p className="text-2xl">내정보</p>
-      <Link href="/">
+      <Link href="/userinfo/notification">
         <a>
           <p>알림</p>
         </a>
       </Link>
-      <Link href="/">
+      <Link href="/userinfo/policy">
         <a>
           <p>개인정보 동의서</p>
         </a>

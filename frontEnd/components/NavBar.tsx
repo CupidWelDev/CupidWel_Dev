@@ -29,11 +29,11 @@ export default function NavBar(): JSX.Element {
   const router = useRouter();
   // console.log(router.pathname);
   //TODO NavBar 안 띄울 라우터들
-  const isNavBar = ["/searchscholarship", "/scholarship/[id]"];
+  const isNotNavBar = ["/searchscholarship", "/scholarship/[id]"];
 
   return (
     <>
-      {isNavBar.includes(router.pathname) ? null : (
+      {isNotNavBar.includes(router.pathname) ? null : (
         <div className="fixed -bottom-4 w-[375px] h-20 bg-white">
           <nav className="flex gap-4 justify-around  items-center text-purple-200 shadow">
             {tabs.map((tab, idx) => (
