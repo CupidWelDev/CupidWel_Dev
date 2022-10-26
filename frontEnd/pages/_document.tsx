@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head />
-      <body className="scrollbar-hide bg-red-100">
+      <body className="scrollbar-hide bg-[url('/bgImg.svg')] bg-center bg-no-repeat bg-cover">
         <Main />
         <NextScript />
       </body>
