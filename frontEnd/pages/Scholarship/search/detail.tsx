@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import SEO from "../../components/SEO";
+import SEO from "../../../components/SEO";
 
-const SearchScholarship: NextPage = () => {
+const Search: NextPage = () => {
   return (
     <div className="w-[375px] h-100vh flex flex-col items-center">
       <SEO title="탐색" />
@@ -10,4 +10,4 @@ const SearchScholarship: NextPage = () => {
   );
 };
 
-export default SearchScholarship;
+export default Search;

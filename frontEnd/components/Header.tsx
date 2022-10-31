@@ -25,7 +25,7 @@ export default function Header() {
 
       {/*searchIco + notificationIco*/}
       <div className="flex gap-4 justify-center items-center ">
-        <Link href="/searchscholarship">
+        <Link href="/scholarship/search/detail">
           <Image
             src="/header/searchScholarship.svg"
             width="30px"

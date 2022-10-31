@@ -1,4 +1,4 @@
-export default function Footer() {
+export default function Footer(): JSX.Element {
   return (
     <section className="w-full bg-[#f4f4f4] text-sm">
       <ul className="flex flex-col items-center">

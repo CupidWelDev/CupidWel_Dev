@@ -3,6 +3,7 @@ import SEO from "../components/SEO";
 import Advertisement from "../components/Advertisement";
 import CategoryScholarship from "../components/CategoryScholarship";
 import CupidWelGuide from "../components/CupidWelGuide";
+import Footer from "../components/Footer";
 // @ts-ignore
 import Carousel from "../components/Carousel";
 import { useState } from "react";
@@ -12,7 +13,6 @@ import Link from "next/link";
 //dummy
 import { scholarships } from "../dummyData/schoarship";
 import { CupidWelGuideData } from "../dummyData/guideData";
-import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   return (
