@@ -12,6 +12,7 @@ import Link from "next/link";
 //dummy
 import { scholarships } from "../dummyData/schoarship";
 import { CupidWelGuideData } from "../dummyData/guideData";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   return (
@@ -35,7 +36,7 @@ const Home: NextPage = () => {
       <section className="w-11/12 mb-8">
         <div className="flex flex-row justify-between mr-3">
           <p className="text-sm font-semibold">큐피드웰 활용법</p>
-          <Link href="/searchscholarship">
+          <Link href="/guide">
             <a>
               <p className="text-xs opacity-30"> 전체보기 {">"} </p>
             </a>
@@ -46,7 +47,7 @@ const Home: NextPage = () => {
         <div className="w-full h-[70px]">
           <Carousel
             slides={CupidWelGuideData.map((guide, idx) => (
-              <CupidWelGuide key={idx} img={guide.svg} />
+              <CupidWelGuide key={idx} id={idx} img={guide.svg} />
             ))}
           />
         </div>
@@ -65,9 +66,7 @@ const Home: NextPage = () => {
         </div>
       </section>
       {/* footer */}
-      <section className="w-11/12 mb-[80px] h-[100px]">
-        <div className="h-full w-full"> footer</div>
-      </section>
+      <Footer />
     </div>
   );
 };

@@ -17,6 +17,11 @@ const UserInfo: NextPage = () => {
           <p>개인정보 동의서</p>
         </a>
       </Link>
+      <Link href="/userinfo/partnership">
+        <a>
+          <p>기업 제휴/광고 문의 </p>
+        </a>
+      </Link>
     </div>
   );
 };
