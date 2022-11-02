@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import GoBackButton from "./GoBackButton";
+import GoBackButton from "@components/GoBackButton";
 import { useRouter } from "next/router";
 
 export default function Header() {

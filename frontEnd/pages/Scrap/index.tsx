@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import SEO from "../../components/SEO";
+import SEO from "@components/SEO";
 
 const Scrap: NextPage = () => {
   return (

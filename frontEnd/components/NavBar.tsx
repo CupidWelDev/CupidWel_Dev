@@ -1,4 +1,4 @@
-import NavLink from "./NavLink";
+import NavLink from "@components/NavLink";
 import { useState } from "react";
 import { useRouter } from "next/router";
 

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import SEO from "../../components/SEO";
-import CupidWelGuide from "../../components/CupidWelGuide";
+import SEO from "@components/SEO";
+import CupidWelGuide from "@components/CupidWelGuide";
 import { CupidWelGuideData } from "../../dummyData/guideData";
 
 const Guide: NextPage = () => {

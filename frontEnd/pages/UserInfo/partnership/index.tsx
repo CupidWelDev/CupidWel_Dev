@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import SEO from "../../../components/SEO";
+import SEO from "@components/SEO";
 
-const Notification: NextPage = () => {
+const Partnership: NextPage = () => {
   return (
     <div className="">
       <SEO title="알림" />
@@ -59,4 +59,4 @@ const Notification: NextPage = () => {
   );
 };
 
-export default Notification;
+export default Partnership;

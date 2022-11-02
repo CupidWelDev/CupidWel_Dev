@@ -1,7 +1,5 @@
-import NavBar from "./NavBar";
-import Header from "./Header";
-import Footer from "./Footer";
-
+import NavBar from "@components/NavBar";
+import Header from "@components/Header";
 export default function Layout({ children }: any): JSX.Element {
   return (
     <div className="flex justify-center">

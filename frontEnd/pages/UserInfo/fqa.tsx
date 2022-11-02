@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import SEO from "../../components/SEO";
+import SEO from "@components/SEO";
 import { useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import SEO from "../../../components/SEO";
-import { cls } from "../../../libs/utils";
+import SEO from "@components/SEO";
+import { cls } from "@libs/utils";
 import { useState } from "react";
 const Notification: NextPage = () => {
   const [method, setMethod] = useState<"scholarship" | "system">("scholarship");
