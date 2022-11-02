@@ -8,6 +8,12 @@ export default function Header() {
   // 뒤로가기 안띄울 라우터
   const isNotGoBack = ["/"];
 
+  // 검색 안 띄울 라우터
+  const inNotSearch = ["/userinfo"];
+
+  // 설정 띄울 라우터
+  const inSetting = ["/userinfo"];
+
   return (
     <div className="bg-white w-full h-[60px] flex justify-between p-4">
       {isNotGoBack.includes(router.pathname) ? null : <GoBackButton />}
@@ -23,18 +29,29 @@ export default function Header() {
         </Link>
       </div>
 
-      {/*searchIco + notificationIco*/}
       <div className="flex gap-4 justify-center items-center ">
-        <Link href="/scholarship/search/detail">
-          <Image
-            src="/header/searchScholarship.svg"
-            width="30px"
-            height="30px"
-          />
-        </Link>
+        {/*searchIco*/}
+        {inNotSearch.includes(router.pathname) ? null : (
+          <Link href="/scholarship/search/detail">
+            <Image
+              src="/header/searchScholarship.svg"
+              width="30px"
+              height="30px"
+            />
+          </Link>
+        )}
+
+        {/*notificationIco*/}
         <Link href="/userinfo/notification">
           <Image src="/header/notification.svg" width="30px" height="30px" />
         </Link>
+
+        {/*setting */}
+        {inSetting.includes(router.pathname) && (
+          <Link href="/userinfo/setting">
+            <Image src="/header/setting.svg" width="30px" height="30px" />
+          </Link>
+        )}
       </div>
     </div>
   );
