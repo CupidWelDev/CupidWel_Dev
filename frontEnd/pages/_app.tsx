@@ -17,10 +17,12 @@ const queryClient = new QueryClient({
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Layout>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </Layout>
+      <div className="font-sans">
+        <Layout>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </Layout>
+      </div>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

@@ -44,7 +44,7 @@ const UserInfo: NextPage = () => {
   return (
     <div className="p-4">
       <SEO title="내 정보" />
-      <p className="text-xl font-bold">
+      <p className="text-xl font-bold w-[240px]">
         {user.name}님에게 맞는 장학금은 어디있을까요?
       </p>
       {/*맞춤 필터*/}

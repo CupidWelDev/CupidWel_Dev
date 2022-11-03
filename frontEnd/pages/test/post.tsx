@@ -80,7 +80,6 @@ const AllUsers: FC = () => {
 
   return (
     <div>
-      <p className="text-2xl">POST GRAPHQL</p>
       <div>
         <p className="text-xl"> User</p>
         {data?.allUsers?.map((user) => (
