@@ -19,6 +19,7 @@
       "@libs/*": ["libs/*"],
       "@components/*": ["components/*"],
       "@ITypes/*": ["types/*"],
+      "@src/*": ["src/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

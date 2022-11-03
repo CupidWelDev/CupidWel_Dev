@@ -1,0 +1,6 @@
+query GetAllTweets{
+    allTweets{
+        id
+        text
+    }
+}

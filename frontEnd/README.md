@@ -8,4 +8,11 @@
 - material ui : https://mui.com/material-ui/getting-started/overview/
   - tailwind와 함께 쓰기 : https://mui.com/base/guides/working-with-tailwind-css/
   - next.js material setting : https://github.com/mui/material-ui/tree/master/examples/nextjs
-  
+
+- API fetching && 전역상태관리 && API 통신 
+  - React-query : https://tanstack.com/query/v4/docs/adapters/react-query
+  - graphql : https://www.npmjs.com/package/graphql
+  - graphql-request : https://www.npmjs.com/package/graphql-request
+  - graphql-codegen
+    - https://codevoweb.com/nextjs-full-stack-app-with-react-query-and-graphql-codegen/
+    - https://www.youtube.com/watch?v=ZZrr82beJQk&t=52s
