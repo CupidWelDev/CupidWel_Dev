@@ -6,6 +6,7 @@ export const scholarships = [
     title: "선넘는 생활장학금",
     startPeriod: "22.07.11",
     endPeriod: "09.30",
+    view: false,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const scholarships = [
     title: "제2기 전라남도 해외유학생 모집",
     startPeriod: "22.07.11",
     endPeriod: "09.30",
+    view: false,
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export const scholarships = [
     title: "하이원 멘토뭐시기",
     startPeriod: "22.07.11",
     endPeriod: "09.30",
+    view: true,
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ export const scholarships = [
     title: "선넘는 생활장학금",
     startPeriod: "22.07.11",
     endPeriod: "09.30",
+    view: true,
   },
   {
     id: 5,
@@ -38,6 +42,7 @@ export const scholarships = [
     title: "제2기 전라남도 해외유학생 모집",
     startPeriod: "22.07.11",
     endPeriod: "09.30",
+    view: true,
   },
   {
     id: 6,
@@ -46,6 +51,7 @@ export const scholarships = [
     title: "하이원 멘토뭐시기",
     startPeriod: "22.07.11",
     endPeriod: "09.30",
+    view: true,
   },
 ];
 
