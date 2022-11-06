@@ -1,17 +1,15 @@
 import { FC } from "react";
 import {
   GetAllTweetsQuery,
-  GetAllUsersQuery,
   PostTweetMutation,
   PostTweetMutationVariables,
   useGetAllTweetsQuery,
-  useGetAllUsersQuery,
   usePostTweetMutation,
 } from "@src/generated/graphql";
 import graphqlRequestClient from "@src/lib/client/graphqlReuestClient";
 import { useQueryClient } from "@tanstack/react-query";
 
-const GraphqlMutaion: FC = () => {
+const GraphqlMutation: FC = () => {
   //  리로딩 시키기 위해 queryClient를 인스턴스화 해서 가져옴
   const queryClient = useQueryClient();
 
@@ -22,7 +20,7 @@ const GraphqlMutaion: FC = () => {
       context: unknown
     ) => {
       //  리패칭할 스키마 key값 넣어줌
-      queryClient.invalidateQueries("GetAllUsers");
+      queryClient.invalidateQueries({ queryKey: ["GetAllUsers"] });
       return console.log("mutation data", data);
     },
   });
@@ -38,13 +36,11 @@ const GraphqlMutaion: FC = () => {
       </button>
 
       <AllTweets />
-
-      <AllUsers />
     </>
   );
 };
 
-export default GraphqlMutaion;
+export default GraphqlMutation;
 
 const AllTweets: FC = () => {
   const { isLoading, error, data } = useGetAllTweetsQuery<
@@ -55,37 +51,16 @@ const AllTweets: FC = () => {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p> error...</p>;
 
+  // @ts-ignore
   return (
     <>
       <p className="text-xl text-center">All tweet</p>
       {data?.allTweets?.map((tweet) => (
-        <div key={tweet.id} className="flex">
-          <p className="w-1/2 text-center">{tweet.id}</p>
-          <p className="w-1/2 text-center">{tweet.text}</p>
+        <div key={tweet?.id} className="flex">
+          <p className="w-1/2 text-center">{tweet?.id}</p>
+          <p className="w-1/2 text-center">{tweet?.text}</p>
         </div>
       ))}
     </>
-  );
-};
-
-const AllUsers: FC = () => {
-  //  user 가져오기
-  const { isLoading, error, data } = useGetAllUsersQuery<
-    GetAllUsersQuery,
-    Error
-  >(graphqlRequestClient, {});
-
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p> error...</p>;
-
-  return (
-    <div>
-      <div>
-        <p className="text-xl"> User</p>
-        {data?.allUsers?.map((user) => (
-          <div key={user.id}>{user.fullName}</div>
-        ))}
-      </div>
-    </div>
   );
 };
