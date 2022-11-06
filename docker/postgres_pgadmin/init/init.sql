@@ -34,8 +34,9 @@ CREATE TABLE IF NOT EXISTS public.cupidwel_user
 
 CREATE TABLE IF NOT EXISTS public.scholarship
 (
-    institution character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    product character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    institution character varying(255) COLLATE pg_catalog."default",
+    product character varying(255) COLLATE pg_catalog."default",
     institution_sort character varying(255) COLLATE pg_catalog."default",
     product_sort character varying(255) COLLATE pg_catalog."default",
     schoolexpense_sort character varying(255) COLLATE pg_catalog."default",
@@ -53,32 +54,24 @@ CREATE TABLE IF NOT EXISTS public.scholarship
     qualification_restriction_detail text COLLATE pg_catalog."default",
     recommendation_detail text COLLATE pg_catalog."default",
     documentaion_detail text COLLATE pg_catalog."default",
-    created_dt timestamp without time zone,
-    modified_dt timestamp without time zone,
-    like_num bigint,
-    scrap_num bigint,
-    CONSTRAINT scholarship_pkey PRIMARY KEY (institution, product),
-    CONSTRAINT unique_institution UNIQUE (institution),
-    CONSTRAINT unique_product UNIQUE (product)
+    created_dt timestamp without time zone DEFAULT now(),
+    modified_dt timestamp without time zone DEFAULT now(),
+    like_num bigint DEFAULT 0,
+    scrap_num bigint DEFAULT 0,
+    CONSTRAINT scholarship_pkey PRIMARY KEY (id)
 );
 
 
 CREATE TABLE IF NOT EXISTS public.user_scholar_relation
 (
     email character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    institution character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    product character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT user_scholar_relation_pkey PRIMARY KEY (email, institution, product),
+    scholarship_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT fk_email FOREIGN KEY (email)
         REFERENCES public.cupidwel_user (email) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT fk_institution FOREIGN KEY (institution)
-        REFERENCES public.scholarship (institution) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
-    CONSTRAINT fk_product FOREIGN KEY (product)
-        REFERENCES public.scholarship (product) MATCH SIMPLE
+    CONSTRAINT fk_scholarship_id FOREIGN KEY (scholarship_id)
+        REFERENCES public.scholarship (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );
@@ -86,21 +79,18 @@ CREATE TABLE IF NOT EXISTS public.user_scholar_relation
 
 CREATE TABLE IF NOT EXISTS public.scrap
 (
-    email character varying(255) COLLATE pg_catalog."default",
-    institution character varying(255) COLLATE pg_catalog."default",
-    product character varying(255) COLLATE pg_catalog."default",
+    email character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    scholarship_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT scrap_pkey PRIMARY KEY (email, scholarship_id),
     CONSTRAINT fk_email FOREIGN KEY (email)
         REFERENCES public.cupidwel_user (email) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT fk_institution FOREIGN KEY (institution)
-        REFERENCES public.scholarship (institution) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
-    CONSTRAINT fk_product FOREIGN KEY (product)
-        REFERENCES public.scholarship (product) MATCH SIMPLE
+    CONSTRAINT fk_scholarship_id FOREIGN KEY (scholarship_id)
+        REFERENCES public.scholarship (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
+        NOT VALID
 );
 
 
@@ -118,27 +108,27 @@ CREATE TABLE IF NOT EXISTS public.notice
 CREATE TABLE IF NOT EXISTS public.alert
 (
     email character varying COLLATE pg_catalog."default" NOT NULL,
-    institution character varying COLLATE pg_catalog."default" NOT NULL,
-    product character varying COLLATE pg_catalog."default" NOT NULL,
+    scholarship_id character varying COLLATE pg_catalog."default" NOT NULL,
     notice_id bigint NOT NULL,
     sent_time timestamp without time zone,
     is_sent boolean,
     is_checked boolean,
-    CONSTRAINT alert_pkey PRIMARY KEY (email, notice_id, product, institution),
     CONSTRAINT fk_email FOREIGN KEY (email)
         REFERENCES public.cupidwel_user (email) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
-    CONSTRAINT fk_institution FOREIGN KEY (institution)
-        REFERENCES public.scholarship (institution) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
     CONSTRAINT fk_notice_id FOREIGN KEY (notice_id)
         REFERENCES public.notice (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT fk_product FOREIGN KEY (product)
-        REFERENCES public.scholarship (product) MATCH SIMPLE
+    CONSTRAINT scholarship_id FOREIGN KEY (scholarship_id)
+        REFERENCES public.scholarship (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
+        NOT VALID
 );
+
+COPY scholarship
+FROM '/docker-entrypoint-initdb.d/scholarship_sample.csv'
+DELIMITER ','
+CSV HEADER;
