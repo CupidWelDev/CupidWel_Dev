@@ -6,10 +6,11 @@ import java.sql.Date;
 
 @Data
 public class Scholarship {
+    private String id;
     private String institution;
     private String product;
     private String institutionSort;
-    private String product_sort;
+    private String productSort;
     private String schoolexpenseSort;
     private String univSort;
     private String gradeSort;

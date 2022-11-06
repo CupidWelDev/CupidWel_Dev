@@ -18,7 +18,6 @@ public class QueryResolver {
 
     @QueryMapping
     public List<Scholarship> getAllScholarships() {
-        log.info(scholarshipService.getAllScholarships().toString());
         return scholarshipService.getAllScholarships();
     }
 }

@@ -1,8 +1,9 @@
 type Scholarship {
+    id: String
     institution: String
     product: String
     institutionSort: String
-    product_sort: String
+    productSort: String
     schoolexpenseSort: String
     univSort: String
     gradeSort: String

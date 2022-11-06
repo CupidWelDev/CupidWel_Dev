@@ -17,7 +17,7 @@ graphql:
       allowed-origins: https://localhost:9898/
       allowed-methods: GET, POST
 
-mabatis:
+mybatis:
     type-aliases-package: com.example.demo.domain
     configuration:
-        map-underscore-to-camel-case: true #auto change snake_case to camelCase
+        mapUnderscoreToCamelCase: true #auto change snake_case to camelCase
