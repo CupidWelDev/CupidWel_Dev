@@ -16,4 +16,8 @@ public class ScholarshipService {
     public List<Scholarship> getAllScholarships(){
         return scholarshipMapper.getAllScholarships();
     }
+
+    public Scholarship getScholarshipDetail(String scholarshipId){
+        return scholarshipMapper.getScholarshipDetail(scholarshipId);
+    }
 }

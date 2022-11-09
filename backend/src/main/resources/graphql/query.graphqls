@@ -27,4 +27,7 @@ type Scholarship {
 
 type Query {
     getAllScholarships: [Scholarship]
+    getScholarshipDetail(
+        scholarshipId: String!
+    ): Scholarship
 }
