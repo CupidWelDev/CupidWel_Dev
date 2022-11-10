@@ -9,8 +9,14 @@
         select * from scholarship;
     </select>
 
+<<<<<<< Updated upstream
     <select id="getScholarshipDetail" resultType="com.example.demo.domain.Scholarship">
         select * from scholarship where id = #{scholarshipId}
     </select>
 
+=======
+    <select id="getSearchScholarships" resultType="com.example.demo.domain.Scholarship">
+        select * from public.scholarship where id like '%안산%' order by created_dt asc;
+    </select>
+>>>>>>> Stashed changes
 </mapper>
