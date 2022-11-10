@@ -13,6 +13,6 @@ public interface ScholarshipMapper {
 
     public Scholarship getScholarshipDetail(@Param(value = "scholarshipId") String scholarshipId);
 
-    public List<Scholarship> getSearchScholarships();
+    public List<Scholarship> getSearchScholarships(@Param(value = "searchWord") String searchWord);
 
 }

@@ -23,8 +23,8 @@ public class ScholarshipService {
     }
 
     // search function
-    public List<Scholarship> getSearchScholarships() {
-        return scholarshipMapper.getSearchScholarships();
+    public List<Scholarship> getSearchScholarships(String searchWord) {
+        return scholarshipMapper.getSearchScholarships(searchWord);
 
     }
 }

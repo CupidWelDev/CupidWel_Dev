@@ -28,7 +28,10 @@ public class QueryResolver {
     }
 
     @QueryMapping
-    public List<Scholarship> getSearchScholarships() {
-        return scholarshipService.getSearchScholarships();
+    public List<Scholarship> getSearchScholarships(@Argument(name = "searchWord") String searchWord) {
+        String sig = "%";
+        String tmp = sig.concat(searchWord);
+        String result = tmp.concat(sig);
+        return scholarshipService.getSearchScholarships(result);
     }
 }
