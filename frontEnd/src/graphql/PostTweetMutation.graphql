@@ -1,6 +1,8 @@
-mutation PostTweet($text: String!, $userId: ID!) {
-    postTweet(text: $text, userId: $userId) {
-        id
-        text
-    }
-}
+# 스키마 생성 후
+
+#mutation PostTweet($text: String!, $userId: ID!) {
+#    postTweet(text: $text, userId: $userId) {
+#        id
+#        text
+#    }
+#}

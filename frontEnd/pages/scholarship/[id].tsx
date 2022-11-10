@@ -3,15 +3,17 @@ import SEO from "@components/SEO";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 //TODO : API 연동 후 삭제
-import { dummyData } from "../../dummyData/schoarship";
+import { dummyData, scholarships } from "../../dummyData/schoarship";
 import { IScholarData } from "@ITypes/schoalship";
+import RecentlyVIew from "@components/RecentlyVIew";
+import { addDB, openDB } from "@libs/IndexedDB";
 
 const SearchScholarDetail: NextPage = () => {
   const router = useRouter();
   // console.log(router);
-  const [data, setData] = useState<IScholarData>();
+  // console.log(router.query.id);
 
-  // console.log(router.asPath);
+  const [data, setData] = useState<IScholarData>();
 
   const [link, setLink] = useState();
   useEffect(() => {
@@ -20,7 +22,8 @@ const SearchScholarDetail: NextPage = () => {
   }, []);
 
   const scrap = () => {
-    //TODO scrap-user 테이블에 추가
+    // indexedDB
+    addDB(scholarships[router.query.id - 1]);
     alert(
       `'${dummyData.product}'이 스크랩 되었습니다. 장학금 번호 : ${router.query.id}`
     );
@@ -48,6 +51,10 @@ const SearchScholarDetail: NextPage = () => {
         console.log("Something went wrong", err);
       });
   };
+
+  useEffect(() => {
+    openDB();
+  }, []);
 
   return (
     <div className="flex flex-col items-center p-4">

@@ -1,11 +1,15 @@
 import type { NextPage } from "next";
 import SEO from "@components/SEO";
+import RecentlyView from "@components/RecentlyVIew";
 
 const Scholarship: NextPage = () => {
   return (
     <div>
       <SEO title="탐색" />
       <p className="text-2xl">모든 장학금</p>
+
+      <br />
+      <RecentlyView />
     </div>
   );
 };

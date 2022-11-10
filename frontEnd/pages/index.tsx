@@ -6,7 +6,6 @@ import CupidWelGuide from "../components/CupidWelGuide";
 import Footer from "../components/Footer";
 // @ts-ignore
 import Carousel from "../components/Carousel";
-import { useState } from "react";
 import ScholarshipDetailVer from "../components/ScholarshipDetailVer";
 import Link from "next/link";
 
@@ -56,7 +55,6 @@ const Home: NextPage = () => {
       {/* 추천 장학금 */}
       <section className="w-11/12 mb-8 h-[240px]">
         <p className="text-xl font-semibold mb-4">추천 장학금</p>
-        {/*  todo 캐러셀 컴포넌트로 감싸기*/}
         <div className="w-full h-[200px]">
           <Carousel
             slides={scholarships.map((scholarship, idx) => (
