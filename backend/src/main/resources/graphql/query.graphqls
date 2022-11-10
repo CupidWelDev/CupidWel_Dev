@@ -27,11 +27,10 @@ type Scholarship {
 
 type Query {
     getAllScholarships: [Scholarship]
-<<<<<<< Updated upstream
+
     getScholarshipDetail(
         scholarshipId: String!
     ): Scholarship
-=======
+
     getSearchScholarships: [Scholarship]
->>>>>>> Stashed changes
 }

@@ -17,13 +17,14 @@ public class ScholarshipService {
         return scholarshipMapper.getAllScholarships();
     }
 
-<<<<<<< Updated upstream
-    public Scholarship getScholarshipDetail(String scholarshipId){
+
+    public Scholarship getScholarshipDetail(String scholarshipId) {
         return scholarshipMapper.getScholarshipDetail(scholarshipId);
-=======
+    }
+
     // search function
     public List<Scholarship> getSearchScholarships() {
         return scholarshipMapper.getSearchScholarships();
->>>>>>> Stashed changes
+
     }
 }

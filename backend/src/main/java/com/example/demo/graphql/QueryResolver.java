@@ -23,12 +23,12 @@ public class QueryResolver {
     }
 
     @QueryMapping
-<<<<<<< Updated upstream
-    public Scholarship getScholarshipDetail(@Argument(name = "scholarshipId") String scholarshipId){
+    public Scholarship getScholarshipDetail(@Argument(name = "scholarshipId") String scholarshipId) {
         return scholarshipService.getScholarshipDetail(scholarshipId);
-=======
+    }
+
+    @QueryMapping
     public List<Scholarship> getSearchScholarships() {
         return scholarshipService.getSearchScholarships();
->>>>>>> Stashed changes
     }
 }
