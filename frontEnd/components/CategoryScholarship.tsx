@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 //TODO 카테고리별 Link 달아놓기
 export default function CategoryScholarship() {
@@ -27,6 +28,9 @@ export default function CategoryScholarship() {
     { num: 11 },
   ]);
 
+  const router = useRouter();
+  const isNotNumber = ["/scrap"];
+
   return (
     <div
       className="w-full pt-2
@@ -41,7 +45,7 @@ export default function CategoryScholarship() {
             <Image src={category.svg} width="46px" height="46px" />
           </div>
           <p className="text-xs opacity-50">{category.title}</p>
-          {login ? <p className="text-xl">{user[idx].num}</p> : null}
+          {login && !isNotNumber.includes(router.pathname) ? <p className="text-xl">{user[idx].num}</p> : null}
         </div>
       ))}
     </div>
