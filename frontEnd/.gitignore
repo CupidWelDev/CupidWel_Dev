@@ -38,6 +38,8 @@
 # PWAs
 /.next
 /*.log
-/public/sw.js/
-/workbox-*.js/
+/public/sw.js
+/public/sw.js/*
+/workbox-*.js
+/workbox-*.js/*
 
