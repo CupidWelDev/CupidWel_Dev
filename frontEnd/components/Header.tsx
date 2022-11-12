@@ -32,7 +32,7 @@ export default function Header() {
       <div className="flex gap-4 justify-center items-center ">
         {/*searchIco*/}
         {inNotSearch.includes(router.pathname) ? null : (
-          <Link href="/scholarship/search/detail">
+          <Link href="/scholarship/detail">
             <Image
               src="/header/searchScholarship.svg"
               width="30px"

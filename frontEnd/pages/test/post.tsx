@@ -20,6 +20,7 @@ const GraphqlMutation: FC = () => {
       context: unknown
     ) => {
       //  리패칭할 스키마 key값 넣어줌
+      // @ts-ignore
       queryClient.invalidateQueries("GetAllUsers");
       return console.log("mutation data", data);
     },

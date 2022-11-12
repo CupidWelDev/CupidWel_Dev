@@ -34,3 +34,10 @@
 # typescript
 /*.tsbuildinfo
 /next-env.d.ts
+
+# PWAs
+/.next
+/*.log
+/public/sw.js/
+/workbox-*.js/
+

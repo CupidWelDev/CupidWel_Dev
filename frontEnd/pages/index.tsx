@@ -6,7 +6,6 @@ import CupidWelGuide from "../components/CupidWelGuide";
 import Footer from "../components/Footer";
 // @ts-ignore
 import Carousel from "../components/Carousel";
-import { useState } from "react";
 import ScholarshipDetailVer from "../components/ScholarshipDetailVer";
 import Link from "next/link";
 
