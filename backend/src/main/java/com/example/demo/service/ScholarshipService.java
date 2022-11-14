@@ -20,4 +20,11 @@ public class ScholarshipService {
     public Scholarship getScholarshipDetail(String scholarshipId){
         return scholarshipMapper.getScholarshipDetail(scholarshipId);
     }
+
+//    public List<Scholarship> scholarshipFilter(String category, String filteringWord) {
+//        return scholarshipMapper.scholarshipFilter(category, filteringWord);
+//    }
+    public List<Scholarship> scholarshipFilter(String filteringWord) {
+        return scholarshipMapper.scholarshipFilter(filteringWord);
+    }
 }

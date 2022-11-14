@@ -13,4 +13,26 @@
         select * from scholarship where id = #{scholarshipId}
     </select>
 
+<!--    <select id="scholarshipFilter" resultType="com.example.demo.domain.Scholarship">-->
+<!--        select * from scholarship where id like '%${filteringWord}%' or qualification_detail like '%${filteringWord}%'-->
+
+<!--        <choose>-->
+<!--            <when test='category.equalsIgnoreCase("학교")'>-->
+<!--                id like '%${filteringWord}%' or qualification_detail like '%${filteringWord}%'-->
+<!--            </when>-->
+<!--            <when test='category.equalsIgnoreCase("소속")'>-->
+<!--                major_sort like '%${filteringWord}%'-->
+<!--            </when>-->
+<!--            <when test='category.eqaulsIgnoreCase("전공")'>-->
+<!--                major_sort like '%${filteringWord}%'-->
+<!--            </when>-->
+<!--            <when test='category.equalsIgnoreCase("주소")'>-->
+<!--                local_residence_detail like '%${filteringWord}%'-->
+<!--            </when>-->
+<!--        </choose>-->
+<!--    </select>-->
+    <select id="scholarshipFilter" resultType="com.example.demo.domain.Scholarship">
+        select * from scholarship where id like '%${filteringWord}%' or qualification_detail like '%${filteringWord}%'
+    </select>
+
 </mapper>

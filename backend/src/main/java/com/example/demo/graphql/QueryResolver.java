@@ -26,4 +26,13 @@ public class QueryResolver {
     public Scholarship getScholarshipDetail(@Argument(name = "scholarshipId") String scholarshipId){
         return scholarshipService.getScholarshipDetail(scholarshipId);
     }
+
+    @QueryMapping
+//    public List<Scholarship> scholarshipFilter(@Argument(name = "category") String category, @Argument(name = "filteringWord") String filteringWord) {
+//        return scholarshipService.scholarshipFilter(category, filteringWord);
+//    }
+    public List<Scholarship> scholarshipFilter(@Argument(name = "filteringWord") String filteringWord) {
+        return scholarshipService.scholarshipFilter(filteringWord);
+    }
+
 }

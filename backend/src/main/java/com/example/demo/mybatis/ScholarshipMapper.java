@@ -11,4 +11,6 @@ import org.apache.ibatis.annotations.Param;
 public interface ScholarshipMapper {
     public List<Scholarship> getAllScholarships();
     public Scholarship getScholarshipDetail(@Param(value = "scholarshipId") String scholarshipId);
+//    public List<Scholarship> scholarshipFilter(@Param(value = "category") String category, @Param(value = "filteringWord") String filteringWord);
+    public List<Scholarship> scholarshipFilter(@Param(value = "filteringWord") String filteringWord);
 }

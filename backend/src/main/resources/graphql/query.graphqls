@@ -30,4 +30,7 @@ type Query {
     getScholarshipDetail(
         scholarshipId: String!
     ): Scholarship
+    scholarshipFilter(
+        filteringWord: String!
+    ): [Scholarship]
 }
