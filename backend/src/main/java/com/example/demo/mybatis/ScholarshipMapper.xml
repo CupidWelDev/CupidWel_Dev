@@ -15,8 +15,8 @@
     </select>
 
 
-    <select id="getSearchScholarships" resultType="com.example.demo.domain.Scholarship">
-        select * from public.scholarship where id like #{searchWord} order by created_dt asc;
+    <select id="searchScholarships" resultType="com.example.demo.domain.Scholarship">
+        select * from scholarship where id like '%${searchWord}%' order by created_dt asc;
     </select>
 
 </mapper>

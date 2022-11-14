@@ -32,7 +32,7 @@ type Query {
         scholarshipId: String!
     ): Scholarship
 
-    getSearchScholarships(
+    searchScholarships(
         searchWord: String!
-    ): Scholarship
+    ): [Scholarship]
 }
