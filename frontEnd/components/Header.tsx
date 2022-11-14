@@ -15,7 +15,7 @@ export default function Header() {
   const inSetting = ["/userinfo"];
 
   return (
-    <div className="fixed bg-white w-[375px] h-[60px] flex justify-between p-4 bg-white z-10 shadow">
+    <div className="fixed bg-white w-full sm:w-[400px] h-[60px] flex justify-between p-4 bg-white z-10 shadow">
       {isNotGoBack.includes(router.pathname) ? null : <GoBackButton />}
       <div className="flex gap-1 justify-center items-center">
         {/*Logo + AppName*/}

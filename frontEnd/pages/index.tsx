@@ -32,8 +32,8 @@ const Home: NextPage = () => {
       <div className="w-full border-solid border-2 border-gray-200 rounded-xl mb-6"></div>
 
       {/* 큐피트웰 활용법*/}
-      <section className="w-11/12 mb-8">
-        <div className="flex flex-row justify-between mr-3">
+      <section className="w-11/12 mb-8 flex flex-col items-center">
+        <div className="flex flex-row justify-between mr-3 w-[330px]">
           <p className="text-sm font-semibold">큐피드웰 활용법</p>
           <Link href="/guide">
             <a>
@@ -42,8 +42,8 @@ const Home: NextPage = () => {
           </Link>
         </div>
 
-        {/*  TODO 가이드 상세 페이지 만들어서 Link 달기*/}
-        <div className="w-full h-[70px]">
+        {/*가이드 케러셸*/}
+        <div className="w-full h-[80px] flex justify-center">
           <Carousel
             slides={CupidWelGuideData.map((guide, idx) => (
               <CupidWelGuide key={idx} id={idx} img={guide.svg} />
@@ -53,14 +53,16 @@ const Home: NextPage = () => {
       </section>
 
       {/* 추천 장학금 */}
-      <section className="w-11/12 mb-8 h-[240px]">
-        <p className="text-xl font-semibold mb-4">추천 장학금</p>
-        <div className="w-full h-[200px]">
-          <Carousel
-            slides={scholarships.map((scholarship, idx) => (
-              <ScholarshipDetailVer key={idx} {...scholarship} />
-            ))}
-          />
+      <section className="w-11/12 mb-8 h-[240px] flex flex-col items-center ">
+        <div className="w-[350px]">
+          <p className="text-xl font-semibold mb-4 w-[350px]">추천 장학금</p>
+          <div className="w-full h-[200px] ">
+            <Carousel
+              slides={scholarships.map((scholarship, idx) => (
+                <ScholarshipDetailVer key={idx} {...scholarship} />
+              ))}
+            />
+          </div>
         </div>
       </section>
       {/* footer */}
