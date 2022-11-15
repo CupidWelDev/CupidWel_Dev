@@ -1,5 +1,3 @@
-import { FieldValues } from "react-hook-form";
-
 // indexedDB 데이터베이스 열기
 export const openDB = () => {
   const request = window.indexedDB.open("recentlyView", 1);
@@ -15,7 +13,7 @@ export const openDB = () => {
       keyPath: "id",
     });
     const searchStore = db.createObjectStore("search", {
-      keyPath: "id",
+      autoIncrement: true,
     });
   };
 };

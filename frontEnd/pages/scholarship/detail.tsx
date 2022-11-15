@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
 import SEO from "@components/SEO";
 import { useEffect, useState } from "react";
-import { deleteDB, getDB } from "@libs/IndexedDB";
 import RecentlyView from "@components/RecentlyVIew";
+import { getDB } from "@libs/IndexedDB";
 
+//TODO : fix 안깨질라면 searhbar는 header로 옮기고 getDB를 불러와서 띄울 것
 const Search: NextPage = () => {
   const [recentlySearch, setRecentlySearch] = useState();
 
