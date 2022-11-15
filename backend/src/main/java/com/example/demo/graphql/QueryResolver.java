@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+
+import com.example.demo.domain.FilterDO;
 import com.example.demo.domain.Scholarship;
 
 @Controller
@@ -26,8 +28,8 @@ public class QueryResolver {
     }
 
     @QueryMapping
-   public List<Scholarship> scholarshipFilter(@Argument(name = "category") String category, @Argument(name = "filteringWord") String filteringWord) {
-       return scholarshipService.scholarshipFilter(category, filteringWord);
+   public List<Scholarship> scholarshipFilter(@Argument(name = "filterInput") FilterDO filterInput) {
+       return scholarshipService.scholarshipFilter(filterInput);
    }
 
 }

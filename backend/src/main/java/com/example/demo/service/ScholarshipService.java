@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.domain.FilterDO;
 import com.example.demo.domain.Scholarship;
 import com.example.demo.mybatis.ScholarshipMapper;
 
@@ -21,7 +22,7 @@ public class ScholarshipService {
         return scholarshipMapper.getScholarshipDetail(scholarshipId);
     }
 
-   public List<Scholarship> scholarshipFilter(String category, String filteringWord) {
-       return scholarshipMapper.scholarshipFilter(category, filteringWord);
+   public List<Scholarship> scholarshipFilter(FilterDO filterInput) {
+       return scholarshipMapper.scholarshipFilter(filterInput);
    }
 }

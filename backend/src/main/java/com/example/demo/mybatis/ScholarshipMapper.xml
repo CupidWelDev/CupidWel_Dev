@@ -32,13 +32,16 @@
                 grade_stand_detail like '%${grade}%'
             </if>
             <if test='attendance != null'>
-                qualification_detail like '%${attendance}%' or qualification_restriction_detail like 
+                qualification_detail like '%${attendance}%' or qualification_restriction_detail like '%${attendance}%'
             </if>
             <if test='incomeSection != null'>
                 income_detail like '%${incomeSection}%'
             </if>
             <if test='specialClass != null'>
-                qualification_detail like '%${specialClass}%' or income_stand_detail like '%${specialClass}%'
+                <!-- <foreach collection="specialClass" item="class" open="" separator="and" close=""> -->
+                <foreach collection="array" item="class" open="" separator="and" close="">
+                    (qualification_detail like '%${class}%' or income_stand_detail like '%${class}%')
+                </foreach>
             </if>
             <if test='address != null'>
                 id like '%${address}%' or local_residence_detail like '%${address}%'
