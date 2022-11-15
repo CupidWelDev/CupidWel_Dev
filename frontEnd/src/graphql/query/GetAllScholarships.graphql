@@ -1,4 +1,4 @@
-query GetAllScholarshipsQuery{
+query GetAllScholarships{
     getAllScholarships {
         id
         institution

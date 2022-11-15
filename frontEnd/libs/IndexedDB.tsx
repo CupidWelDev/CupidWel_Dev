@@ -14,6 +14,7 @@ export const openDB = () => {
   request.onupgradeneeded = (event) => {
     const db = event.target.result;
     const scholarshipStore = db.createObjectStore("scholarship", {
+      // autoIncrement: true,
       keyPath: "id",
     });
     const searchStore = db.createObjectStore("search", {
@@ -24,7 +25,7 @@ export const openDB = () => {
 };
 
 // indexedDB 데이터베이스에 데이터 추가
-export const addDB = (data: FieldValues | undefined, title: string) => {
+export const addDB = (data, title: string) => {
   const request = window.indexedDB.open("recentlyView", 1);
   request.onerror = (event) => {
     console.log("데이터베이스 열기 실패");

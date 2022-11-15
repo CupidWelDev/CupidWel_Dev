@@ -12,8 +12,20 @@ import Link from "next/link";
 //dummy
 import { scholarships } from "../dummyData/schoarship";
 import { CupidWelGuideData } from "../dummyData/guideData";
+import {
+  GetAllScholarshipsQuery,
+  useGetAllScholarshipsQuery,
+} from "@src/generated/graphql";
+import graphqlRequestClient from "@src/lib/client/graphqlReuestClient";
 
 const Home: NextPage = () => {
+  const { isLoading, error, data } = useGetAllScholarshipsQuery<
+    GetAllScholarshipsQuery | undefined,
+    Error
+  >(graphqlRequestClient, {});
+  // console.log(data.getAllScholarships.slice(0, 10));
+  if (isLoading) return <div>is Loading...</div>;
+
   return (
     <div className="h-100vh flex flex-col items-center">
       {/*<Header />*/}
@@ -58,9 +70,11 @@ const Home: NextPage = () => {
           <p className="text-xl font-semibold mb-4 w-[350px]">추천 장학금</p>
           <div className="w-full h-[200px] ">
             <Carousel
-              slides={scholarships.map((scholarship, idx) => (
-                <ScholarshipDetailVer key={idx} {...scholarship} />
-              ))}
+              slides={data.getAllScholarships
+                .slice(0, 10)
+                .map((scholarship, idx) => (
+                  <ScholarshipDetailVer key={idx} {...scholarship} />
+                ))}
             />
           </div>
         </div>
