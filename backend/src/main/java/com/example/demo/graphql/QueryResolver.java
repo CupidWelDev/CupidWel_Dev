@@ -23,7 +23,12 @@ public class QueryResolver {
     }
 
     @QueryMapping
-    public Scholarship getScholarshipDetail(@Argument(name = "scholarshipId") String scholarshipId){
+    public Scholarship getScholarshipDetail(@Argument(name = "scholarshipId") String scholarshipId) {
         return scholarshipService.getScholarshipDetail(scholarshipId);
+    }
+
+    @QueryMapping
+    public List<Scholarship> searchScholarships(@Argument(name = "searchWord") String searchWord) {
+        return scholarshipService.searchScholarships(searchWord);
     }
 }

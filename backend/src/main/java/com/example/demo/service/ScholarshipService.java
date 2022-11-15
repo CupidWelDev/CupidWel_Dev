@@ -17,7 +17,14 @@ public class ScholarshipService {
         return scholarshipMapper.getAllScholarships();
     }
 
-    public Scholarship getScholarshipDetail(String scholarshipId){
+
+    public Scholarship getScholarshipDetail(String scholarshipId) {
         return scholarshipMapper.getScholarshipDetail(scholarshipId);
+    }
+
+    // search function
+    public List<Scholarship> searchScholarships(String searchWord) {
+        return scholarshipMapper.searchScholarships(searchWord);
+
     }
 }

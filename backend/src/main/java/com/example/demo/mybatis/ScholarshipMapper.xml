@@ -9,8 +9,14 @@
         select * from scholarship;
     </select>
 
+
     <select id="getScholarshipDetail" resultType="com.example.demo.domain.Scholarship">
         select * from scholarship where id = #{scholarshipId}
+    </select>
+
+
+    <select id="searchScholarships" resultType="com.example.demo.domain.Scholarship">
+        select * from scholarship where id like '%${searchWord}%' order by duration_detail asc;
     </select>
 
 </mapper>
