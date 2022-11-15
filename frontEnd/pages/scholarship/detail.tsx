@@ -10,7 +10,7 @@ interface ISearch {
 }
 
 const Search: NextPage = () => {
-  const [recentlySearch, setRecentlySearch] = useState();
+  const [recentlySearch, setRecentlySearch] = useState<any[]>();
 
   useEffect(() => {
     getDB(setRecentlySearch, "search");
