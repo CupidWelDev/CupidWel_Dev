@@ -18,7 +18,7 @@ export const openDB = () => {
     });
     const searchStore = db.createObjectStore("search", {
       // autoIncrement: true,
-      keyPath: "id",
+      keyPath: "search",
     });
   };
 };

@@ -2,9 +2,13 @@ import type { NextPage } from "next";
 import SEO from "@components/SEO";
 import { useEffect, useState } from "react";
 import RecentlyView from "@components/RecentlyVIew";
-import { getDB } from "@libs/IndexedDB";
+import { deleteDB, getDB } from "@libs/IndexedDB";
 
-//TODO : fix 안깨질라면 searhbar는 header로 옮기고 getDB를 불러와서 띄울 것
+interface ISearch {
+  id: number;
+  search: string;
+}
+
 const Search: NextPage = () => {
   const [recentlySearch, setRecentlySearch] = useState();
 
@@ -12,10 +16,14 @@ const Search: NextPage = () => {
     getDB(setRecentlySearch, "search");
   }, []);
 
-  const deleteSearch = (e: any) => {
-    console.log(recentlySearch, e);
+  //todo : 최근 검색어 삭제하기
+  const deleteSearch = (str: any) => {
+    console.log(str.target.value);
+    setRecentlySearch(
+      recentlySearch?.filter((data: any) => data.search !== str.target.value)
+    );
+    deleteDB(str.target.value, "search");
   };
-  console.log("삭제할것임", recentlySearch);
 
   return (
     <div className="w-full flex justify-center">
@@ -26,13 +34,15 @@ const Search: NextPage = () => {
           {recentlySearch
             ?.slice(-3)
             .reverse()
-            .map((str, idx) => (
+            .map((str: ISearch, idx: number) => (
               <div
                 key={idx}
                 className="border-2 border-amber-400 rounded-xl bg-amber-400 flex px-1 gap-2"
               >
                 <p>{str.search}</p>
-                <button onClick={deleteSearch}>x</button>
+                <button onClick={(str) => deleteSearch(str)} value={str.search}>
+                  x
+                </button>
               </div>
             ))}
         </section>
