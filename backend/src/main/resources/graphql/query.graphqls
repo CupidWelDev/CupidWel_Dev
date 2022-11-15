@@ -31,6 +31,7 @@ type Query {
         scholarshipId: String!
     ): Scholarship
     scholarshipFilter(
+        category: String!
         filteringWord: String!
     ): [Scholarship]
 }

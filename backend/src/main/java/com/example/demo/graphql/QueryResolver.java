@@ -28,11 +28,8 @@ public class QueryResolver {
     }
 
     @QueryMapping
-//    public List<Scholarship> scholarshipFilter(@Argument(name = "category") String category, @Argument(name = "filteringWord") String filteringWord) {
-//        return scholarshipService.scholarshipFilter(category, filteringWord);
-//    }
-    public List<Scholarship> scholarshipFilter(@Argument(name = "filteringWord") String filteringWord) {
-        return scholarshipService.scholarshipFilter(filteringWord);
-    }
+   public List<Scholarship> scholarshipFilter(@Argument(name = "category") String category, @Argument(name = "filteringWord") String filteringWord) {
+       return scholarshipService.scholarshipFilter(category, filteringWord);
+   }
 
 }
