@@ -29,7 +29,7 @@ export default function NavBar(): JSX.Element {
   const router = useRouter();
   // console.log(router.pathname);
   //TODO NavBar 안 띄울 라우터들
-  const isNotNavBar = ["/scholarship/detail", "/scholarship/[id]"];
+  const isNotNavBar = ["/scholarship/detail", "/scholarship/[id]", "/register"];
 
   return (
     <>

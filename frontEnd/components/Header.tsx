@@ -3,14 +3,21 @@ import Image from "next/image";
 import GoBackButton from "@components/GoBackButton";
 import { useRouter } from "next/router";
 import SearchBar from "@components/SearchBar";
+import {cls} from "@libs/utils";
 
 export default function Header() {
   const router = useRouter();
   // 뒤로가기 안띄울 라우터
   const isNotGoBack = ["/"];
 
+  // 로고 안띄울 라우터
+  const isNotLogo = ["/register"];
+
   // 검색 안 띄울 라우터
-  const inNotSearch = ["/userinfo"];
+  const inNotSearch = ["/userinfo", "/register"];
+
+  // 알림 (종) 안 띄울 라우터
+  const isNotNotification = ["/register"];
 
   // 설정 띄울 라우터
   const inSetting = ["/userinfo"];
@@ -18,9 +25,12 @@ export default function Header() {
   // searchBar
   const isSearchBar = ["/scholarship/detail"];
 
+  // 하단 가로줄 안 띄울 라우터
+  const isNotLine = ["/register"];
+
   return (
     <>
-      <div className="fixed bg-white w-full sm:w-[400px] h-[60px] flex justify-between p-4 bg-white z-10 shadow">
+      <div className={cls("fixed bg-white w-full sm:w-[400px] h-[60px] flex justify-between p-4 bg-white z-10 shadow", isNotLine.includes(router.pathname) ? "" : "shadow")}>
         {isNotGoBack.includes(router.pathname) ? null : <GoBackButton />}
         {isSearchBar.includes(router.pathname) ? (
           <SearchBar />
@@ -55,13 +65,11 @@ export default function Header() {
               )}
 
               {/*notificationIco*/}
-              <Link href="/userinfo/notification">
-                <Image
-                  src="/header/notification.svg"
-                  width="30px"
-                  height="30px"
-                />
-              </Link>
+              {isNotNotification.includes(router.pathname) ? null : (
+                  <Link href="/userinfo/notification">
+                    <Image src="/header/notification.svg" width="30px" height="30px" />
+                  </Link>
+              )}
 
               {/*setting */}
               {inSetting.includes(router.pathname) && (
