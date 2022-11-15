@@ -25,13 +25,30 @@ type Scholarship {
     scrapNum: String
 }
 
+input FilterInput {
+    school: String
+    department: String
+    major: String
+    grade: String
+    attendance: String
+    incomeRange: String
+    specialClass: String
+    address: String
+}
+
 type Query {
     getAllScholarships: [Scholarship]
     getScholarshipDetail(
         scholarshipId: String!
     ): Scholarship
     scholarshipFilter(
-        category: String!
-        filteringWord: String!
+        school: String
+        department: String
+        major: String
+        grade: String
+        attendance: String
+        incomeRange: String
+        specialClass: String
+        address: String
     ): [Scholarship]
 }

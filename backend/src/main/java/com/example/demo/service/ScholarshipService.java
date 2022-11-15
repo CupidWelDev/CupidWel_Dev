@@ -24,7 +24,4 @@ public class ScholarshipService {
    public List<Scholarship> scholarshipFilter(String category, String filteringWord) {
        return scholarshipMapper.scholarshipFilter(category, filteringWord);
    }
-    // public List<Scholarship> scholarshipFilter(String filteringWord) {
-    //     return scholarshipMapper.scholarshipFilter(filteringWord);
-    // }
 }
