@@ -10,7 +10,7 @@ export default function SearchBar() {
     reset,
   } = useForm();
 
-  const [recentlySearch, setRecentlySearch] = useState();
+  const [recentlySearch, setRecentlySearch] = useState<any[]>();
 
   const onSubmit = (data: FieldValues) => {
     addDB({ id: recentlySearch?.length, ...data }, "search");
