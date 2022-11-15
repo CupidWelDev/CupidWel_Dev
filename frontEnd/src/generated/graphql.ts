@@ -64,39 +64,41 @@ export type Scholarship = {
   univSort?: Maybe<Scalars['String']>;
 };
 
-export type GetAllScholarshipsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllScholarshipsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllScholarshipsQueryQuery = { __typename?: 'Query', getAllScholarships?: Array<{ __typename?: 'Scholarship', id?: string | null, product?: string | null } | null> | null };
+export type GetAllScholarshipsQuery = { __typename?: 'Query', getAllScholarships?: Array<{ __typename?: 'Scholarship', id?: string | null, institution?: string | null, product?: string | null, createdDt?: string | null } | null> | null };
 
 export type GetScholarshipDetailQueryVariables = Exact<{
   scholarshipId: Scalars['String'];
 }>;
 
 
-export type GetScholarshipDetailQuery = { __typename?: 'Query', getScholarshipDetail?: { __typename?: 'Scholarship', id?: string | null, institution?: string | null, product?: string | null } | null };
+export type GetScholarshipDetailQuery = { __typename?: 'Query', getScholarshipDetail?: { __typename?: 'Scholarship', id?: string | null, institution?: string | null, product?: string | null, supportDetail?: string | null, qualificationDetail?: string | null, selectionWayDetail?: string | null, selectionNumDetail?: string | null, univSort?: string | null, gradeSort?: string | null, majorSort?: string | null } | null };
 
 
-export const GetAllScholarshipsQueryDocument = `
-    query GetAllScholarshipsQuery {
+export const GetAllScholarshipsDocument = `
+    query GetAllScholarships {
   getAllScholarships {
     id
+    institution
     product
+    createdDt
   }
 }
     `;
-export const useGetAllScholarshipsQueryQuery = <
-      TData = GetAllScholarshipsQueryQuery,
+export const useGetAllScholarshipsQuery = <
+      TData = GetAllScholarshipsQuery,
       TError = unknown
     >(
       client: GraphQLClient,
-      variables?: GetAllScholarshipsQueryQueryVariables,
-      options?: UseQueryOptions<GetAllScholarshipsQueryQuery, TError, TData>,
+      variables?: GetAllScholarshipsQueryVariables,
+      options?: UseQueryOptions<GetAllScholarshipsQuery, TError, TData>,
       headers?: RequestInit['headers']
     ) =>
-    useQuery<GetAllScholarshipsQueryQuery, TError, TData>(
-      variables === undefined ? ['GetAllScholarshipsQuery'] : ['GetAllScholarshipsQuery', variables],
-      fetcher<GetAllScholarshipsQueryQuery, GetAllScholarshipsQueryQueryVariables>(client, GetAllScholarshipsQueryDocument, variables, headers),
+    useQuery<GetAllScholarshipsQuery, TError, TData>(
+      variables === undefined ? ['GetAllScholarships'] : ['GetAllScholarships', variables],
+      fetcher<GetAllScholarshipsQuery, GetAllScholarshipsQueryVariables>(client, GetAllScholarshipsDocument, variables, headers),
       options
     );
 export const GetScholarshipDetailDocument = `
@@ -105,6 +107,13 @@ export const GetScholarshipDetailDocument = `
     id
     institution
     product
+    supportDetail
+    qualificationDetail
+    selectionWayDetail
+    selectionNumDetail
+    univSort
+    gradeSort
+    majorSort
   }
 }
     `;
