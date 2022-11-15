@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import SEO from "@components/SEO";
+import RecentlyView from "@components/RecentlyVIew";
 
 const Scholarship: NextPage = () => {
   return (

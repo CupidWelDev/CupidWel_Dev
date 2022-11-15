@@ -1,26 +1,31 @@
 import type { NextPage } from "next";
 import SEO from "@components/SEO";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 //TODO : API 연동 후 삭제
-import { dummyData } from "../../dummyData/schoarship";
+import { dummyData, scholarships } from "../../dummyData/schoarship";
 import { IScholarData } from "@ITypes/schoalship";
+import RecentlyVIew from "@components/RecentlyVIew";
+import { addDB } from "@libs/IndexedDB";
 
 const SearchScholarDetail: NextPage = () => {
   const router = useRouter();
-  // console.log(router);
+  console.log(router);
+
   const [data, setData] = useState<IScholarData>();
 
-  // console.log(router.asPath);
+  // indexedDB
+  addDB(
+    scholarships.find((data) => data.id === router.query.id),
+    "scholarship"
+  );
 
-  const [link, setLink] = useState();
   useEffect(() => {
     //TODO Data 받아오기
     setData(dummyData);
   }, []);
 
   const scrap = () => {
-    //TODO scrap-user 테이블에 추가
     alert(
       `'${dummyData.product}'이 스크랩 되었습니다. 장학금 번호 : ${router.query.id}`
     );
