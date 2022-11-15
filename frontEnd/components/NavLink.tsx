@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface IPropsNavLink {
   link: string;
   text: string;
-  svg: any;
+  svg: string;
 }
 
 export default function NavLink({
@@ -13,7 +14,7 @@ export default function NavLink({
   svg,
 }: IPropsNavLink): JSX.Element {
   const router = useRouter();
-  console.log(typeof router.pathname);
+  // console.log(typeof router.pathname);
 
   return (
     <Link href={link}>
@@ -22,9 +23,9 @@ export default function NavLink({
           router.pathname === link ? "text-black" : "text-black opacity-20"
         }
       >
-        <div className="w-14 h-20 flex flex-col items-center">
-          {svg}
-          <p className="text-center text-sm w-full h-2/5">{text}</p>
+        <div className="w-14 h-16 flex flex-col items-center justify-center pb-2 ">
+          <Image src={svg} width="20px" height="20px" />
+          <p className="text-center text-sm w-full">{text}</p>
         </div>
       </a>
     </Link>

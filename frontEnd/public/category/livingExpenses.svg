@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="46" height="46" viewBox="0 0 46 46">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c584ff"/>
+      <stop offset="1" stop-color="#9342ee"/>
+    </linearGradient>
+  </defs>
+  <g id="그룹_57797" data-name="그룹 57797" transform="translate(-122 -220)">
+    <path id="패스_23511" data-name="패스 23511" d="M1575.065,344.866h-20.906a1.5,1.5,0,0,1-1.5-1.5V327.411l11.958-10.568,11.958,10.568v15.951A1.505,1.505,0,0,1,1575.065,344.866Z" transform="translate(-1419.612 -87.843)" fill="url(#linear-gradient)"/>
+    <path id="패스_23512" data-name="패스 23512" d="M1577.9,328.723l-12.369-11.146a1.517,1.517,0,0,0-2.017,0l-12.368,11.146" transform="translate(-1419.518 -86.274)" fill="none" stroke="#8831e9" stroke-linecap="round" stroke-width="4"/>
+    <g id="그룹_57695" data-name="그룹 57695" transform="translate(-3.552 -131.552)">
+      <circle id="타원_1543" data-name="타원 1543" cx="9" cy="9" r="9" transform="translate(149.552 377.552)" fill="#ffcf0d"/>
+      <g id="그룹_57694" data-name="그룹 57694" transform="translate(153.563 384.176)">
+        <path id="패스_23513" data-name="패스 23513" d="M2204.423,304.689l1.809,5.931,2.325-5.931" transform="translate(-2203.412 -304.689)" fill="none" stroke="#f67b1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+        <path id="패스_23514" data-name="패스 23514" d="M2204.423,304.689l1.809,5.931,2.325-5.931" transform="translate(-2199.278 -304.689)" fill="none" stroke="#f67b1c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+        <path id="패스_23515" data-name="패스 23515" d="M2203.539,307h1.684" transform="translate(-2203.539 -304.436)" fill="none" stroke="#f67b1c" stroke-linecap="round" stroke-width="1.5"/>
+        <path id="패스_23516" data-name="패스 23516" d="M2203.539,307h1.684" transform="translate(-2195.247 -304.436)" fill="none" stroke="#f67b1c" stroke-linecap="round" stroke-width="1.5"/>
+      </g>
+    </g>
+    <rect id="사각형_21332" data-name="사각형 21332" width="46" height="46" transform="translate(122 220)" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,6 @@
+mutation PostTweet($text: String!, $userId: ID!) {
+    postTweet(text: $text, userId: $userId) {
+        id
+        text
+    }
+}

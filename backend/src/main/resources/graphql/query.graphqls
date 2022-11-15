@@ -1,0 +1,33 @@
+type Scholarship {
+    id: String
+    institution: String
+    product: String
+    institutionSort: String
+    productSort: String
+    schoolexpenseSort: String
+    univSort: String
+    gradeSort: String
+    majorSort: String
+    gradeStand_detail: String
+    incomeStand_detail: String
+    supportDetail: String
+    qualificationDetail: String
+    localResidenceDetail: String
+    durationDetail: String
+    selectionWayDetail: String
+    selectionNumDetail: String
+    qualificationRestrictionDetail: String
+    recommendationDetail: String
+    documentationDetail: String
+    createdDt: String
+    modifiedDt: String
+    likeNum: String
+    scrapNum: String
+}
+
+type Query {
+    getAllScholarships: [Scholarship]
+    getScholarshipDetail(
+        scholarshipId: String!
+    ): Scholarship
+}
