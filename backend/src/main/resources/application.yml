@@ -13,9 +13,6 @@ spring:
 
 graphql:
     path: /graphql
-    cors:
-      allowed-origins: https://localhost:9898/
-      allowed-methods: GET, POST
 
 mybatis:
     type-aliases-package: com.example.demo.domain

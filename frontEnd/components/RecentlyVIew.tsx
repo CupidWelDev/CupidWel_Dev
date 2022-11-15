@@ -3,13 +3,13 @@ import ScholarshipDetailVer from "@components/ScholarshipDetailVer";
 import { scholarships } from "../dummyData/schoarship";
 import Carousel from "@components/Carousel";
 import { useEffect, useState } from "react";
-import { getDB, openDB } from "@libs/IndexedDB";
+import { getDB } from "@libs/IndexedDB";
 import { IScholarship } from "@ITypes/schoalship";
 
 const RecentlyView: NextPage = () => {
   const [view, setView] = useState<IScholarship[]>([]);
   useEffect(() => {
-    getDB(setView);
+    getDB(setView, "scholarship");
   }, []);
 
   return (
