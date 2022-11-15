@@ -5,7 +5,7 @@ import { cutText } from "@libs/utils";
 interface IProps {
   img: string;
   foundation: string;
-  id: number;
+  id: string;
   title: string;
   deadLine?: string;
   startPeriod?: string;
