@@ -1,5 +1,6 @@
 import { FieldValues, useForm } from "react-hook-form";
-import { addDB } from "@libs/IndexedDB";
+import { addDB, getDB } from "@libs/IndexedDB";
+import { useEffect, useState } from "react";
 
 export default function SearchBar() {
   const {
@@ -9,10 +10,16 @@ export default function SearchBar() {
     reset,
   } = useForm();
 
+  const [recentlySearch, setRecentlySearch] = useState();
+
   const onSubmit = (data: FieldValues) => {
-    addDB(data, "search");
+    addDB({ id: recentlySearch?.length, ...data }, "search");
     reset({ search: "" });
   };
+
+  useEffect(() => {
+    getDB(setRecentlySearch, "search");
+  }, []);
 
   return (
     <form
@@ -20,9 +27,9 @@ export default function SearchBar() {
       className="w-full flex items-center"
     >
       <input
-        placeholder="어떤 장학금 원해"
+        placeholder="어떤 장학금을 찾으시나요?"
         className="w-full bg-gray-300 rounded-md pl-2 h-8"
-        {...register("search", { required: "어떤 장학금?" })}
+        {...register("search", { required: true })}
       />
     </form>
   );

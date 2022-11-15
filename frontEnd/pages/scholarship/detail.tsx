@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import SEO from "@components/SEO";
 import { useEffect, useState } from "react";
-import { getDB } from "@libs/IndexedDB";
+import { deleteDB, getDB } from "@libs/IndexedDB";
+import RecentlyView from "@components/RecentlyVIew";
 
-//TODO : fix 안깨질라면 searhbar는 header로 옮기고 getDB를 불러와서 띄울 것
 const Search: NextPage = () => {
   const [recentlySearch, setRecentlySearch] = useState();
 
@@ -11,25 +11,37 @@ const Search: NextPage = () => {
     getDB(setRecentlySearch, "search");
   }, []);
 
+  const deleteSearch = (e: any) => {
+    console.log(recentlySearch, e);
+  };
+  console.log("삭제할것임", recentlySearch);
+
   return (
-    <div className="w-full h-100vh flex flex-col pl-4 pr-4">
-      <SEO title="탐색" />
-      {/*  검색창*/}
-      <div className="flex justify-start gap-2">
-        <div> 최근검색어 : </div>
-        {recentlySearch
-          ?.slice(-3)
-          .reverse()
-          .map((str, idx) => (
-            <div
-              key={idx}
-              className="border-2 border-amber-400 rounded-xl bg-amber-400"
-            >
-              <p className="mx-2">{str.search}</p>
-            </div>
-          ))}
+    <div className="w-full flex justify-center">
+      <div className="w-11/12 h-100vh flex flex-col  ">
+        <SEO title="탐색" />
+        {/*  검색창*/}
+        <section className="flex justify-start items-center gap-2">
+          {recentlySearch
+            ?.slice(-3)
+            .reverse()
+            .map((str, idx) => (
+              <div
+                key={idx}
+                className="border-2 border-amber-400 rounded-xl bg-amber-400 flex px-1 gap-2"
+              >
+                <p>{str.search}</p>
+                <button onClick={deleteSearch}>x</button>
+              </div>
+            ))}
+        </section>
+        <section>
+          <div className="flex flex-row justify-between">
+            <p className="mt-4 text-xl font-semibold">최근 본 장학금</p>
+          </div>
+          <RecentlyView />
+        </section>
       </div>
-      <p className="text-2xl">탐색 클릭시</p>
     </div>
   );
 };

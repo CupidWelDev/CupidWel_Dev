@@ -7,9 +7,6 @@ const Scholarship: NextPage = () => {
     <div>
       <SEO title="탐색" />
       <p className="text-2xl">모든 장학금</p>
-
-      <br />
-      <RecentlyView />
     </div>
   );
 };
