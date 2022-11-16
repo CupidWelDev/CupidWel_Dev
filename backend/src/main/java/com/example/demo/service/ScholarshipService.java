@@ -25,6 +25,9 @@ public class ScholarshipService {
     // search function
     public List<Scholarship> searchScholarships(String searchWord) {
         return scholarshipMapper.searchScholarships(searchWord);
+    }
 
+    public int isScholarshipExisting(String scholarshipId){
+        return scholarshipMapper.isScholarshipExisting(scholarshipId);
     }
 }
