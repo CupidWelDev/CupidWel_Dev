@@ -1,8 +1,0 @@
-# 내가 사용할 스키마
-query GetAllMovies {
-    allMovies {
-        id
-        title
-        medium_cover_image
-    }
-}

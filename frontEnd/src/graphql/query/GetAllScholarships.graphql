@@ -1,0 +1,8 @@
+query GetAllScholarships{
+    getAllScholarships {
+        id
+        institution
+        product
+        createdDt
+    }
+}

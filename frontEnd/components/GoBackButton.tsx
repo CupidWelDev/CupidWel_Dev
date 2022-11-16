@@ -8,7 +8,7 @@ export default function GoBackButton() {
   };
 
   return (
-    <button className="pr-5" onClick={onClick}>
+    <button className="pr-2" onClick={onClick}>
       <Image src="/header/goBack.svg" width="30px" height="30px" />
     </button>
   );
