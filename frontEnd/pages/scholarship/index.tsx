@@ -2,17 +2,27 @@ import type { NextPage } from "next";
 import SEO from "@components/SEO";
 import CategoryScholarship from "@components/CategoryScholarship";
 import {scholarships} from "../../dummyData/schoarship";
-import ScholarshipDetailVer from "@components/ScholarshipDetailVer";
+import Darr from "public/scholarship/darr.svg";
 
 const Scholarship: NextPage = () => {
 	return (
-		<div className="w-[375px] h-100vh flex flex-col items-center">
+		<div className="w-full h-100vh flex flex-col items-center">
 			<SEO title="탐색" />
-			<section className="flex flex-col pt-5">
-				<p className="text-xl font-bold px-5"> 카테고리 별</p>
+
+			{/* 장학금 정보 */}
+			<section className="w-full flex flex-col gap-2">
+				<div className={"flex justify-between px-5"}>
+					<span className="text-xl font-bold">장학금 정보</span>
+					<span className="text-xs flex items-center gap-1">
+						인기순
+						<Darr />
+					</span>
+				</div>
 				<CategoryScholarship />
 			</section>
-			<section className="grid grid-cols-2 mt-10 mx-4">
+
+			{/* 장학금 목록 */}
+			<section className="w-full flex flex-col bg-red-400">
 				{scholarships.map((scholarship, idx) => (
 					<div className={"flex justify-center items-center mb-5"}>
 						...
