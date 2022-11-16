@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mybatis.ScrapMapper">
+    <insert id="addScrap">
+        insert into scrap values (#{userId}, #{scholarshipId});
+    </insert>
+
+    <insert id="deleteScrap">
+        delete from scrap where email =  #{userId} and scholarship_id = #{scholarshipId};
+    </insert>
+
+    <select id="getScrapList" resultType="String">
+        select scholarship_id from scrap where email =  #{userId};
+    </select>
+
+    <select id="isScraped" resultType="String">
+        select count(1) from scrap where email =  #{userId} and scholarship_id = #{scholarshipId};
+    </select>
+    
+</mapper>
