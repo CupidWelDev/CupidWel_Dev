@@ -3,6 +3,7 @@ import SEO from "@components/SEO";
 import CategoryScholarship from "@components/CategoryScholarship";
 import {scholarships} from "../../dummyData/schoarship";
 import Darr from "public/scholarship/darr.svg";
+import ScholarshipDetailHoriz from "@components/ScholarshipDetailHoriz";
 
 const Scholarship: NextPage = () => {
 	return (
@@ -13,19 +14,28 @@ const Scholarship: NextPage = () => {
 			<section className="w-full flex flex-col gap-2">
 				<div className={"flex justify-between px-5"}>
 					<span className="text-xl font-bold">장학금 정보</span>
-					<span className="text-xs flex items-center gap-1">
-						인기순
-						<Darr />
-					</span>
+					<button>
+						<span className="text-xs flex items-center gap-1">
+							인기순
+							<Darr />
+						</span>
+					</button>
 				</div>
 				<CategoryScholarship />
 			</section>
 
 			{/* 장학금 목록 */}
-			<section className="w-full flex flex-col bg-red-400">
-				{scholarships.map((scholarship, idx) => (
-					<div className={"flex justify-center items-center mb-5"}>
-						...
+			<section className="w-full flex flex-col px-5 mt-5">
+				{scholarships.map((scholarship, _) => (
+					<div className={"flex justify-center items-center"}>
+						<ScholarshipDetailHoriz
+							id={scholarship.id}
+							img={scholarship.img}
+							foundation={scholarship.foundation}
+							title={scholarship.title}
+							startPeriod={scholarship.startPeriod}
+							endPeriod={scholarship.endPeriod}
+						/>
 					</div>
 				))}
 			</section>
