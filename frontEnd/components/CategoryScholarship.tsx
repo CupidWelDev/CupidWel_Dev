@@ -29,7 +29,7 @@ export default function CategoryScholarship() {
   ]);
 
   const router = useRouter();
-  const isNotNumber = ["/scrap"];
+  const isNotNumber = ["/scrap", "/scholarship"];
 
   return (
     <div
