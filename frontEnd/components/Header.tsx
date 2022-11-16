@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <div>
-      {router.pathname === "/scholarship/search/detail" ? (
+      {router.pathname === "/scholarship" ? (
         <div className={"py-2.5 px-4 border-b"}>
           <SearchBar />
         </div>
