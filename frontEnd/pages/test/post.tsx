@@ -8,11 +8,11 @@
 // } from "@src/generated/graphql";
 // import graphqlRequestClient from "@src/lib/client/graphqlReuestClient";
 // import { useQueryClient } from "@tanstack/react-query";
-//
+
 // const GraphqlMutation: FC = () => {
 //   //  리로딩 시키기 위해 queryClient를 인스턴스화 해서 가져옴
 //   const queryClient = useQueryClient();
-//
+
 //   const { mutate } = usePostTweetMutation<Error>(graphqlRequestClient, {
 //     onSuccess: (
 //       data: PostTweetMutation,
@@ -34,23 +34,22 @@
 //       >
 //         add tweet
 //       </button>
-//
 //       <AllTweets />
 //     </>
 //   );
 // };
-//
+
 // export default GraphqlMutation;
-//
+
 // const AllTweets: FC = () => {
 //   const { isLoading, error, data } = useGetAllTweetsQuery<
 //     GetAllTweetsQuery,
 //     Error
 //   >(graphqlRequestClient);
-//
+
 //   if (isLoading) return <p>Loading...</p>;
 //   if (error) return <p> error...</p>;
-//
+
 //   // @ts-ignore
 //   return (
 //     <>

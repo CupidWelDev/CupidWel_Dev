@@ -11,8 +11,8 @@ const GqlRequestQuery: FC = () => {
     Error
   >(graphqlRequestClient, {});
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p> error...</p>;
+  if (isLoading) return <p>Loading…</p>;
+  if (error) return <p> error…</p>;
   return (
     <div>
       <p className="text-2xl">react-query + grqphql test</p>

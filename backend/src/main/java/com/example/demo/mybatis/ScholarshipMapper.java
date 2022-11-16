@@ -15,4 +15,5 @@ public interface ScholarshipMapper {
 
     public List<Scholarship> searchScholarships(@Param(value = "searchWord") String searchWord);
 
+    public int isScholarshipExisting(@Param(value = "scholarshipId") String scholarshipId);
 }
