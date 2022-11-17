@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import SEO from "@components/SEO";
 
-const Policy: NextPage = () => {
+const Notification: NextPage = () => {
   return (
-    <div>
+    <div className="">
       <SEO title="이용약관/개인정보취급방침" />
       <p className="text-2xl text-center font-bold px-3 py-5">
         이용약관 / 개인정보취급방침
@@ -61,4 +61,4 @@ const Policy: NextPage = () => {
   );
 };
 
-export default Policy;
+export default Notification;

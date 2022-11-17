@@ -1,3 +1,19 @@
+# union targetValue = Test1 | Test2 | Test3
+
+input Test1{
+    userId: String!
+    targetName: String
+    targetValue: String
+}
+
+# type Test2{
+#     tmp2: Int
+# }
+
+# type Test3{
+#     tmp3: Boolean
+# }
+
 type Scholarship {
     id: String
     institution: String
@@ -35,9 +51,63 @@ input filterInput {
     specialClass: [String] # enumeration 타입
     address: String
 }
+input UserInput {
+    name: String!
+    email: String!
+    age: Int!
+    birthDate: String!
+    gender: String!
+    phoneNumber: String!
+    school: String
+    schoolBelong: String
+    attendance: String
+    major: String
+    stratum: String
+    income: String
+    prevGrade: String
+    address: String
+    isMarried: Boolean
+    famCum: Int
+    monthIncome: Int
+    parentAddress: String
+    parentJob: String
+    remainedSemester: Int
+    isLeaveAbsence: Boolean
+}
+
+type User {
+    name: String
+    email: String
+    age: Int
+    birthDate: String
+    gender: String
+    phoneNumber: String
+    school: String
+    schoolBelong: String
+    attendance: String
+    major: String
+    stratum: String
+    income: String
+    prevGrade: String
+    address: String
+    isMarried: Boolean
+    famCum: Int
+    monthIncome: Int
+    paraentAddress: String
+    parentJob: String
+    remainedSemester: Int
+    isLeaveAbsence: Boolean
+}
+
+type Result{
+    errorMsg: String
+    resultCode: Int
+    resultMsg: String
+}
 
 type Query {
     getAllScholarships: [Scholarship]
+
     getScholarshipDetail(
         scholarshipId: String!
     ): Scholarship
@@ -51,4 +121,30 @@ type Query {
         specialClass: [String]
         address: String
     ): [Scholarship]
+    
+    searchScholarships(
+        searchWord: String!
+    ): [Scholarship]
+
+    getScrapList(
+        userId: String!
+    ): [String]
+
+    getUserDetail(
+        userId: String!
+    ): User
+}
+
+type Mutation {
+    addScrap(
+        userId: String!
+        scholarshipId: String!
+    ): Result
+    deleteScrap(
+        userId: String!
+        scholarshipId: String!
+    ): Result
+    updateUser(
+        userInput: UserInput
+    ): Result
 }

@@ -18,11 +18,20 @@ public class ScholarshipService {
         return scholarshipMapper.getAllScholarships();
     }
 
-    public Scholarship getScholarshipDetail(String scholarshipId){
+
+    public Scholarship getScholarshipDetail(String scholarshipId) {
         return scholarshipMapper.getScholarshipDetail(scholarshipId);
     }
 
    public List<Scholarship> scholarshipFilter(FilterDO filterInput) {
        return scholarshipMapper.scholarshipFilter(filterInput);
    }
+    // search function
+    public List<Scholarship> searchScholarships(String searchWord) {
+        return scholarshipMapper.searchScholarships(searchWord);
+    }
+
+    public int isScholarshipExisting(String scholarshipId){
+        return scholarshipMapper.isScholarshipExisting(scholarshipId);
+    }
 }

@@ -1,26 +1,36 @@
 import type { NextPage } from "next";
 import SEO from "@components/SEO";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 //TODO : API 연동 후 삭제
-import { dummyData } from "../../dummyData/schoarship";
+import { dummyData, scholarships } from "../../dummyData/schoarship";
 import { IScholarData } from "@ITypes/schoalship";
+import RecentlyVIew from "@components/RecentlyVIew";
+import { addDB } from "@libs/IndexedDB";
+import {
+  GetScholarshipDetailQuery,
+  useGetScholarshipDetailQuery,
+} from "@src/generated/graphql";
+import graphqlRequestClient from "@src/lib/client/graphqlReuestClient";
 
 const SearchScholarDetail: NextPage = () => {
   const router = useRouter();
-  // console.log(router);
-  const [data, setData] = useState<IScholarData>();
+  console.log(router);
 
-  // console.log(router.asPath);
+  // indexedDB
 
-  const [link, setLink] = useState();
-  useEffect(() => {
-    //TODO Data 받아오기
-    setData(dummyData);
-  }, []);
+  const { isLoading, error, data } = useGetScholarshipDetailQuery<
+    GetScholarshipDetailQuery,
+    Error
+  >(graphqlRequestClient, { scholarshipId: router.query.id as string });
+
+  const { getScholarshipDetail: detailData } = data || {};
+
+  !isLoading && addDB(detailData, "scholarship");
+
+  console.log(detailData);
 
   const scrap = () => {
-    //TODO scrap-user 테이블에 추가
     alert(
       `'${dummyData.product}'이 스크랩 되었습니다. 장학금 번호 : ${router.query.id}`
     );
@@ -41,7 +51,6 @@ const SearchScholarDetail: NextPage = () => {
     navigator.clipboard
       .writeText(url)
       .then(() => {
-        console.log("Text copied to clipboard...");
         alert("링크가 복사되었습니다. 친구들에게 공유해보세요!");
       })
       .catch((err) => {
@@ -49,38 +58,39 @@ const SearchScholarDetail: NextPage = () => {
       });
   };
 
+  if (isLoading) return <p>Loading...</p>;
+
   return (
     <div className="flex flex-col items-center p-4">
       <SEO title={`장학금 정보`} />
       {/*TODO test 후 삭제 */}
-      <p>장학금 번호 : {router.query.id}</p>
       <section className="w-11/12 mb-14">
         <div className="flex flex-col">
-          <p className="text-2xl text-center">{dummyData.product}</p>
+          <p className="text-2xl text-center">{detailData?.product}</p>
           <div className="mt-8 border-2 border-amber-500 p-4 rounded-2xl flex flex-col">
             <p className="text-xl font-bold border-b-2 border-amber-400 mb-2 w-full text-center">
               장학지원 내용
             </p>
-            <p className="text-sm">{dummyData.support_detail}</p>
+            <p className="text-sm">{detailData?.supportDetail}</p>
           </div>
           <div className="mt-8 border-2 border-amber-500 p-4 rounded-2xl flex flex-col">
             <p className="text-xl font-bold border-b-2 border-amber-400 mb-2 w-full text-center">
               선발 대상
             </p>
             <p className="font-bold">대학</p>
-            <p className="text-sm">{dummyData.univ_sort}</p>
+            <p className="text-sm">{detailData?.univSort}</p>
             <p className="font-bold">학년</p>
-            <p className="text-sm">{dummyData.grade_sort}</p>
+            <p className="text-sm">{detailData?.gradeSort}</p>
             <p className="font-bold">학과</p>
-            <p className="text-sm">{dummyData.major_sort}</p>
+            <p className="text-sm">{detailData?.majorSort}</p>
             <p className="font-bold">특정자격</p>
-            <p className="text-sm">{dummyData.qualification_detail}</p>
+            <p className="text-sm">{detailData?.qualificationDetail}</p>
           </div>
           <div className="mt-8 border-2 border-amber-500 p-4 rounded-2xl flex flex-col">
             <p className="text-xl font-bold border-b-2 border-amber-400 mb-2 w-full text-center">
               선발인원
             </p>
-            <p className="text-sm"> {dummyData.selection_num_detail}</p>
+            <p className="text-sm"> {detailData?.selectionNumDetail}</p>
           </div>
           <div className="mt-8 border-2 border-amber-500 p-4 rounded-2xl flex flex-col">
             <p className="text-xl font-bold border-b-2 border-amber-400 mb-2 w-full text-center">

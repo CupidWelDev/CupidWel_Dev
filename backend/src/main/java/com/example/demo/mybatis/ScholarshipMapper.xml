@@ -9,6 +9,7 @@
         select * from scholarship;
     </select>
 
+
     <select id="getScholarshipDetail" resultType="com.example.demo.domain.Scholarship">
         select * from scholarship where id = #{scholarshipId}
     </select>
@@ -48,5 +49,13 @@
             </if>
         </trim>
    </select>
+
+    <select id="searchScholarships" resultType="com.example.demo.domain.Scholarship">
+        select * from scholarship where id like '%${searchWord}%' order by duration_detail asc;
+    </select>
+
+    <select id="isScholarshipExisting" resultType="int">
+        select count(1) from scholarship where id = #{scholarshipId}
+    </select>
 
 </mapper>
