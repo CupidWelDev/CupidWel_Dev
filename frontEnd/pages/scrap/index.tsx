@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import SEO from "@components/SEO";
 import CategoryScholarship from "@components/CategoryScholarship";
 import Carousel from "@components/Carousel";
-import {scholarships} from "../../dummyData/schoarship";
+import { scholarships } from "../../dummyData/schoarship";
 import ScholarshipDetailVer from "@components/ScholarshipDetailVer";
 
 const Scrap: NextPage = () => {
@@ -15,8 +15,8 @@ const Scrap: NextPage = () => {
       </section>
       <section className="grid grid-cols-2 mt-10 mx-4">
         {scholarships.map((scholarship, idx) => (
-          <div className={"flex justify-center items-center mb-5"}>
-            <ScholarshipDetailVer key={idx} {...scholarship} />
+          <div className={"flex justify-center items-center mb-5"} key={idx}>
+            <ScholarshipDetailVer {...scholarship} />
           </div>
         ))}
       </section>

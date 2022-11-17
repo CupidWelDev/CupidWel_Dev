@@ -1,6 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
 import { RequestInit } from 'graphql-request/dist/types.dom';
-import { useQuery, useMutation, UseQueryOptions, UseMutationOptions } from '@tanstack/react-query';
+import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -19,189 +19,115 @@ export type Scalars = {
   Float: number;
 };
 
-export type Movie = {
-  __typename?: 'Movie';
-  background_image: Scalars['String'];
-  background_image_original: Scalars['String'];
-  date_uploaded: Scalars['String'];
-  date_uploaded_unix: Scalars['Int'];
-  description_full: Scalars['String'];
-  genres: Array<Scalars['String']>;
-  id: Scalars['Int'];
-  imdb_code: Scalars['String'];
-  language: Scalars['String'];
-  large_cover_image: Scalars['String'];
-  medium_cover_image: Scalars['String'];
-  mpa_rating: Scalars['String'];
-  rating: Scalars['Float'];
-  runtime: Scalars['Float'];
-  slug: Scalars['String'];
-  small_cover_image: Scalars['String'];
-  state: Scalars['String'];
-  summary?: Maybe<Scalars['String']>;
-  synopsis: Scalars['String'];
-  title: Scalars['String'];
-  title_english: Scalars['String'];
-  title_long: Scalars['String'];
-  torrents: Array<Torrents>;
-  url: Scalars['String'];
-  year: Scalars['Int'];
-  yt_trailer_code: Scalars['String'];
-};
-
-/** TEST */
-export type Mutation = {
-  __typename?: 'Mutation';
-  deleteTweet: Scalars['Boolean'];
-  postTweet?: Maybe<Tweet>;
-};
-
-
-/** TEST */
-export type MutationDeleteTweetArgs = {
-  id: Scalars['ID'];
-};
-
-
-/** TEST */
-export type MutationPostTweetArgs = {
-  text: Scalars['String'];
-  userId: Scalars['ID'];
-};
-
 export type Query = {
   __typename?: 'Query';
-  allMovies: Array<Movie>;
-  allTweets?: Maybe<Array<Maybe<Tweet>>>;
-  allUsers: Array<User>;
-  movie?: Maybe<Movie>;
-  ping?: Maybe<Scalars['String']>;
-  tweet?: Maybe<Tweet>;
+  getAllScholarships?: Maybe<Array<Maybe<Scholarship>>>;
+  getScholarshipDetail?: Maybe<Scholarship>;
+  searchScholarships?: Maybe<Array<Maybe<Scholarship>>>;
 };
 
 
-export type QueryMovieArgs = {
-  id: Scalars['ID'];
+export type QueryGetScholarshipDetailArgs = {
+  scholarshipId: Scalars['String'];
 };
 
 
-export type QueryTweetArgs = {
-  id: Scalars['ID'];
+export type QuerySearchScholarshipsArgs = {
+  searchWord: Scalars['String'];
 };
 
-export type Torrents = {
-  __typename?: 'Torrents';
-  date_uploaded: Scalars['String'];
-  date_uploaded_unix: Scalars['Int'];
-  hash: Scalars['String'];
-  peers: Scalars['Int'];
-  quality: Scalars['String'];
-  seeds: Scalars['Int'];
-  size: Scalars['String'];
-  size_bytes: Scalars['Int'];
-  type: Scalars['String'];
-  url: Scalars['String'];
+export type Scholarship = {
+  __typename?: 'Scholarship';
+  createdDt?: Maybe<Scalars['String']>;
+  documentationDetail?: Maybe<Scalars['String']>;
+  durationDetail?: Maybe<Scalars['String']>;
+  gradeSort?: Maybe<Scalars['String']>;
+  gradeStand_detail?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  incomeStand_detail?: Maybe<Scalars['String']>;
+  institution?: Maybe<Scalars['String']>;
+  institutionSort?: Maybe<Scalars['String']>;
+  likeNum?: Maybe<Scalars['String']>;
+  localResidenceDetail?: Maybe<Scalars['String']>;
+  majorSort?: Maybe<Scalars['String']>;
+  modifiedDt?: Maybe<Scalars['String']>;
+  product?: Maybe<Scalars['String']>;
+  productSort?: Maybe<Scalars['String']>;
+  qualificationDetail?: Maybe<Scalars['String']>;
+  qualificationRestrictionDetail?: Maybe<Scalars['String']>;
+  recommendationDetail?: Maybe<Scalars['String']>;
+  schoolexpenseSort?: Maybe<Scalars['String']>;
+  scrapNum?: Maybe<Scalars['String']>;
+  selectionNumDetail?: Maybe<Scalars['String']>;
+  selectionWayDetail?: Maybe<Scalars['String']>;
+  supportDetail?: Maybe<Scalars['String']>;
+  univSort?: Maybe<Scalars['String']>;
 };
 
-/** Tweet Schema 구조 */
-export type Tweet = {
-  __typename?: 'Tweet';
-  author?: Maybe<User>;
-  id: Scalars['ID'];
-  text: Scalars['String'];
-};
-
-export type User = {
-  __typename?: 'User';
-  firstName: Scalars['String'];
-  /** fullName = FirstName + LastName */
-  fullName: Scalars['String'];
-  id: Scalars['ID'];
-  lastName: Scalars['String'];
-};
-
-export type GetAllMoviesQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllScholarshipsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllMoviesQuery = { __typename?: 'Query', allMovies: Array<{ __typename?: 'Movie', id: number, title: string, medium_cover_image: string }> };
+export type GetAllScholarshipsQuery = { __typename?: 'Query', getAllScholarships?: Array<{ __typename?: 'Scholarship', id?: string | null, institution?: string | null, product?: string | null, createdDt?: string | null } | null> | null };
 
-export type GetAllTweetsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllTweetsQuery = { __typename?: 'Query', allTweets?: Array<{ __typename?: 'Tweet', id: string, text: string } | null> | null };
-
-export type PostTweetMutationVariables = Exact<{
-  text: Scalars['String'];
-  userId: Scalars['ID'];
+export type GetScholarshipDetailQueryVariables = Exact<{
+  scholarshipId: Scalars['String'];
 }>;
 
 
-export type PostTweetMutation = { __typename?: 'Mutation', postTweet?: { __typename?: 'Tweet', id: string, text: string } | null };
+export type GetScholarshipDetailQuery = { __typename?: 'Query', getScholarshipDetail?: { __typename?: 'Scholarship', id?: string | null, institution?: string | null, product?: string | null, supportDetail?: string | null, qualificationDetail?: string | null, selectionWayDetail?: string | null, selectionNumDetail?: string | null, univSort?: string | null, gradeSort?: string | null, majorSort?: string | null } | null };
 
 
-export const GetAllMoviesDocument = `
-    query GetAllMovies {
-  allMovies {
+export const GetAllScholarshipsDocument = `
+    query GetAllScholarships {
+  getAllScholarships {
     id
-    title
-    medium_cover_image
+    institution
+    product
+    createdDt
   }
 }
     `;
-export const useGetAllMoviesQuery = <
-      TData = GetAllMoviesQuery,
+export const useGetAllScholarshipsQuery = <
+      TData = GetAllScholarshipsQuery,
       TError = unknown
     >(
       client: GraphQLClient,
-      variables?: GetAllMoviesQueryVariables,
-      options?: UseQueryOptions<GetAllMoviesQuery, TError, TData>,
+      variables?: GetAllScholarshipsQueryVariables,
+      options?: UseQueryOptions<GetAllScholarshipsQuery, TError, TData>,
       headers?: RequestInit['headers']
     ) =>
-    useQuery<GetAllMoviesQuery, TError, TData>(
-      variables === undefined ? ['GetAllMovies'] : ['GetAllMovies', variables],
-      fetcher<GetAllMoviesQuery, GetAllMoviesQueryVariables>(client, GetAllMoviesDocument, variables, headers),
+    useQuery<GetAllScholarshipsQuery, TError, TData>(
+      variables === undefined ? ['GetAllScholarships'] : ['GetAllScholarships', variables],
+      fetcher<GetAllScholarshipsQuery, GetAllScholarshipsQueryVariables>(client, GetAllScholarshipsDocument, variables, headers),
       options
     );
-export const GetAllTweetsDocument = `
-    query GetAllTweets {
-  allTweets {
+export const GetScholarshipDetailDocument = `
+    query GetScholarshipDetail($scholarshipId: String!) {
+  getScholarshipDetail(scholarshipId: $scholarshipId) {
     id
-    text
+    institution
+    product
+    supportDetail
+    qualificationDetail
+    selectionWayDetail
+    selectionNumDetail
+    univSort
+    gradeSort
+    majorSort
   }
 }
     `;
-export const useGetAllTweetsQuery = <
-      TData = GetAllTweetsQuery,
+export const useGetScholarshipDetailQuery = <
+      TData = GetScholarshipDetailQuery,
       TError = unknown
     >(
       client: GraphQLClient,
-      variables?: GetAllTweetsQueryVariables,
-      options?: UseQueryOptions<GetAllTweetsQuery, TError, TData>,
+      variables: GetScholarshipDetailQueryVariables,
+      options?: UseQueryOptions<GetScholarshipDetailQuery, TError, TData>,
       headers?: RequestInit['headers']
     ) =>
-    useQuery<GetAllTweetsQuery, TError, TData>(
-      variables === undefined ? ['GetAllTweets'] : ['GetAllTweets', variables],
-      fetcher<GetAllTweetsQuery, GetAllTweetsQueryVariables>(client, GetAllTweetsDocument, variables, headers),
-      options
-    );
-export const PostTweetDocument = `
-    mutation PostTweet($text: String!, $userId: ID!) {
-  postTweet(text: $text, userId: $userId) {
-    id
-    text
-  }
-}
-    `;
-export const usePostTweetMutation = <
-      TError = unknown,
-      TContext = unknown
-    >(
-      client: GraphQLClient,
-      options?: UseMutationOptions<PostTweetMutation, TError, PostTweetMutationVariables, TContext>,
-      headers?: RequestInit['headers']
-    ) =>
-    useMutation<PostTweetMutation, TError, PostTweetMutationVariables, TContext>(
-      ['PostTweet'],
-      (variables?: PostTweetMutationVariables) => fetcher<PostTweetMutation, PostTweetMutationVariables>(client, PostTweetDocument, variables, headers)(),
+    useQuery<GetScholarshipDetailQuery, TError, TData>(
+      ['GetScholarshipDetail', variables],
+      fetcher<GetScholarshipDetailQuery, GetScholarshipDetailQueryVariables>(client, GetScholarshipDetailDocument, variables, headers),
       options
     );

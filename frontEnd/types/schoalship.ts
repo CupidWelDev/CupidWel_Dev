@@ -21,3 +21,13 @@ export interface IScholarData {
   created_dt: string;
   modified_dt: string;
 }
+
+export interface IScholarship {
+  id: number;
+  img: string;
+  foundation: string;
+  title: string;
+  startPeriod: string;
+  endPeriod: string;
+  view: false;
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mybatis.UserMapper">
+    <select id="isUserExisting" resultType="int">
+        select count(1) from cupidwel_user where email = #{userId}
+    </select>
+
+    <select id="getUserDetail" resultType="com.example.demo.domain.UserDO">
+        select * from cupidwel_user where email = #{userId}
+    </select>
+
+    <insert id="updateUserDetail">
+        update cupidwel_user 
+        set
+            name = #{name},
+            age = ${age},
+            birth_date = to_date(#{birthDate},'YYYYMMDD'),
+            phone_number = #{phoneNumber},
+            school = #{school},
+            school_belong = #{schoolBelong},
+            attendance = #{attendance},
+            major = #{major},
+            stratum = #{stratum},
+            income = #{income},
+            prev_grade = #{prevGrade},
+            address = #{address},
+            is_married = ${isMarried},
+            fam_cum = ${famCum},
+            month_income = ${monthIncome},
+            parent_address = #{parentAddress},
+            parent_job = #{parentJob},
+            remained_semester = ${remainedSemester},
+            is_leave_absence = ${isLeaveAbsence}
+        where email = #{email}
+    </insert>
+
+</mapper>

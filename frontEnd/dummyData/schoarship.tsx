@@ -1,6 +1,6 @@
 export const scholarships = [
   {
-    id: 1,
+    id: "1",
     img: "/scholarship/first_data.svg",
     foundation: "OK저축은행",
     title: "선넘는 생활장학금",
@@ -9,7 +9,7 @@ export const scholarships = [
     view: false,
   },
   {
-    id: 2,
+    id: "2",
     img: "/scholarship/second_data.svg",
     foundation: "전라남도 평생교육진흥원",
     title: "제2기 전라남도 해외유학생 모집",
@@ -18,7 +18,7 @@ export const scholarships = [
     view: false,
   },
   {
-    id: 3,
+    id: "3",
     img: "/scholarship/third_data.svg",
     foundation: "하이원",
     title: "하이원 멘토뭐시기",
@@ -27,7 +27,7 @@ export const scholarships = [
     view: true,
   },
   {
-    id: 4,
+    id: "4",
     img: "/scholarship/first_data.svg",
     foundation: "OK저축은행",
     title: "선넘는 생활장학금",
@@ -36,7 +36,7 @@ export const scholarships = [
     view: true,
   },
   {
-    id: 5,
+    id: "5",
     img: "/scholarship/second_data.svg",
     foundation: "전라남도 평생교육진흥원",
     title: "제2기 전라남도 해외유학생 모집",
@@ -45,7 +45,7 @@ export const scholarships = [
     view: true,
   },
   {
-    id: 6,
+    id: "6",
     img: "/scholarship/third_data.svg",
     foundation: "하이원",
     title: "하이원 멘토뭐시기",

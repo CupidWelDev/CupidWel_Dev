@@ -14,9 +14,48 @@
         select * from scholarship where id = #{scholarshipId}
     </select>
 
+    <select id="scholarshipFilter" resultType="com.example.demo.domain.Scholarship">
+       select * from scholarship
+        <if test='allFalse == True'>
+            order by duration_detail asc
+        </if>
+        <trim prefix="where" prefixOverrides="and">
+            <if test='school != null'>
+                qualification_detail like '%${school}%'
+            </if>
+            <if test='department != null'>
+                major_sort like '%${department}%'
+            </if>
+            <if test='major != null'>
+                major_sort like '%${major}%' or qulification_detail like '%${major}%'
+            </if>
+            <if test='grade != null'>
+                grade_stand_detail like '%${grade}%'
+            </if>
+            <if test='attendance != null'>
+                qualification_detail like '%${attendance}%' or qualification_restriction_detail like '%${attendance}%'
+            </if>
+            <if test='incomeSection != null'>
+                income_detail like '%${incomeSection}%'
+            </if>
+            <if test='specialClass != null'>
+                <!-- <foreach collection="specialClass" item="class" open="" separator="and" close=""> -->
+                <foreach collection="array" item="class" open="" separator="and" close="">
+                    (qualification_detail like '%${class}%' or income_stand_detail like '%${class}%')
+                </foreach>
+            </if>
+            <if test='address != null'>
+                id like '%${address}%' or local_residence_detail like '%${address}%'
+            </if>
+        </trim>
+   </select>
 
     <select id="searchScholarships" resultType="com.example.demo.domain.Scholarship">
         select * from scholarship where id like '%${searchWord}%' order by duration_detail asc;
+    </select>
+
+    <select id="isScholarshipExisting" resultType="int">
+        select count(1) from scholarship where id = #{scholarshipId}
     </select>
 
 </mapper>
