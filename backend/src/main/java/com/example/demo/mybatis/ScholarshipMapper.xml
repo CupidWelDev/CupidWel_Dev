@@ -36,7 +36,9 @@
                 qualification_detail like '%${attendance}%' or qualification_restriction_detail like '%${attendance}%'
             </if>
             <if test='incomeSection != null'>
-                income_detail like '%${incomeSection}%'
+                <foreach collection="array" item="class" open="" separator="or" close="">
+                    (income_detail like '%${incomeSection}분위%')
+                </foreach>
             </if>
             <if test='specialClass != null'>
                 <!-- <foreach collection="specialClass" item="class" open="" separator="and" close=""> -->
@@ -46,6 +48,9 @@
             </if>
             <if test='address != null'>
                 id like '%${address}%' or local_residence_detail like '%${address}%'
+            </if>
+            <if test='scholarshipNature != null'>
+                id like '%${scholarshipNature}%' or support_detail like '%${scholarshipNature}%'
             </if>
         </trim>
    </select>

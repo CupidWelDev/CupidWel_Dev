@@ -40,8 +40,8 @@ public class QueryResolver {
     }
 
     @QueryMapping
-   public List<Scholarship> scholarshipFilter(@Argument(name = "filterInput") FilterDO filterInput) {
-       return scholarshipService.scholarshipFilter(filterInput);
+   public List<Scholarship> scholarshipFilter(@Argument(name = "filterInput") FilterDO filterDO) {
+       return scholarshipService.scholarshipFilter(filterDO);
    }
 
     public List<Scholarship> searchScholarships(@Argument(name = "searchWord") String searchWord) {

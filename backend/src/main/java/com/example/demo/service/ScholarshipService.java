@@ -23,8 +23,8 @@ public class ScholarshipService {
         return scholarshipMapper.getScholarshipDetail(scholarshipId);
     }
 
-   public List<Scholarship> scholarshipFilter(FilterDO filterInput) {
-       return scholarshipMapper.scholarshipFilter(filterInput);
+   public List<Scholarship> scholarshipFilter(FilterDO filterDO) {
+       return scholarshipMapper.scholarshipFilter(filterDO);
    }
     // search function
     public List<Scholarship> searchScholarships(String searchWord) {
