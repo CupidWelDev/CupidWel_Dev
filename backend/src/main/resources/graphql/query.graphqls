@@ -24,8 +24,8 @@ type Scholarship {
     univSort: String
     gradeSort: String
     majorSort: String
-    gradeStand_detail: String
-    incomeStand_detail: String
+    gradeStandDetail: String
+    incomeStandDetail: String
     supportDetail: String
     qualificationDetail: String
     localResidenceDetail: String
