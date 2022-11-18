@@ -17,6 +17,7 @@ public class FilterDO {
     //  장학금 필터
     private String scholarshipNature; // 등록금 성격(등록금/생활비/활동지원금)
     private Boolean doubleBenefit; // 중복수혜
+    // private String[] doubleBenefitKeyword; // 중복수혜 필터링 키워드 배열
     
     // 맞춤필터가 전부 null일 때 True -> 모든 장학금을 return
     private Boolean allFalse;

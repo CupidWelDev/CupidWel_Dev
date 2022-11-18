@@ -16,42 +16,49 @@
 
     <select id="scholarshipFilter" resultType="com.example.demo.domain.Scholarship">
        select * from scholarship
-        <if test='allFalse == True'>
+        <if test='filterInput.allFalse == true'>
             order by duration_detail asc
         </if>
         <trim prefix="where" prefixOverrides="and">
-            <if test='school != null'>
-                qualification_detail like '%${school}%'
+            <if test='filterInput.school != null'>
+                and qualification_detail like '%${filterInput.school}%'
             </if>
-            <if test='department != null'>
-                major_sort like '%${department}%'
+            <if test='filterInput.department != null'>
+                and major_sort like '%${filterInput.department}%'
             </if>
-            <if test='major != null'>
-                major_sort like '%${major}%' or qulification_detail like '%${major}%'
+            <if test='filterInput.major != null'>
+                and (major_sort like '%${filterInput.major}%' or qulification_detail like '%${filterInput.major}%')
             </if>
-            <if test='grade != null'>
-                grade_stand_detail like '%${grade}%'
+            <if test='filterInput.grade != null'>
+                and grade_stand_detail like '%${filterInput.grade}%'
             </if>
-            <if test='attendance != null'>
-                qualification_detail like '%${attendance}%' or qualification_restriction_detail like '%${attendance}%'
+            <if test='filterInput.attendance != null'>
+                and (qualification_detail like '%${filterInput.attendance}%' or qualification_restriction_detail like '%${filterInput.attendance}%')
             </if>
-            <if test='incomeSection != null'>
-                <foreach collection="array" item="class" open="" separator="or" close="">
-                    (income_detail like '%${incomeSection}분위%')
+            <if test='filterInput.incomeSection != null'>
+                <foreach collection="filterInput.incomeSection" item="class" open="and (" separator="or" close=")">
+                    (income_stand_detail like '%${class}분위%') or (income_stand_detail like '%${class}구간%') or (income_stand_detail like '%${class}~%')
                 </foreach>
             </if>
-            <if test='specialClass != null'>
-                <!-- <foreach collection="specialClass" item="class" open="" separator="and" close=""> -->
-                <foreach collection="array" item="class" open="" separator="and" close="">
-                    (qualification_detail like '%${class}%' or income_stand_detail like '%${class}%')
+            <if test='filterInput.specialClass != null'>
+                <foreach collection="filterInput.specialClass" item="class" open="and (" separator="and" close=")">
+                    (qualification_detail like '%${filterInput.class}%' or income_stand_detail like '%${filterInput.class}%')
                 </foreach>
             </if>
-            <if test='address != null'>
-                id like '%${address}%' or local_residence_detail like '%${address}%'
+            <if test='filterInput.address != null'>
+                and (id like '%${address}%' or local_residence_detail like '%${filterInput.address}%')
             </if>
-            <if test='scholarshipNature != null'>
-                id like '%${scholarshipNature}%' or support_detail like '%${scholarshipNature}%'
+            <if test='filterInput.scholarshipNature != null'>
+                and (id like '%${scholarshipNature}%' or support_detail like '%${filterInput.scholarshipNature}%')
             </if>
+            <if test='filterInput.doubleBenefit == true'>
+                and (support_detail like '%중복수혜 가능%' or support_detail like '%중복지원 가능%' or support_detail like '%중복수급 가능%' or support_detail like '%이중수혜 가능%')
+            </if>
+            <!-- <if test='filterInput.doubleBenefit == true'>
+                <foreach collection="filterInput.doubleBenefitKeyword" item="keyword" open="and (" separator="or" close=")">
+                    support_detail like '%keyword%' or qualification_restriction_detail like '%keyword%'
+                </foreach>
+            </if> -->
         </trim>
    </select>
 
