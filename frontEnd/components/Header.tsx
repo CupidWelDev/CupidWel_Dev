@@ -23,7 +23,7 @@ export default function Header() {
   const inSetting = ["/userinfo"];
 
   // searchBar
-  const isSearchBar = ["/scholarship/search"];
+  const isSearchBar = ["/scholarship/search", "/scholarship"];
 
   // 하단 가로줄 안 띄울 라우터
   const isNotLine = ["/register"];
