@@ -5,6 +5,8 @@ import Carousel from "@components/Carousel";
 import { scholarships } from "../../dummyData/schoarship";
 import ScholarshipDetailVer from "@components/ScholarshipDetailVer";
 
+//TODO : 데이터 받아오기
+
 const Scrap: NextPage = () => {
   return (
     <div>
@@ -16,7 +18,11 @@ const Scrap: NextPage = () => {
       <section className="grid grid-cols-2 mt-10 mx-4">
         {scholarships.map((scholarship, idx) => (
           <div className={"flex justify-center items-center mb-5"} key={idx}>
-            <ScholarshipDetailVer {...scholarship} />
+            <ScholarshipDetailVer
+              institution={""}
+              product={""}
+              {...scholarship}
+            />
           </div>
         ))}
       </section>

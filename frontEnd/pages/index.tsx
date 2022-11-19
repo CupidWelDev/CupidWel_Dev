@@ -32,13 +32,13 @@ const Home: NextPage = () => {
       <SEO title="홈" />
 
       {/* 광고 화면*/}
-      <section className="w-full mb-8">
+      <section className="w-full mb-8 flex justify-center">
         <Advertisement />
       </section>
 
       {/* 카테고리별 장학금*/}
       <section className="w-11/12 mb-8 flex flex-col items-center">
-        <p className="text-xl font-semibold w-[330px]"> 내 맞춤 장학금</p>
+        <p className="text-xl font-semibold w-full ml-8"> 내 맞춤 장학금</p>
         <CategoryScholarship />
       </section>
       <div className="w-full border-solid border-2 border-gray-200 rounded-xl mb-6"></div>
@@ -66,7 +66,7 @@ const Home: NextPage = () => {
 
       {/* 추천 장학금 */}
       <section className="w-11/12 mb-8 h-[240px] flex flex-col items-center ">
-        <div className="w-[350px]">
+        <div className="w-full">
           <p className="text-xl font-semibold mb-4 w-[350px]">추천 장학금</p>
           <div className="w-full h-[200px] ">
             <Carousel
