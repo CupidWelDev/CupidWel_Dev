@@ -41,6 +41,19 @@ type Scholarship {
     scrapNum: String
 }
 
+input FilterInput {
+    school: String
+    department: String
+    major: String
+    grade: String
+    attendance: String
+    incomeSection: [Int] # enumeration 타입
+    specialClass: [String]
+    address: String
+    scholarshipNature: String
+    doubleBenefit: Boolean
+    allFalse: Boolean
+}
 input UserInput {
     name: String!
     email: String!
@@ -101,6 +114,9 @@ type Query {
     getScholarshipDetail(
         scholarshipId: String!
     ): Scholarship
+    scholarshipFilter(
+        filterInput: FilterInput
+    ): [Scholarship]
     
     searchScholarships(
         searchWord: String!

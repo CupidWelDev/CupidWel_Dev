@@ -13,6 +13,7 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
+import com.example.demo.domain.FilterDO;
 import com.example.demo.domain.ResultDO;
 import com.example.demo.domain.Scholarship;
 import com.example.demo.domain.UserDO;
@@ -39,6 +40,10 @@ public class QueryResolver {
     }
 
     @QueryMapping
+   public List<Scholarship> scholarshipFilter(@Argument(name = "filterInput") FilterDO filterDO) {
+       return scholarshipService.scholarshipFilter(filterDO);
+   }
+
     public List<Scholarship> searchScholarships(@Argument(name = "searchWord") String searchWord) {
         return scholarshipService.searchScholarships(searchWord);
     }
