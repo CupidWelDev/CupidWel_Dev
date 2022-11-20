@@ -12,4 +12,6 @@ public interface ScrapMapper {
     public void deleteScrap (@Param(value = "userId") String userId, @Param(value = "scholarshipId") String scholarshipId);
     public List<String> getScrapList (@Param(value = "userId") String userId);
     public int isScraped (@Param(value = "userId") String userId, @Param(value = "scholarshipId") String scholarshipId);
+    public void increaseScrapNum (@Param(value = "scholarshipId") String scholarshipId);
+    public void decreaseScrapNum (@Param(value = "scholarshipId") String scholarshipId);
 }
