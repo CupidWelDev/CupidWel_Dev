@@ -18,8 +18,8 @@ public class ScholarshipService {
         return scholarshipMapper.getAllScholarships();
     }
 
-
     public Scholarship getScholarshipDetail(String scholarshipId) {
+        scholarshipMapper.increaseShowNum(scholarshipId);
         return scholarshipMapper.getScholarshipDetail(scholarshipId);
     }
 

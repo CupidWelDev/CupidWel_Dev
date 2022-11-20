@@ -9,6 +9,12 @@
         select * from scholarship;
     </select>
 
+    <insert id="increaseShowNum">
+        update scholarship
+            set show_num = show_num + 1
+        where id = #{scholarshipId}
+    </insert>
+
 
     <select id="getScholarshipDetail" resultType="com.example.demo.domain.Scholarship">
         select * from scholarship where id = #{scholarshipId}
