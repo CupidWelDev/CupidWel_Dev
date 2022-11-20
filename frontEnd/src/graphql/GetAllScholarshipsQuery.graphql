@@ -1,6 +1,0 @@
-query GetAllScholarshipsQuery{
-    getAllScholarships {
-        id
-        product
-    }
-}

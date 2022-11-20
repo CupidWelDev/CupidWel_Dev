@@ -29,13 +29,10 @@ export default function CategoryScholarship() {
   ]);
 
   const router = useRouter();
-  const isNotNumber = ["/scrap"];
+  const isNotNumber = ["/scrap", "/scholarship"];
 
   return (
-    <div
-      className="w-full pt-2
-                    flex flex-row gap-6 justify-center"
-    >
+    <div className="w-full pt-2 flex flex-row gap-6 justify-around">
       {categorys.map((category, idx) => (
         <div className="flex flex-col items-center" key={idx}>
           <div
@@ -45,7 +42,9 @@ export default function CategoryScholarship() {
             <Image src={category.svg} width="46px" height="46px" />
           </div>
           <p className="text-xs opacity-50">{category.title}</p>
-          {login && !isNotNumber.includes(router.pathname) ? <p className="text-xl">{user[idx].num}</p> : null}
+          {login && !isNotNumber.includes(router.pathname) ? (
+            <p className="text-xl">{user[idx].num}</p>
+          ) : null}
         </div>
       ))}
     </div>

@@ -6,6 +6,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useEffect } from "react";
 import { openDB } from "@libs/IndexedDB";
+import * as util from "util";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,22 +19,26 @@ const queryClient = new QueryClient({
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
-      //indexedDB open
-      openDB();
+    //indexedDB open
+    openDB();
     //  PWA SW connect
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker.register("/sw.js").then(
-          function (registration) {
-            console.log(
-              "Service Worker registration successful with scope: ",
-              registration.scope
-            );
-          },
-          function (err) {
-            console.log("Service Worker registration failed: ", err);
-          }
-        );
+      navigator.serviceWorker.register("/service-worker.js").then((reg) => {
+        console.log("SW registered: ", reg);
+        // 업데이트 발견 시
+        reg.addEventListener("updatefound", () => {
+          const newWorker = reg.installing;
+          console.log("업데이트 찾음");
+
+          // 새로운 서비스 워커
+          newWorker?.addEventListener("statechange", (event) => {
+            const state = event?.target?.state;
+            console.log("state", state);
+            if (state === "installed") {
+              console.log("새로운 업데이트가 있습니다. 새로고침 해주세요.");
+            }
+          });
+        });
       });
     }
   }, []);

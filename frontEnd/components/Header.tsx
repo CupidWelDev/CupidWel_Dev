@@ -3,7 +3,7 @@ import Image from "next/image";
 import GoBackButton from "@components/GoBackButton";
 import { useRouter } from "next/router";
 import SearchBar from "@components/SearchBar";
-import {cls} from "@libs/utils";
+import { cls } from "@libs/utils";
 
 export default function Header() {
   const router = useRouter();
@@ -23,14 +23,19 @@ export default function Header() {
   const inSetting = ["/userinfo"];
 
   // searchBar
-  const isSearchBar = ["/scholarship/detail"];
+  const isSearchBar = ["/scholarship/search", "/scholarship"];
 
   // 하단 가로줄 안 띄울 라우터
   const isNotLine = ["/register"];
 
   return (
     <>
-      <div className={cls("fixed bg-white w-full sm:w-[400px] h-[60px] flex justify-between p-4 bg-white z-10 shadow", isNotLine.includes(router.pathname) ? "" : "shadow")}>
+      <div
+        className={cls(
+          "fixed bg-white w-full sm:w-[400px] h-[60px] flex justify-between p-4 bg-white z-10 shadow",
+          isNotLine.includes(router.pathname) ? "" : "shadow"
+        )}
+      >
         {isNotGoBack.includes(router.pathname) ? null : <GoBackButton />}
         {isSearchBar.includes(router.pathname) ? (
           <SearchBar />
@@ -55,7 +60,7 @@ export default function Header() {
             <div className="flex gap-4 justify-center items-center ">
               {/*searchIco*/}
               {inNotSearch.includes(router.pathname) ? null : (
-                <Link href="/scholarship/detail">
+                <Link href="/scholarship/search">
                   <Image
                     src="/header/searchScholarship.svg"
                     width="30px"
@@ -66,9 +71,13 @@ export default function Header() {
 
               {/*notificationIco*/}
               {isNotNotification.includes(router.pathname) ? null : (
-                  <Link href="/userinfo/notification">
-                    <Image src="/header/notification.svg" width="30px" height="30px" />
-                  </Link>
+                <Link href="/userinfo/notification">
+                  <Image
+                    src="/header/notification.svg"
+                    width="30px"
+                    height="30px"
+                  />
+                </Link>
               )}
 
               {/*setting */}

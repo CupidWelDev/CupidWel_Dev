@@ -12,21 +12,33 @@ import Link from "next/link";
 //dummy
 import { scholarships } from "../dummyData/schoarship";
 import { CupidWelGuideData } from "../dummyData/guideData";
+import {
+  GetAllScholarshipsQuery,
+  useGetAllScholarshipsQuery,
+} from "@src/generated/graphql";
+import graphqlRequestClient from "@src/lib/client/graphqlReuestClient";
 
 const Home: NextPage = () => {
+  const { isLoading, error, data } = useGetAllScholarshipsQuery<
+    GetAllScholarshipsQuery | undefined,
+    Error
+  >(graphqlRequestClient, {});
+  // console.log(data.getAllScholarships.slice(0, 10));
+  if (isLoading) return <div>is Loading...</div>;
+
   return (
     <div className="h-100vh flex flex-col items-center">
       {/*<Header />*/}
       <SEO title="홈" />
 
       {/* 광고 화면*/}
-      <section className="w-full mb-8">
+      <section className="w-full mb-8 flex justify-center">
         <Advertisement />
       </section>
 
       {/* 카테고리별 장학금*/}
       <section className="w-11/12 mb-8 flex flex-col items-center">
-        <p className="text-xl font-semibold w-[330px]"> 내 맞춤 장학금</p>
+        <p className="text-xl font-semibold w-full ml-8"> 내 맞춤 장학금</p>
         <CategoryScholarship />
       </section>
       <div className="w-full border-solid border-2 border-gray-200 rounded-xl mb-6"></div>
@@ -54,13 +66,15 @@ const Home: NextPage = () => {
 
       {/* 추천 장학금 */}
       <section className="w-11/12 mb-8 h-[240px] flex flex-col items-center ">
-        <div className="w-[350px]">
+        <div className="w-full">
           <p className="text-xl font-semibold mb-4 w-[350px]">추천 장학금</p>
           <div className="w-full h-[200px] ">
             <Carousel
-              slides={scholarships.map((scholarship, idx) => (
-                <ScholarshipDetailVer key={idx} {...scholarship} />
-              ))}
+              slides={data.getAllScholarships
+                .slice(0, 10)
+                .map((scholarship, idx) => (
+                  <ScholarshipDetailVer key={idx} {...scholarship} />
+                ))}
             />
           </div>
         </div>

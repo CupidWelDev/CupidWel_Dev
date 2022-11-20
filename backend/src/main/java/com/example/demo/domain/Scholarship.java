@@ -15,8 +15,8 @@ public class Scholarship {
     private String univSort;
     private String gradeSort;
     private String majorSort;
-    private String gradeStand_detail;
-    private String incomeStand_detail;
+    private String gradeStandDetail;
+    private String incomeStandDetail;
     private String supportDetail;
     private String qualificationDetail;
     private String localResidenceDetail;

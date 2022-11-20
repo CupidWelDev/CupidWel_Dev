@@ -1,0 +1,19 @@
+query GetScholarshipDetail($scholarshipId: String!){
+    getScholarshipDetail(scholarshipId: $scholarshipId) {
+        id
+        institution
+        product
+
+        supportDetail
+        qualificationDetail
+        selectionWayDetail
+        selectionNumDetail
+
+        univSort
+        gradeSort
+        majorSort
+
+
+    }
+
+}

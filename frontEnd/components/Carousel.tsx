@@ -14,7 +14,7 @@ export default function Carousel({ slides }: PropType): JSX.Element {
   const [viewportRef, _] = useEmblaCarousel(options);
 
   return (
-    <div className="w-[350px] overflow-hidden" ref={viewportRef}>
+    <div className="w-full overflow-hidden" ref={viewportRef}>
       <div className="flex">
         {slides.map((slide, index) => (
           <div className="mr-3 mt-2" key={index}>
