@@ -18,7 +18,13 @@ const RecentlyView: NextPage = () => {
         {view.length !== 0 && (
           <Carousel
             slides={view.map((scholarship, idx) => (
-              <ScholarshipDetailVer key={idx} {...scholarship} />
+              // @ts-ignore
+              <ScholarshipDetailVer
+                institution={""}
+                product={""}
+                key={idx}
+                {...scholarship}
+              />
             ))}
           />
         )}

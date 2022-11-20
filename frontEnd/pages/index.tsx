@@ -70,9 +70,11 @@ const Home: NextPage = () => {
           <p className="text-xl font-semibold mb-4 w-[350px]">추천 장학금</p>
           <div className="w-full h-[200px] ">
             <Carousel
+              // @ts-ignore
               slides={data.getAllScholarships
                 .slice(0, 10)
                 .map((scholarship, idx) => (
+                  // @ts-ignore
                   <ScholarshipDetailVer key={idx} {...scholarship} />
                 ))}
             />

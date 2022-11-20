@@ -32,6 +32,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
           // 새로운 서비스 워커
           newWorker?.addEventListener("statechange", (event) => {
+            // @ts-ignore
             const state = event?.target?.state;
             console.log("state", state);
             if (state === "installed") {

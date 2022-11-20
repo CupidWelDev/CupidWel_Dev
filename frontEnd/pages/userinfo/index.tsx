@@ -11,32 +11,32 @@ const UserInfo: NextPage = () => {
   const list = [
     {
       url: "/userinfo/",
-      svg: "/userInfo/view.svg",
+      svg: "/userinfo/view.svg",
       title: "최근 본 장학금",
     },
     {
       url: "/userinfo/",
-      svg: "/userInfo/systemNotification.svg",
+      svg: "/userinfo/systemNotification.svg",
       title: "내 질문",
     },
     {
       url: "/userinfo/",
-      svg: "/userInfo/systemNotification.svg",
+      svg: "/userinfo/systemNotification.svg",
       title: "공지사항",
     },
     {
       url: "/userinfo/fqa",
-      svg: "/userInfo/fqa.svg",
+      svg: "/userinfo/fqa.svg",
       title: "자주 묻는 질문",
     },
     {
       url: "/userinfo/policy",
-      svg: "/userInfo/policy.svg",
+      svg: "/userinfo/policy.svg",
       title: "이용약관/개인정보취급방침",
     },
     {
       url: "/userinfo/partnership",
-      svg: "/userInfo/partnership.svg",
+      svg: "/userinfo/partnership.svg",
       title: "기업 제휴/광고 문의",
     },
   ];

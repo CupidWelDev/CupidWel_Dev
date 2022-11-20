@@ -12,6 +12,7 @@ export const openDB = () => {
     console.log("데이터베이스 열기 성공");
   };
   request.onupgradeneeded = (event) => {
+    // @ts-ignore
     const db = event.target.result;
     const scholarshipStore = db.createObjectStore("scholarship", {
       // autoIncrement: true,
@@ -25,12 +26,14 @@ export const openDB = () => {
 };
 
 // indexedDB 데이터베이스에 데이터 추가
+// @ts-ignore
 export const addDB = (data, title: string) => {
   const request = window.indexedDB.open("recentlyView", 1);
   request.onerror = (event) => {
     console.log("데이터베이스 열기 실패");
   };
   request.onsuccess = (event) => {
+    // @ts-ignore
     const db = event.target.result;
     const transaction = db.transaction([title], "readwrite");
     const objectStore = transaction.objectStore(title);
@@ -42,16 +45,19 @@ export const addDB = (data, title: string) => {
 };
 
 // indexedDB 데이터베이스에서 데이터 가져오기 (useState의 set 함수 인자로 넘겨주기)
+// @ts-ignore
 export const getDB = (setFnc, title: string) => {
   const request = window.indexedDB.open("recentlyView", 1);
   request.onerror = (event) => {
     console.log("데이터베이스 열기 실패");
   };
   request.onsuccess = (event) => {
+    // @ts-ignore
     const db = event.target.result;
     const transaction = db.transaction([title], "readwrite");
     const objectStore = transaction.objectStore(title);
     const request = objectStore.getAll();
+    // @ts-ignore
     request.onsuccess = (event) => {
       console.log("데이터 가져오기 성공");
       // console.log(title, request.result.length);
@@ -62,17 +68,19 @@ export const getDB = (setFnc, title: string) => {
 };
 
 // indexedDB 데이터베이스에서 데이터 삭제
+// @ts-ignore
 export const deleteDB = (id, title: string) => {
   const request = window.indexedDB.open("recentlyView", 1);
   request.onerror = (event) => {
     console.log("데이터베이스 열기 실패");
   };
   request.onsuccess = (event) => {
+    // @ts-ignore
     const db = event.target.result;
     const transaction = db.transaction([title], "readwrite");
     const objectStore = transaction.objectStore(title);
     const request = objectStore.delete(id);
-    request.onsuccess = (event) => {
+    request.onsuccess = () => {
       console.log("데이터 삭제 성공");
     };
   };
@@ -85,11 +93,12 @@ export const clearDB = (title: string) => {
     console.log("데이터베이스 열기 실패");
   };
   request.onsuccess = (event) => {
+    // @ts-ignore
     const db = event.target.result;
     const transaction = db.transaction([title], "readwrite");
     const objectStore = transaction.objectStore(title);
     const request = objectStore.clear();
-    request.onsuccess = (event) => {
+    request.onsuccess = () => {
       console.log("데이터 전체 삭제 성공");
     };
   };
