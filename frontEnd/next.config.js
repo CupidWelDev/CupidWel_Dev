@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const { withPlugins, optional } = require("next-compose-plugins");
+const { withPlugins } = require("next-compose-plugins");
 
 const withPWA = require("next-pwa")({
   dest: "public",
@@ -8,19 +8,16 @@ const withPWA = require("next-pwa")({
   swSrc: "public/service-worker.js",
 });
 
-// module.exports = withPlugins(
-//   [withPWA],
-//   [
-//     {
-//       eslint: {
-//         ignoreDuringBuilds: true,
-//       },
-//     },
-//   ]
-// );
-
-module.exports = {
+const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
 };
+
+// module.exports = {
+//   eslint: {
+//     ignoreDuringBuilds: true,
+//   },
+// };
+
+module.exports = withPlugins([withPWA], nextConfig);

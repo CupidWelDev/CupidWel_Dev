@@ -16,3 +16,16 @@
   - graphql-codegen
     - https://codevoweb.com/nextjs-full-stack-app-with-react-query-and-graphql-codegen/
     - https://www.youtube.com/watch?v=ZZrr82beJQk&t=52s
+
+
+- PWA
+  - next-pwa
+    - 커스터마이징 하기 위해 next.config.js 설정변경
+  - next-compose-plugins
+    - 여러가지 플러그인을 쓰기 위함
+
+
+- CSS
+  - next-compose-plugins
+    - tailwindCSS와 material ui를 같이 쓰기 위함
+  

@@ -1,35 +1,66 @@
-const VERSION = "v1";
-const CACHE_NAME = `cache_${VERSION}`;
+const VERSION = "v5";
+const CACHE_NAME = "paper-cache_" + VERSION;
+const IMAGE_CACHE_NAME = "paper-image_" + VERSION;
 
 // 자주 안바뀌는 리소스
-const IMMUTABLE_CACHES = ["/**/*.svg", "/*.svg"];
-// 자주 바뀌는 리소스
-const MUTABLE_CACHES = [
-  "/",
-  "../pages/*+/*.tsx, ../pages/*+/*.ts, ../pages/*+/*.js, ../pages/*+/*.jsx",
-  "../components/*+/*.tsx, ../components/*+/*.ts, ../components/*+/*.js, ../components/*+/*.jsx",
+const IMMUTABLE_CACHE = [
+  "/bannerAd/firstAd.svg",
+  "/category/activitySupportFund.svg",
+  "/category/doubleBenefit.svg",
+  "/category/livingExpenses.svg",
+  "/category/tuitionFee.svg",
+  "/guide/first_guide.svg",
+  "/guide/second_guide.svg",
+  "/guide/third_guide.svg",
+  "/guide/fourth_guide.svg",
+  "/header/appName.svg",
+  "/header/goBack.svg",
+  "/header/logo.svg",
+  "/header/notification.svg",
+  "/header/searchScholarship.svg",
+  "/header/setting.svg",
+  "/navBar/home.svg",
+  "/navBar/myInfo.svg",
+  "/navBar/scrap.svg",
+  "/navBar/search.svg",
+  "/scholarship/darr.svg",
+  "/scholarship/first_data.svg",
+  "/scholarship/second_data.svg",
+  "/scholarship/third_data.svg",
+  "/userinfo/fqa.svg",
+  "/userinfo/loadMap.svg",
+  "/userinfo/partnership.svg",
+  "/userinfo/policy.svg",
+  "/userinfo/systemNotification.svg",
+  "/userinfo/view.svg",
+  "/bgImg.svg",
 ];
 
-// 캐시 목록들
-const CACHE_LIST = IMMUTABLE_CACHES.concat(MUTABLE_CACHES);
+// 자주 바뀌는 리소스
+const MUTABLE_CACHE = ["/"];
+
+const CACHE_LIST = IMMUTABLE_CACHE.concat(MUTABLE_CACHE);
+
+const DYNAMIC_PATTERN = /(\.eot$|\.ttf$|\.woff$|^\/icons)/;
 
 self.addEventListener("install", (event) => {
-  // console.log("Service worker installing...");
+  console.log("Service Worker - install");
 
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(CACHE_LIST);
     })
   );
+});
 
-  // 캐시 목록들을 캐시에 저장
+self.addEventListener("activate", (event) => {
+  console.log("Service Worker - activate");
+
   event.waitUntil(
     caches.keys().then((keyList) => {
       return Promise.all(
         keyList.map((key) => {
-          //캐시 이름이 CACHE_NAME이 아닌 것들을 삭제
-          if (key !== CACHE_NAME) {
-            console.log("Removing old cache", key);
+          if (key !== CACHE_NAME && key !== IMAGE_CACHE_NAME) {
             return caches.delete(key);
           }
         })
@@ -38,15 +69,57 @@ self.addEventListener("install", (event) => {
   );
 });
 
-self.addEventListener("activate", (event) => {
-  console.log("Service worker activating...");
-});
-
 self.addEventListener("fetch", (event) => {
-  console.log("Service worker fetching...", event.request.url);
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
+  console.log("Service Worker -", event.request.url);
+  const url = new URL(event.request.url);
+
+  // 자주 변경되지 않는 리소스인 경우
+  if (IMMUTABLE_CACHE.includes(url.pathname)) {
+    // 캐시 우선, 후 네트워크 응답
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        return response || fetch(event.request);
+      })
+    );
+  } else if (MUTABLE_CACHE.includes(url.pathname)) {
+    // 자주 변경되는 리소스인 경우
+    event.respondWith(
+      caches.open(CACHE_NAME).then((cache) => {
+        return fetch(event.request)
+          .then((networkResponse) => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          })
+          .catch(() => {
+            // 네트워크 문제가 발생한 경우 캐시에서 응답
+            return cache.match(event.request);
+          });
+      })
+    );
+  } else if (
+    url.pathname.startsWith("/upload") ||
+    DYNAMIC_PATTERN.test(url.pathname)
+  ) {
+    const TARGET_CACHE = url.pathname.startsWith("/upload")
+      ? IMAGE_CACHE_NAME
+      : CACHE_NAME;
+
+    event.respondWith(
+      caches.open(TARGET_CACHE).then((cache) => {
+        return cache.match(event.request).then((cacheResponse) => {
+          // 캐시가 존재하는 경우 캐시 응답
+          if (cacheResponse) {
+            return cacheResponse;
+          } else {
+            // 존재하지 않는 경우 최초 1회만 캐싱
+            return fetch(event.request).then((networkResponse) => {
+              // 캐싱하고 네트워크 리소스 응답
+              cache.put(event.request, networkResponse.clone());
+              return networkResponse;
+            });
+          }
+        });
+      })
+    );
+  }
 });

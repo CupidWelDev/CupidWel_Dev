@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import Carousel from "../components/Carousel";
 import ScholarshipDetailVer from "../components/ScholarshipDetailVer";
 import Link from "next/link";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 //dummy
 import { scholarships } from "../dummyData/schoarship";
@@ -24,7 +25,6 @@ const Home: NextPage = () => {
     Error
   >(graphqlRequestClient, {});
   // console.log(data.getAllScholarships.slice(0, 10));
-  if (isLoading) return <div>is Loading...</div>;
 
   return (
     <div className="h-100vh flex flex-col items-center">
@@ -68,19 +68,28 @@ const Home: NextPage = () => {
       <section className="w-11/12 mb-8 h-[240px] flex flex-col items-center ">
         <div className="w-full">
           <p className="text-xl font-semibold mb-4 w-[350px]">추천 장학금</p>
-          <div className="w-full h-[200px] ">
-            <Carousel
-              // @ts-ignore
-              slides={data.getAllScholarships
-                .slice(0, 10)
-                .map((scholarship, idx) => (
-                  // @ts-ignore
-                  <ScholarshipDetailVer key={idx} {...scholarship} />
-                ))}
-            />
-          </div>
+          {isLoading ? (
+            <div className="w-full h-[13rem] flex justify-center items-center">
+              <LoadingButton loading variant="outlined" color="secondary">
+                잠시만 기다려주세요
+              </LoadingButton>
+            </div>
+          ) : (
+            <div className="w-full h-[13rem] ">
+              <Carousel
+                // @ts-ignore
+                slides={data.getAllScholarships
+                  .slice(0, 10)
+                  .map((scholarship, idx) => (
+                    // @ts-ignore
+                    <ScholarshipDetailVer key={idx} {...scholarship} />
+                  ))}
+              />
+            </div>
+          )}
         </div>
       </section>
+
       {/* footer */}
       <Footer />
     </div>
