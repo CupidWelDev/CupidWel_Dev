@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mybatis.AlertMapper">
+
+    <select id="getAlertList" resultType="com.example.demo.domain.AlertDO">
+        select * from alert where email = #{userId};
+    </select>
+
+    <insert id="addAlert">
+        insert into alert values (#{userId}, #{scholarshipId});
+    </insert>
+    
+    <select id="isAlert" resultType="String">
+        select count(1) from alert where email = #{userId} and scholarship_id = #{scholarshipId};
+    </select>
+
+</mapper>

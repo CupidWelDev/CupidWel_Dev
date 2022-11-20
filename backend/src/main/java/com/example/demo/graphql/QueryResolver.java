@@ -2,6 +2,7 @@ package com.example.demo.graphql;
 
 import java.util.List;
 
+import com.example.demo.service.AlertService;
 import com.example.demo.service.ScholarshipService;
 import com.example.demo.service.ScrapService;
 import com.example.demo.service.UserService;
@@ -13,6 +14,7 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
+import com.example.demo.domain.AlertDO;
 import com.example.demo.domain.FilterDO;
 import com.example.demo.domain.ResultDO;
 import com.example.demo.domain.Scholarship;
@@ -28,6 +30,9 @@ public class QueryResolver {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AlertService alertService;
 
     @QueryMapping
     public List<Scholarship> getAllScholarships() {
@@ -71,5 +76,9 @@ public class QueryResolver {
     @MutationMapping
     public ResultDO updateUser(@Argument(name = "userInput") UserDO userDO){
         return userService.updateUserDetail(userDO);
+    }
+    @QueryMapping
+    public List<AlertDO> getAlertList(@Argument(name = "userId") String userId) {
+        return alertService.getAlertList(userId);
     }
 }
