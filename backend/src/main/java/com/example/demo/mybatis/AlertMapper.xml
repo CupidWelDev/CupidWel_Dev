@@ -10,9 +10,19 @@
     </select>
 
     <insert id="addAlert">
-        insert into alert values (#{userId}, #{scholarshipId});
+        insert into alert values (#{userId}, #{scholarshipId}, true, false);
+    </insert>
+
+    <insert id="deleteAlert">
+        delete from alert where email =  #{userId} and scholarship_id = #{scholarshipId};
     </insert>
     
+    <insert id="checkAlert">
+        update alert
+            set is_checked = true
+        where email = #{userId} and scholarship_id = #{scholarshipId};
+    </insert>
+
     <select id="isAlert" resultType="String">
         select count(1) from alert where email = #{userId} and scholarship_id = #{scholarshipId};
     </select>

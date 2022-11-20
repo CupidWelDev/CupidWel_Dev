@@ -81,4 +81,19 @@ public class QueryResolver {
     public List<AlertDO> getAlertList(@Argument(name = "userId") String userId) {
         return alertService.getAlertList(userId);
     }
+
+    @MutationMapping
+    public ResultDO addAlert(@Argument (name = "userId") String userId, @Argument (name = "scholarshipId") String scholarshipId) {
+        return alertService.addAlert(userId, scholarshipId);
+    }
+
+    @MutationMapping
+    public ResultDO deleteAlert(@Argument (name = "userId") String userId, @Argument (name = "scholarshipId") String scholarshipId) {
+        return alertService.deleteAlert(userId, scholarshipId);
+    }
+
+    @MutationMapping
+    public ResultDO checkAlert(@Argument (name = "userId") String userId, @Argument (name = "scholarshipId") String scholarshipId) {
+        return alertService.checkAlert(userId, scholarshipId);
+    }
 }

@@ -42,6 +42,8 @@ public class AlertService {
             result.setResultCode(404);
             result.setErrorMsg("USER NOT FOUND");
             result.setResultMsg("");
+
+            return result;
         }
 
         /* 해당 장학금이 없는 경우 */
@@ -58,6 +60,74 @@ public class AlertService {
         result.setResultCode(200);
         result.setErrorMsg("");
         result.setResultMsg("ADDED");
+
+        return result;
+    }
+
+    public ResultDO deleteAlert(String userId, String scholarshipId) {
+        ResultDO result = new ResultDO();
+
+        /* 해당 알림이 없는 경우 */
+        if (alertMapper.isAlert(userId, scholarshipId) == 0) {
+            result.setResultCode(404);
+            result.setErrorMsg("ALERT NOT FOUND");
+            result.setResultMsg("");
+
+            return result;
+        }
+
+        /* 사용자가 없는 경우 */
+        if (userService.isUserExisting(userId) == 0) {
+            result.setResultCode(404);
+            result.setErrorMsg("USER NOT FOUND");
+            result.setResultMsg("");
+
+            return result;
+        }
+
+        alertMapper.deleteAlert(userId, scholarshipId);
+
+        result.setResultCode(200);
+        result.setErrorMsg("");
+        result.setResultMsg("DELETED");
+
+        return result;
+    }
+
+    public ResultDO checkAlert(String userId, String scholarshipId) {
+        ResultDO result = new ResultDO();
+
+        /* 해당 알림이 없는 경우 */
+        if (alertMapper.isAlert(userId, scholarshipId) == 0) {
+            result.setResultCode(404);
+            result.setErrorMsg("ALERT NOT FOUND");
+            result.setResultMsg("");
+
+            return result;
+        }
+
+        /* 사용자가 없는 경우 */
+        if (userService.isUserExisting(userId) == 0) {
+            result.setResultCode(404);
+            result.setErrorMsg("USER NOT FOUND");
+            result.setResultMsg("");
+
+            return result;
+        }
+
+        /* 해당 장학금이 없는 경우 */
+        if (scholarshipService.isScholarshipExisting(scholarshipId) == 0) {
+            result.setResultCode(404);
+            result.setErrorMsg("SCHOLARSHIP NOT FOUND");
+            result.setResultMsg("");
+
+            return result;
+        }
+        alertMapper.checkAlert(userId, scholarshipId);
+
+        result.setResultCode(200);
+        result.setErrorMsg("");
+        result.setResultMsg("CHECKED");
 
         return result;
     }

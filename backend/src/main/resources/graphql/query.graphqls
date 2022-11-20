@@ -156,4 +156,17 @@ type Mutation {
     updateUser(
         userInput: UserInput
     ): Result
+
+    addAlert(
+        userId: String!
+        scholarshipId: String!
+    ): Result
+    deleteAlert(
+        userId: String!
+        scholarshipId: String!
+    ): Result
+    checkAlert(
+        userId: String!
+        scholarshipId: String!
+    ): Result
 }
