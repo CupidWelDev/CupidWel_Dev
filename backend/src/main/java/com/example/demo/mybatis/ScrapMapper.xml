@@ -16,7 +16,7 @@
 
     <insert id="deleteScrap">
         delete from scrap where email =  #{userId} and scholarship_id = #{scholarshipId};
-    </insert>ㄴㄴ
+    </insert>
 
     <insert id="decreaseScrapNum">
         update scholarship
