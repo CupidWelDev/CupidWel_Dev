@@ -1,8 +1,11 @@
 import {NextPage} from "next";
 import SEO from "@components/SEO";
 import Temp from "public/userInfo/temp.svg";
+import React from "react";
+import {Switch} from "@mui/material";
 
 const Setting: NextPage = () => {
+	const [notice, setNotice] = React.useState(false);
 
 	return (
 		<div>
@@ -19,12 +22,18 @@ const Setting: NextPage = () => {
 			{/* 메뉴 */}
 			<section className={"px-5 space-y-5"}>
 				{/* 마케팅 알림 수신 */}
-				<button className={"w-full"}>
-					<div className={"flex items-center"}>
-						<Temp />
-						<p className={"mx-5 text-xl"}>마케팅 알림 수신</p>
-					</div>
-				</button>
+				<div className={"flex items-center"}>
+					<Temp />
+					<p className={"mx-5 text-xl"}>마케팅 알림 수신</p>
+					{/*	ON/OFF 스위치 */}
+					{/* TODO : 알림 전송 유무에 따른 설정 변경 */}
+					<Switch
+						className={"ml-auto"}
+						onClick={() => {
+							setNotice(!notice);
+						}}
+					/>
+				</div>
 				{/* 개인 정보 변경 */}
 				<button className={"w-full"}>
 					<div className={"flex items-center"}>
