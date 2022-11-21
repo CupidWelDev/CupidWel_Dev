@@ -20,17 +20,20 @@ public class AlertService {
 
     @Autowired
     private ScholarshipService scholarshipService;
-    
+
     public List<AlertDO> getAlertList(String userId) {
+
+        /* 알림이 비어있을 때 사용자가 없는 경우 */
+        // if (userService.isUserExisting(userId) == 0) {}
         return alertMapper.getAlertList(userId);
     }
 
-    public ResultDO addAlert(String userId, String scholarshipId) {
+    public ResultDO addAlert(AlertDO alertDO) {
         ResultDO result = new ResultDO();
 
         /* 동일한 알림이 이미 있는 경우 */
-        if (alertMapper.isAlert(userId, scholarshipId) > 0) {
-            result.setResultCode(404);
+        if (alertMapper.isAlert(alertDO) > 0) {
+            result.setResultCode(409);
             result.setErrorMsg("ALERT ALREADY EXISTED");
             result.setResultMsg("");
 
@@ -38,7 +41,7 @@ public class AlertService {
         }
 
         /* 사용자가 없는 경우 */
-        if (userService.isUserExisting(userId) == 0) {
+        if (userService.isUserExisting(alertDO.getEmail()) == 0) {
             result.setResultCode(404);
             result.setErrorMsg("USER NOT FOUND");
             result.setResultMsg("");
@@ -46,29 +49,42 @@ public class AlertService {
             return result;
         }
 
-        /* 해당 장학금이 없는 경우 */
-        if (scholarshipService.isScholarshipExisting(scholarshipId) == 0) {
-            result.setResultCode(404);
-            result.setErrorMsg("SCHOLARSHIP NOT FOUND");
-            result.setResultMsg("");
+        /* 장학금 알림일 경우 */
+        if ((alertDO.getScholarshipId() != null) && (alertDO.getNoticeId() == 0)) {
 
-            return result;
+            /* 해당 장학금이 없는 경우 */
+            if (scholarshipService.isScholarshipExisting(alertDO.getScholarshipId()) == 0) {
+                result.setResultCode(404);
+                result.setErrorMsg("SCHOLARSHIP NOT FOUND");
+                result.setResultMsg("");
+
+                return result;
+            }
         }
 
-        alertMapper.addAlert(userId, scholarshipId);
+        /* 시스템 알림일 경우 */
+        if ((alertDO.getScholarshipId() == null) && (alertDO.getNoticeId() != 0)) {
 
-        result.setResultCode(200);
+            /*
+             * 해당 Notice가 없는 경우
+             * 추후 Notice Service 개발되면 추가 예정
+             */
+        }
+
+        alertMapper.addAlert(alertDO);
+
+        result.setResultCode(201);
         result.setErrorMsg("");
         result.setResultMsg("ADDED");
 
         return result;
     }
 
-    public ResultDO deleteAlert(String userId, String scholarshipId) {
+    public ResultDO deleteAlert(AlertDO alertDO) {
         ResultDO result = new ResultDO();
 
         /* 해당 알림이 없는 경우 */
-        if (alertMapper.isAlert(userId, scholarshipId) == 0) {
+        if (alertMapper.isAlert(alertDO) == 0) {
             result.setResultCode(404);
             result.setErrorMsg("ALERT NOT FOUND");
             result.setResultMsg("");
@@ -77,7 +93,7 @@ public class AlertService {
         }
 
         /* 사용자가 없는 경우 */
-        if (userService.isUserExisting(userId) == 0) {
+        if (userService.isUserExisting(alertDO.getEmail()) == 0) {
             result.setResultCode(404);
             result.setErrorMsg("USER NOT FOUND");
             result.setResultMsg("");
@@ -85,7 +101,7 @@ public class AlertService {
             return result;
         }
 
-        alertMapper.deleteAlert(userId, scholarshipId);
+        alertMapper.deleteAlert(alertDO);
 
         result.setResultCode(200);
         result.setErrorMsg("");
@@ -94,11 +110,11 @@ public class AlertService {
         return result;
     }
 
-    public ResultDO checkAlert(String userId, String scholarshipId) {
+    public ResultDO checkAlert(AlertDO alertDO) {
         ResultDO result = new ResultDO();
 
         /* 해당 알림이 없는 경우 */
-        if (alertMapper.isAlert(userId, scholarshipId) == 0) {
+        if (alertMapper.isAlert(alertDO) == 0) {
             result.setResultCode(404);
             result.setErrorMsg("ALERT NOT FOUND");
             result.setResultMsg("");
@@ -107,7 +123,7 @@ public class AlertService {
         }
 
         /* 사용자가 없는 경우 */
-        if (userService.isUserExisting(userId) == 0) {
+        if (userService.isUserExisting(alertDO.getEmail()) == 0) {
             result.setResultCode(404);
             result.setErrorMsg("USER NOT FOUND");
             result.setResultMsg("");
@@ -116,14 +132,19 @@ public class AlertService {
         }
 
         /* 해당 장학금이 없는 경우 */
-        if (scholarshipService.isScholarshipExisting(scholarshipId) == 0) {
+        if (scholarshipService.isScholarshipExisting(alertDO.getScholarshipId()) == 0) {
             result.setResultCode(404);
             result.setErrorMsg("SCHOLARSHIP NOT FOUND");
             result.setResultMsg("");
 
             return result;
         }
-        alertMapper.checkAlert(userId, scholarshipId);
+
+        /* 해당 Notice가 없는 경우
+         * Notice Service 개발 후
+         * 추가 예정
+        */
+        alertMapper.checkAlert(alertDO);
 
         result.setResultCode(200);
         result.setErrorMsg("");
@@ -131,5 +152,5 @@ public class AlertService {
 
         return result;
     }
-    
+
 }

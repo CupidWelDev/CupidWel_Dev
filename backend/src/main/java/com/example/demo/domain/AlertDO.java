@@ -7,7 +7,8 @@ import lombok.Data;
 @Data
 public class AlertDO {
     private String email;
-    private int notice_id;
+    private String scholarshipId;
+    private int noticeId;
     private Date sent_time;
     private boolean is_sent;
     private boolean is_checked;
