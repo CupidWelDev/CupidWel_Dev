@@ -37,7 +37,7 @@ const IMMUTABLE_CACHE = [
 ];
 
 // 자주 바뀌는 리소스
-const MUTABLE_CACHE = ["/"];
+const MUTABLE_CACHE = ["/", "/guide", "/scholarship", "/scrap", "/userinfo"];
 
 const CACHE_LIST = IMMUTABLE_CACHE.concat(MUTABLE_CACHE);
 

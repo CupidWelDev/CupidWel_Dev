@@ -16,6 +16,9 @@ export default class MyDocument extends Document {
           <meta name="description" content="Description" />
           <meta name="keywords" content="Keywords" />
           <meta name="theme-color" content="#FC5230" />
+          {/*iOS/iPadOS지원*/}
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-title" content="CupidWel" />
 
           <link rel="manifest" href="/manifest.json" />
 
