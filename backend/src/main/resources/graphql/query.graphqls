@@ -50,6 +50,12 @@ type Alert {
     isChecked: Boolean
 }
 
+input AlertInput {
+    email: String!
+    scholarshipId: String
+    noticeId: Int
+}
+
 input FilterInput {
     school: String
     department: String
@@ -158,15 +164,12 @@ type Mutation {
     ): Result
 
     addAlert(
-        userId: String!
-        scholarshipId: String!
+        alertInput: AlertInput
     ): Result
     deleteAlert(
-        userId: String!
-        scholarshipId: String!
+        alertInput: AlertInput
     ): Result
     checkAlert(
-        userId: String!
-        scholarshipId: String!
+        alertInput: AlertInput
     ): Result
 }
