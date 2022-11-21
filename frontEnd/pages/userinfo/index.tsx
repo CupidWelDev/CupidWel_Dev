@@ -66,7 +66,7 @@ const UserInfo: NextPage = () => {
       <div className="border-2 border-gray-100 -ml-4 -mr-4 mb-4" />
       {list.map((li, idx) => (
         <div key={idx} className="flex items-center gap-2 h-[50px]">
-          <Image src={li.svg} width="30px" height="30px" />
+          <Image src={li.svg} width="30px" height="30px" alt="내 정보 아이콘" />
           <Link href={li.url}>
             <a>
               <p>{li.title}</p>
