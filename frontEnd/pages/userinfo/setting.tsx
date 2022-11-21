@@ -52,7 +52,7 @@ const Setting: NextPage = () => {
 				<button className={"w-full"}>
 					<div className={"flex items-center"}>
 						<Temp />
-						<p className={"mx-5 text-xl"}>마케팅 알림 수신</p>
+						<p className={"mx-5 text-xl"}>회원 탈퇴</p>
 					</div>
 				</button>
 			</section>
