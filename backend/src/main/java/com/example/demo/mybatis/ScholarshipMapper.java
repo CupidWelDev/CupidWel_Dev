@@ -14,6 +14,8 @@ public interface ScholarshipMapper {
 
     public Scholarship getScholarshipDetail(@Param(value = "scholarshipId") String scholarshipId);
 
+    public void increaseShowNum(@Param(value = "scholarshipId") String scholarshipId);
+
     public List<Scholarship> scholarshipFilter(@Param(value = "filterInput") FilterDO filterDO);
     
     public List<Scholarship> searchScholarships(@Param(value = "searchWord") String searchWord);

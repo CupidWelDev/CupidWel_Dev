@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS public.scholarship
     documentaion_detail text COLLATE pg_catalog."default",
     created_dt timestamp without time zone DEFAULT now(),
     modified_dt timestamp without time zone DEFAULT now(),
-    like_num bigint DEFAULT 0,
+    show_num bigint DEFAULT 0,
     scrap_num bigint DEFAULT 0,
     CONSTRAINT scholarship_pkey PRIMARY KEY (id)
 );
