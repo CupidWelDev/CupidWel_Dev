@@ -25,16 +25,18 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("/service-worker.js")
-        .then((registration) => {
+        .then((reg) => {
+          console.log("sw반환값은? ", reg);
           // 업데이트 발견
-          registration.addEventListener("updatefound", () => {
+
+          reg.addEventListener("updatefound", () => {
             // 설치 중인 새로운 서비스 워커
-            const newServiceWorker = registration.installing;
+            const newServiceWorker = reg.installing;
             console.log("업데이트 찾음");
 
             newServiceWorker?.addEventListener("statechange", (event) => {
               // @ts-ignore
-              const state = event?.target?.state;
+              const state = event.target.state;
               console.log("state: " + state);
               if (state === "installed") {
                 console.log("sw_installed");
@@ -43,7 +45,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               }
             });
           });
-        });
+        })
+        .catch((err) => console.log("err: ", err));
     }
   }, []);
 

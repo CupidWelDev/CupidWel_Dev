@@ -37,11 +37,11 @@ const IMMUTABLE_CACHE = [
 ];
 
 // 자주 바뀌는 리소스
-const MUTABLE_CACHE = ["/guide", "/scholarship", "/scrap", "/userinfo"];
+const MUTABLE_CACHE = ["/", "/guide", "/scholarship", "/scrap", "/userinfo"];
 
 const CACHE_LIST = IMMUTABLE_CACHE.concat(MUTABLE_CACHE);
 
-const DYNAMIC_PATTERN = /(\.eot$|\.ttf$|\.woff$|^\/icons)/;
+// const DYNAMIC_PATTERN = /(\.eot$|\.ttf$|\.woff$|^\/icons)/;
 
 self.addEventListener("install", (event) => {
   console.log("Service Worker - install");
