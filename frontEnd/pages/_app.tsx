@@ -23,24 +23,27 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     openDB();
     //  PWA SW connect
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/service-worker.js").then((reg) => {
-        console.log("SW registered: ", reg);
-        // 업데이트 발견 시
-        reg.addEventListener("updatefound", () => {
-          const newWorker = reg.installing;
-          console.log("업데이트 찾음");
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then((registration) => {
+          // 업데이트 발견
+          registration.addEventListener("updatefound", () => {
+            // 설치 중인 새로운 서비스 워커
+            const newServiceWorker = registration.installing;
+            console.log("업데이트 찾음");
 
-          // 새로운 서비스 워커
-          newWorker?.addEventListener("statechange", (event) => {
-            // @ts-ignore
-            const state = event?.target?.state;
-            console.log("state", state);
-            if (state === "installed") {
-              console.log("새로운 업데이트가 있습니다. 새로고침 해주세요.");
-            }
+            newServiceWorker?.addEventListener("statechange", (event) => {
+              // @ts-ignore
+              const state = event?.target?.state;
+              console.log("state: " + state);
+              if (state === "installed") {
+                console.log("sw_installed");
+              } else {
+                console.log(state);
+              }
+            });
           });
         });
-      });
     }
   }, []);
 

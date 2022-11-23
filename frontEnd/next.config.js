@@ -15,3 +15,6 @@ const nextConfig = {
 };
 
 module.exports = withPlugins([withPWA], nextConfig);
+
+// no next-pwa
+module.exports = nextConfig;
