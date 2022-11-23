@@ -41,11 +41,12 @@ const Home: NextPage = () => {
         <p className="text-xl font-semibold w-full ml-8"> 내 맞춤 장학금</p>
         <CategoryScholarship />
       </section>
-      <div className="w-full border-solid border-2 border-gray-200 rounded-xl mb-6"></div>
+
+      <div className="w-full border-solid border-2 border-gray-200 rounded-xl mb-6" />
 
       {/* 큐피트웰 활용법*/}
       <section className="w-11/12 mb-8 flex flex-col items-center">
-        <div className="flex flex-row justify-between mr-3 w-[330px]">
+        <div className="flex flex-row justify-between w-full px-2">
           <p className="text-sm font-semibold">큐피드웰 활용법</p>
           <Link href="/guide">
             <a>
