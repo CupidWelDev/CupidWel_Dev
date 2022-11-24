@@ -21,10 +21,7 @@
     </select>
 
     <select id="scholarshipFilter" resultType="com.example.demo.domain.Scholarship">
-       select * from scholarship
-        <if test='filterInput.allFalse == true'>
-            order by duration_detail asc
-        </if>
+        select * from scholarship
         <trim prefix="where" prefixOverrides="and">
             <if test='filterInput.school != null'>
                 and qualification_detail like '%${filterInput.school}%'
@@ -41,10 +38,8 @@
             <if test='filterInput.attendance != null'>
                 and (qualification_detail like '%${filterInput.attendance}%' or qualification_restriction_detail like '%${filterInput.attendance}%')
             </if>
-            <if test='filterInput.incomeSection != null'>
-                <foreach collection="filterInput.incomeSection" item="class" open="and (" separator="or" close=")">
-                    (income_stand_detail like '%${class}분위%') or (income_stand_detail like '%${class}구간%') or (income_stand_detail like '%${class}~%')
-                </foreach>
+            <if test='filterInput.incomeBracket != null'>
+                and income_bracket like '%${filterInput.incomeBracket}%'
             </if>
             <if test='filterInput.specialClass != null'>
                 <foreach collection="filterInput.specialClass" item="class" open="and (" separator="and" close=")">
@@ -54,17 +49,14 @@
             <if test='filterInput.address != null'>
                 and (id like '%${address}%' or local_residence_detail like '%${filterInput.address}%')
             </if>
-            <if test='filterInput.scholarshipNature != null'>
-                and (id like '%${scholarshipNature}%' or support_detail like '%${filterInput.scholarshipNature}%')
-            </if>
-            <if test='filterInput.doubleBenefit == true'>
-                and (support_detail like '%중복수혜 가능%' or support_detail like '%중복지원 가능%' or support_detail like '%중복수급 가능%' or support_detail like '%이중수혜 가능%')
-            </if>
-            <!-- <if test='filterInput.doubleBenefit == true'>
-                <foreach collection="filterInput.doubleBenefitKeyword" item="keyword" open="and (" separator="or" close=")">
-                    support_detail like '%keyword%' or qualification_restriction_detail like '%keyword%'
+            <if test='filterInput.scholarshipTypes != null'>
+                <foreach collection="filterInput.scholarshipTypes", item="type" open="and (" separator="and" close=")">
+                    scholarship_type like '%${type}%'
                 </foreach>
-            </if> -->
+            </if>
+            <if test='filterInput.duplicateBenefit == true'>
+                and duplicate_benefit = TRUE
+            </if>
         </trim>
    </select>
 
