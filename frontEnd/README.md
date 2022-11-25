@@ -16,3 +16,6 @@
   - graphql-codegen
     - https://codevoweb.com/nextjs-full-stack-app-with-react-query-and-graphql-codegen/
     - https://www.youtube.com/watch?v=ZZrr82beJQk&t=52s
+
+- indexedDB편하게 사용하는 라이브러리
+  - localforage : https://www.npmjs.com/package/localforage
