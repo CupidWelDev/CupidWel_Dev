@@ -15,7 +15,7 @@ import graphqlRequestClient from "@src/lib/client/graphqlReuestClient";
 
 const SearchScholarDetail: NextPage = () => {
   const router = useRouter();
-  console.log(router);
+  console.log(router.query.id);
 
   // indexedDB
 
@@ -26,9 +26,9 @@ const SearchScholarDetail: NextPage = () => {
 
   const { getScholarshipDetail: detailData } = data || {};
 
-  !isLoading && addDB(detailData, "scholarship");
-
-  console.log(detailData);
+  console.log("fetch : ", detailData);
+  // // !isLoading && addDB(detailData, "scholarship");
+  //
 
   const scrap = () => {
     alert(
@@ -58,7 +58,7 @@ const SearchScholarDetail: NextPage = () => {
       });
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  // if (isLoading) return <p>Loading...</p>;
 
   return (
     <div className="flex flex-col items-center p-4">
@@ -66,31 +66,32 @@ const SearchScholarDetail: NextPage = () => {
       {/*TODO test 후 삭제 */}
       <section className="w-11/12 mb-14">
         <div className="flex flex-col">
-          <p className="text-2xl text-center">{detailData?.product}</p>
+          <p className="text-2xl text-center">{detailData?.id}</p>
+          {/*<p className="text-2xl text-center">{detailData?.product}</p>*/}
           <div className="mt-8 border-2 border-amber-500 p-4 rounded-2xl flex flex-col">
             <p className="text-xl font-bold border-b-2 border-amber-400 mb-2 w-full text-center">
               장학지원 내용
             </p>
-            <p className="text-sm">{detailData?.supportDetail}</p>
+            {/*<p className="text-sm">{detailData?.supportDetail}</p>*/}
           </div>
           <div className="mt-8 border-2 border-amber-500 p-4 rounded-2xl flex flex-col">
             <p className="text-xl font-bold border-b-2 border-amber-400 mb-2 w-full text-center">
               선발 대상
             </p>
             <p className="font-bold">대학</p>
-            <p className="text-sm">{detailData?.univSort}</p>
+            {/*<p className="text-sm">{detailData?.univSort}</p>*/}
             <p className="font-bold">학년</p>
-            <p className="text-sm">{detailData?.gradeSort}</p>
+            {/*<p className="text-sm">{detailData?.gradeSort}</p>*/}
             <p className="font-bold">학과</p>
-            <p className="text-sm">{detailData?.majorSort}</p>
+            {/*<p className="text-sm">{detailData?.majorSort}</p>*/}
             <p className="font-bold">특정자격</p>
-            <p className="text-sm">{detailData?.qualificationDetail}</p>
+            {/*<p className="text-sm">{detailData?.qualificationDetail}</p>*/}
           </div>
           <div className="mt-8 border-2 border-amber-500 p-4 rounded-2xl flex flex-col">
             <p className="text-xl font-bold border-b-2 border-amber-400 mb-2 w-full text-center">
               선발인원
             </p>
-            <p className="text-sm"> {detailData?.selectionNumDetail}</p>
+            {/*<p className="text-sm"> {detailData?.selectionNumDetail}</p>*/}
           </div>
           <div className="mt-8 border-2 border-amber-500 p-4 rounded-2xl flex flex-col">
             <p className="text-xl font-bold border-b-2 border-amber-400 mb-2 w-full text-center">
