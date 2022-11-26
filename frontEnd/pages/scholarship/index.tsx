@@ -35,18 +35,18 @@ const Scholarship: NextPage = () => {
 
       {/* 장학금 목록 */}
       <section className="w-full flex flex-col px-5 mt-5">
-        {scholarships.map((scholarship, _) => (
-          <div key={_} className={"flex justify-center items-center"}>
-            <ScholarshipDetailHoriz
-              id={scholarship.id}
-              img={scholarship.img}
-              foundation={scholarship.foundation}
-              title={scholarship.title}
-              startPeriod={scholarship.startPeriod}
-              endPeriod={scholarship.endPeriod}
-            />
-          </div>
-        ))}
+        {/*{scholarships.map((scholarship, _) => (*/}
+        {/*  <div key={_} className={"flex justify-center items-center"}>*/}
+        {/*    <ScholarshipDetailHoriz*/}
+        {/*      id={scholarship.id}*/}
+        {/*      img={scholarship.img}*/}
+        {/*      foundation={scholarship.foundation}*/}
+        {/*      title={scholarship.title}*/}
+        {/*      startPeriod={scholarship.startPeriod}*/}
+        {/*      endPeriod={scholarship.endPeriod}*/}
+        {/*    />*/}
+        {/*  </div>*/}
+        {/*))}*/}
       </section>
     </div>
   );
