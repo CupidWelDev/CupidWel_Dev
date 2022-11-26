@@ -21,33 +21,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     //indexedDB open
     openDB();
+
     //  PWA SW connect
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("/service-worker.js")
-        .then((reg) => {
-          console.log("sw반환값은? ", reg);
-          // 업데이트 발견
-
-          reg.addEventListener("updatefound", () => {
-            // 설치 중인 새로운 서비스 워커
-            const newServiceWorker = reg.installing;
-            console.log("업데이트 찾음");
-
-            newServiceWorker?.addEventListener("statechange", (event) => {
-              // @ts-ignore
-              const state = event.target.state;
-              console.log("state: " + state);
-              if (state === "installed") {
-                console.log("sw_installed");
-              } else {
-                console.log(state);
-              }
-            });
-          });
-        })
-        .catch((err) => console.log("err: ", err));
-    }
   }, []);
 
   return (

@@ -5,7 +5,6 @@ const { withPlugins } = require("next-compose-plugins");
 const withPWA = require("next-pwa")({
   dest: "public",
   disable: true,
-  // swSrc: "public/service-worker.js",
 });
 
 const nextConfig = {
