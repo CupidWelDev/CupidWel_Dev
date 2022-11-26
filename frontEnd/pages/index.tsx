@@ -10,8 +10,6 @@ import ScholarshipDetailVer from "../components/ScholarshipDetailVer";
 import Link from "next/link";
 import LoadingButton from "@mui/lab/LoadingButton";
 
-//dummy
-import { scholarships } from "../dummyData/schoarship";
 import { CupidWelGuideData } from "../dummyData/guideData";
 import {
   GetAllScholarshipsQuery,
