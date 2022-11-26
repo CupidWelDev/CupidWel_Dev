@@ -29,3 +29,6 @@
   - next-compose-plugins
     - tailwindCSS와 material ui를 같이 쓰기 위함
   
+
+- indexedDB편하게 사용하는 라이브러리
+  - localforage : https://www.npmjs.com/package/localforage

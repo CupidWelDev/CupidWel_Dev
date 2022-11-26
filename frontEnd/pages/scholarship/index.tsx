@@ -4,8 +4,11 @@ import CategoryScholarship from "@components/CategoryScholarship";
 import { scholarships } from "../../dummyData/schoarship";
 import ScholarshipDetailHoriz from "@components/ScholarshipDetailHoriz";
 import Image from "next/image";
-
+import Darr from "public/scholarship/darr.svg";
 const Scholarship: NextPage = () => {
+  // 콘솔에다가 더미데이터 찍어보기
+  console.log(scholarships);
+
   return (
     <div className="w-full h-100vh flex flex-col items-center">
       <SEO title="탐색" />
@@ -17,12 +20,13 @@ const Scholarship: NextPage = () => {
           <button>
             <span className="text-xs flex items-center gap-1">
               인기순
-              <Image
-                src={"/scholarship/darr.svg"}
-                alt="darr"
-                width={10}
-                height={10}
-              />
+              <Darr />
+              {/*<Image*/}
+              {/*  src={"/scholarship/darr.svg"}*/}
+              {/*  alt="darr"*/}
+              {/*  width={10}*/}
+              {/*  height={10}*/}
+              {/*/>*/}
             </span>
           </button>
         </div>

@@ -5,7 +5,7 @@ const { withPlugins } = require("next-compose-plugins");
 const withPWA = require("next-pwa")({
   dest: "public",
   disable: true,
-  swSrc: "public/service-worker.js",
+  // swSrc: "public/service-worker.js",
 });
 
 const nextConfig = {
@@ -15,6 +15,3 @@ const nextConfig = {
 };
 
 module.exports = withPlugins([withPWA], nextConfig);
-
-// no next-pwa
-module.exports = nextConfig;

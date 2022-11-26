@@ -8,8 +8,20 @@
         insert into scrap values (#{userId}, #{scholarshipId});
     </insert>
 
+    <insert id="increaseScrapNum">
+        update scholarship
+            set scrap_num = scrap_num + 1
+        where id = #{scholarshipId}
+    </insert>
+
     <insert id="deleteScrap">
         delete from scrap where email =  #{userId} and scholarship_id = #{scholarshipId};
+    </insert>
+
+    <insert id="decreaseScrapNum">
+        update scholarship
+            set scrap_num = scrap_num - 1
+        where id = #{scholarshipId}
     </insert>
 
     <select id="getScrapList" resultType="String">

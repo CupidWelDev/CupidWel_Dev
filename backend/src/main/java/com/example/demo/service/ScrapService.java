@@ -51,6 +51,7 @@ public class ScrapService {
         }
 
         scrapMapper.addScrap(userId, scholarshipId);
+        scrapMapper.increaseScrapNum(scholarshipId);
 
         result.setResultCode(201);
         result.setErrorMsg("");
@@ -80,6 +81,7 @@ public class ScrapService {
         }
 
         scrapMapper.deleteScrap(userId, scholarshipId);
+        scrapMapper.decreaseScrapNum(scholarshipId);
 
         result.setResultCode(200);
         result.setErrorMsg("");

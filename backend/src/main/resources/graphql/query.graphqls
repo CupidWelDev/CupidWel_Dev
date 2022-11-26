@@ -41,6 +41,15 @@ type Scholarship {
     scrapNum: String
 }
 
+type Alert {
+    email: String
+    scholarshipId: String
+    noticeId: Int
+    sentTime: String
+    isSent: Boolean
+    isChecked: Boolean
+}
+
 input FilterInput {
     school: String
     department: String
@@ -129,6 +138,10 @@ type Query {
     getUserDetail(
         userId: String!
     ): User
+
+    getAlertList(
+        userId: String!
+    ): [Alert]
 }
 
 type Mutation {
@@ -142,5 +155,18 @@ type Mutation {
     ): Result
     updateUser(
         userInput: UserInput
+    ): Result
+
+    addAlert(
+        userId: String!
+        scholarshipId: String!
+    ): Result
+    deleteAlert(
+        userId: String!
+        scholarshipId: String!
+    ): Result
+    checkAlert(
+        userId: String!
+        scholarshipId: String!
     ): Result
 }
