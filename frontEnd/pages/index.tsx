@@ -16,6 +16,7 @@ import {
   useGetAllScholarshipsQuery,
 } from "@src/generated/graphql";
 import graphqlRequestClient from "@src/lib/client/graphqlReuestClient";
+import PushNotificationLayout from "@components/PushNotificationLayout";
 
 const Home: NextPage = () => {
   const { isLoading, error, data } = useGetAllScholarshipsQuery<

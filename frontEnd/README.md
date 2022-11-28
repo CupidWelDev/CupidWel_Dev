@@ -32,3 +32,6 @@
 
 - indexedDB편하게 사용하는 라이브러리
   - localforage : https://www.npmjs.com/package/localforage
+
+- 알림 커스터마이징
+  - react-toastify : https://www.npmjs.com/package/react-toastify
