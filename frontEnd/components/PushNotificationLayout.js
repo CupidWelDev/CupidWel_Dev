@@ -10,14 +10,14 @@ function PushNotificationLayout({ children }) {
   useEffect(() => {
     setToken();
 
-    // Event listener that listens for the push notification event in the background
+    // 푸시알림 이벤트 수신기
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.addEventListener("message", (event) => {
         console.log("event for the service worker", event);
       });
     }
 
-    // Calls the getMessage() function if the token is there
+    // 토큰이 있으면 getMessage() 실행
     async function setToken() {
       try {
         const token = await firebaseCloudMessaging.init();
@@ -36,7 +36,7 @@ function PushNotificationLayout({ children }) {
     router.push(url);
   };
 
-  // Get the push notification message and triggers a toast to display it
+  // 푸시알림 메시지 수신
   function getMessage() {
     const messaging = firebase.messaging();
     messaging.onMessage((message) => {
