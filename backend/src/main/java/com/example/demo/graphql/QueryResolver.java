@@ -74,26 +74,26 @@ public class QueryResolver {
     }
 
     @MutationMapping
-    public ResultDO updateUser(@Argument(name = "userInput") UserDO userDO){
+    public ResultDO updateUser(@Argument (name = "userInput") UserDO userDO){
         return userService.updateUserDetail(userDO);
     }
     @QueryMapping
-    public List<AlertDO> getAlertList(@Argument(name = "userId") String userId) {
+    public List<AlertDO> getAlertList(@Argument (name = "userId") String userId) {
         return alertService.getAlertList(userId);
     }
 
     @MutationMapping
-    public ResultDO addAlert(@Argument (name = "userId") String userId, @Argument (name = "scholarshipId") String scholarshipId) {
-        return alertService.addAlert(userId, scholarshipId);
+    public ResultDO addAlert(@Argument (name = "alertInput") AlertDO alertDO) {
+        return alertService.addAlert(alertDO);
     }
 
     @MutationMapping
-    public ResultDO deleteAlert(@Argument (name = "userId") String userId, @Argument (name = "scholarshipId") String scholarshipId) {
-        return alertService.deleteAlert(userId, scholarshipId);
+    public ResultDO deleteAlert(@Argument (name = "alertInput") AlertDO alertDO) {
+        return alertService.deleteAlert(alertDO);
     }
 
     @MutationMapping
-    public ResultDO checkAlert(@Argument (name = "userId") String userId, @Argument (name = "scholarshipId") String scholarshipId) {
-        return alertService.checkAlert(userId, scholarshipId);
+    public ResultDO checkAlert(@Argument (name = "alertInput") AlertDO alertDO) {
+        return alertService.checkAlert(alertDO);
     }
 }

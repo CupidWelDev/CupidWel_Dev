@@ -23,15 +23,38 @@ public class ScholarshipService {
         return scholarshipMapper.getScholarshipDetail(scholarshipId);
     }
 
-   public List<Scholarship> scholarshipFilter(FilterDO filterDO) {
-       return scholarshipMapper.scholarshipFilter(filterDO);
-   }
-    // search function
+    public List<Scholarship> scholarshipFilter(FilterDO filterDO) {
+        if (isAllNull(filterDO)) {
+            return scholarshipMapper.getAllScholarships();
+        }
+        return scholarshipMapper.scholarshipFilter(filterDO);
+    }
+    
     public List<Scholarship> searchScholarships(String searchWord) {
         return scholarshipMapper.searchScholarships(searchWord);
     }
 
     public int isScholarshipExisting(String scholarshipId){
         return scholarshipMapper.isScholarshipExisting(scholarshipId);
+    }
+
+    public boolean isAllNull(FilterDO filterDO) {
+        if (
+            filterDO.getSchool() == null &&
+            filterDO.getDepartment() == null &&
+            filterDO.getMajor() == null &&
+            filterDO.getGrade() == null &&
+            filterDO.getAttendance() == null &&
+            filterDO.getIncomeBracket() == null &&
+            filterDO.getSpecialClass() == null &&
+            filterDO.getAddress() == null &&
+            filterDO.getScholarshipTypes() == null &&
+            filterDO.getDuplicateBenefit() == null
+            ) {
+                return true;
+        }
+        else {
+            return false;
+        }
     }
 }

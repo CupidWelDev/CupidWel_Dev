@@ -1,10 +1,63 @@
 import {NextPage} from "next";
+import SEO from "@components/SEO";
+import Temp from "public/userInfo/temp.svg";
+import React from "react";
+import {Switch} from "@mui/material";
 
-const Setting :NextPage = () => {
+const Setting: NextPage = () => {
+	const [notice, setNotice] = React.useState(false);
 
-    return (
-        <div>설정창</div>
-    )
+	return (
+		<div>
+			<SEO title={"설정"} />
+
+			{/* 타이틀 */}
+			<section>
+				<p className="text-2xl text-center font-bold px-3 py-5">
+					설정
+				</p>
+			</section>
+
+			{/* TODO : SVG 이미지 파일 수정 */}
+			{/* 메뉴 */}
+			<section className={"px-5 space-y-5"}>
+				{/* 마케팅 알림 수신 */}
+				<div className={"flex items-center"}>
+					<Temp />
+					<p className={"mx-5 text-xl"}>마케팅 알림 수신</p>
+					{/*	ON/OFF 스위치 */}
+					{/* TODO : 알림 전송 유무에 따른 설정 변경 */}
+					<Switch
+						className={"ml-auto"}
+						onClick={() => {
+							setNotice(!notice);
+						}}
+					/>
+				</div>
+				{/* 개인 정보 변경 */}
+				<button className={"w-full"}>
+					<div className={"flex items-center"}>
+						<Temp />
+						<p className={"mx-5 text-xl"}>개인 정보 변경</p>
+					</div>
+				</button>
+				{/* 로그아웃 */}
+				<button className={"w-full"}>
+					<div className={"flex items-center"}>
+						<Temp />
+						<p className={"mx-5 text-xl"}>로그아웃</p>
+					</div>
+				</button>
+				{/* 회원 탈퇴 */}
+				<button className={"w-full"}>
+					<div className={"flex items-center"}>
+						<Temp />
+						<p className={"mx-5 text-xl"}>회원 탈퇴</p>
+					</div>
+				</button>
+			</section>
+		</div>
+	)
 }
 
 export default Setting

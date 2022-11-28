@@ -39,6 +39,11 @@ type Scholarship {
     modifiedDt: String
     likeNum: String
     scrapNum: String
+    grade: String
+    incomeBracket: String
+    scholarshipType: String
+    duplicateBenefit: String
+
 }
 
 type Alert {
@@ -50,18 +55,23 @@ type Alert {
     isChecked: Boolean
 }
 
+input AlertInput {
+    email: String!
+    scholarshipId: String
+    noticeId: Int
+}
+
 input FilterInput {
     school: String
     department: String
     major: String
     grade: String
     attendance: String
-    incomeSection: [Int] # enumeration 타입
+    incomeBracket: String
     specialClass: [String]
     address: String
-    scholarshipNature: String
-    doubleBenefit: Boolean
-    allFalse: Boolean
+    scholarshipTypes: [String]
+    duplicateBenefit: Boolean
 }
 input UserInput {
     name: String!
@@ -158,15 +168,12 @@ type Mutation {
     ): Result
 
     addAlert(
-        userId: String!
-        scholarshipId: String!
+        alertInput: AlertInput
     ): Result
     deleteAlert(
-        userId: String!
-        scholarshipId: String!
+        alertInput: AlertInput
     ): Result
     checkAlert(
-        userId: String!
-        scholarshipId: String!
+        alertInput: AlertInput
     ): Result
 }
