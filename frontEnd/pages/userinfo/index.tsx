@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import SEO from "@components/SEO";
 import Link from "next/link";
 import { useState } from "react";
+import Carousel from "@components/Carousel";
 import Image from "next/image";
 
 const UserInfo: NextPage = () => {
