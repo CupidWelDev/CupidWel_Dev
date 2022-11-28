@@ -14,7 +14,6 @@ spring:
         path: /graphql
         cors:
             allowed-origins: http://localhost:3000/
-            #            allowed-origins: https://3181-218-235-241-103.jp.ngrok.io
             allowed-methods: GET, POST
 
 mybatis:

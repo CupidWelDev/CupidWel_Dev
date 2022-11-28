@@ -39,7 +39,7 @@ const School: NextPage = () => {
           className="w-full flex items-center"
         >
           <input
-            placeholder="내 학교 찾"
+            placeholder="내 학교 찾기"
             className="w-full bg-gray-300 rounded-md pl-2 h-8"
             {...register("search", { required: true })}
           />

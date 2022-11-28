@@ -13,15 +13,19 @@ export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
 
-function fetcher<TData, TVariables>(
+function fetcher<TData, TVariables extends { [key: string]: any }>(
   client: GraphQLClient,
   query: string,
   variables?: TVariables,
-  headers?: RequestInit["headers"]
+  requestHeaders?: RequestInit["headers"]
 ) {
   return async (): Promise<TData> =>
-    // @ts-ignore
-    client.request<TData, TVariables>(query, variables, headers);
+    client.request({
+      // @ts-ignore
+      document: query,
+      variables,
+      requestHeaders,
+    });
 }
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -30,6 +34,16 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+};
+
+export type Alert = {
+  __typename?: "Alert";
+  email?: Maybe<Scalars["String"]>;
+  isChecked?: Maybe<Scalars["Boolean"]>;
+  isSent?: Maybe<Scalars["Boolean"]>;
+  noticeId?: Maybe<Scalars["Int"]>;
+  scholarshipId?: Maybe<Scalars["String"]>;
+  sentTime?: Maybe<Scalars["String"]>;
 };
 
 export type FilterInput = {
@@ -49,12 +63,30 @@ export type FilterInput = {
 
 export type Mutation = {
   __typename?: "Mutation";
+  addAlert?: Maybe<Result>;
   addScrap?: Maybe<Result>;
+  checkAlert?: Maybe<Result>;
+  deleteAlert?: Maybe<Result>;
   deleteScrap?: Maybe<Result>;
   updateUser?: Maybe<Result>;
 };
 
+export type MutationAddAlertArgs = {
+  scholarshipId: Scalars["String"];
+  userId: Scalars["String"];
+};
+
 export type MutationAddScrapArgs = {
+  scholarshipId: Scalars["String"];
+  userId: Scalars["String"];
+};
+
+export type MutationCheckAlertArgs = {
+  scholarshipId: Scalars["String"];
+  userId: Scalars["String"];
+};
+
+export type MutationDeleteAlertArgs = {
   scholarshipId: Scalars["String"];
   userId: Scalars["String"];
 };
@@ -70,12 +102,17 @@ export type MutationUpdateUserArgs = {
 
 export type Query = {
   __typename?: "Query";
+  getAlertList?: Maybe<Array<Maybe<Alert>>>;
   getAllScholarships?: Maybe<Array<Maybe<Scholarship>>>;
   getScholarshipDetail?: Maybe<Scholarship>;
   getScrapList?: Maybe<Array<Maybe<Scalars["String"]>>>;
   getUserDetail?: Maybe<User>;
   scholarshipFilter?: Maybe<Array<Maybe<Scholarship>>>;
   searchScholarships?: Maybe<Array<Maybe<Scholarship>>>;
+};
+
+export type QueryGetAlertListArgs = {
+  userId: Scalars["String"];
 };
 
 export type QueryGetScholarshipDetailArgs = {
@@ -219,15 +256,6 @@ export type GetScholarshipDetailQuery = {
   getScholarshipDetail?: {
     __typename?: "Scholarship";
     id?: string | null;
-    institution?: string | null;
-    product?: string | null;
-    supportDetail?: string | null;
-    qualificationDetail?: string | null;
-    selectionWayDetail?: string | null;
-    selectionNumDetail?: string | null;
-    univSort?: string | null;
-    gradeSort?: string | null;
-    majorSort?: string | null;
   } | null;
 };
 
@@ -266,15 +294,6 @@ export const GetScholarshipDetailDocument = `
     query GetScholarshipDetail($scholarshipId: String!) {
   getScholarshipDetail(scholarshipId: $scholarshipId) {
     id
-    institution
-    product
-    supportDetail
-    qualificationDetail
-    selectionWayDetail
-    selectionNumDetail
-    univSort
-    gradeSort
-    majorSort
   }
 }
     `;

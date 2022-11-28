@@ -1,8 +1,5 @@
 // indexedDB 코드 작성
 
-// indexedDB 데이터베이스 열기
-import { FieldValues } from "react-hook-form";
-
 export const openDB = () => {
   const request = window.indexedDB.open("recentlyView", 1);
   request.onerror = (event) => {

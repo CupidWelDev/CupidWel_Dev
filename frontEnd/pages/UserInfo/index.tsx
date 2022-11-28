@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import SEO from "@components/SEO";
 import Link from "next/link";
 import { useState } from "react";
-import Carousel from "@components/Carousel";
 import Image from "next/image";
 
 const UserInfo: NextPage = () => {
@@ -53,7 +52,6 @@ const UserInfo: NextPage = () => {
           <p>장학금 맞춤필터</p>
           <p> {user.end}/3완료</p>
         </div>
-        {/*    TODO 캐러셸*/}
         <div className="mb-4 flex w-full justify-around">
           {/*학교 관련*/}
           <div className="w-5/12 h-[13rem] drop-shadow-lg border-2 rounded-2xl flex flex-col justify-center items-center gap-[0.3rem] m-4 ">
@@ -101,7 +99,7 @@ const UserInfo: NextPage = () => {
       <div className="border-2 border-gray-100 -ml-4 -mr-4 mb-4" />
       {list.map((li, idx) => (
         <div key={idx} className="flex items-center gap-2 h-[50px]">
-          <Image src={li.svg} width="30px" height="30px" alt="내 정보 아이콘" />
+          <Image src={li.svg} width="30px" height="30px" />
           <Link href={li.url}>
             <a>
               <p>{li.title}</p>

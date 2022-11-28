@@ -10,14 +10,13 @@ import ScholarshipDetailVer from "../components/ScholarshipDetailVer";
 import Link from "next/link";
 import LoadingButton from "@mui/lab/LoadingButton";
 
-//dummy
-import { scholarships } from "../dummyData/schoarship";
 import { CupidWelGuideData } from "../dummyData/guideData";
 import {
   GetAllScholarshipsQuery,
   useGetAllScholarshipsQuery,
 } from "@src/generated/graphql";
 import graphqlRequestClient from "@src/lib/client/graphqlReuestClient";
+import PushNotificationLayout from "@components/PushNotificationLayout";
 
 const Home: NextPage = () => {
   const { isLoading, error, data } = useGetAllScholarshipsQuery<
@@ -27,73 +26,75 @@ const Home: NextPage = () => {
   // console.log(data.getAllScholarships.slice(0, 10));
 
   return (
-    <div className="h-100vh flex flex-col items-center">
-      {/*<Header />*/}
-      <SEO title="홈" />
+    <PushNotificationLayout>
+      <div className="h-100vh flex flex-col items-center">
+        {/*<Header />*/}
+        <SEO title="홈" />
 
-      {/* 광고 화면*/}
-      <section className="w-full mb-8 flex justify-center">
-        <Advertisement />
-      </section>
+        {/* 광고 화면*/}
+        <section className="w-full mb-8 flex justify-center">
+          <Advertisement />
+        </section>
 
-      {/* 카테고리별 장학금*/}
-      <section className="w-11/12 mb-8 flex flex-col items-center">
-        <p className="text-xl font-semibold w-full ml-8"> 내 맞춤 장학금</p>
-        <CategoryScholarship />
-      </section>
+        {/* 카테고리별 장학금*/}
+        <section className="w-11/12 mb-8 flex flex-col items-center">
+          <p className="text-xl font-semibold w-full ml-8"> 내 맞춤 장학금</p>
+          <CategoryScholarship />
+        </section>
 
-      <div className="w-full border-solid border-2 border-gray-200 rounded-xl mb-6" />
+        <div className="w-full border-solid border-2 border-gray-200 rounded-xl mb-6" />
 
-      {/* 큐피트웰 활용법*/}
-      <section className="w-11/12 mb-8 flex flex-col items-center">
-        <div className="flex flex-row justify-between w-full px-2">
-          <p className="text-sm font-semibold">큐피드웰 활용법</p>
-          <Link href="/guide">
-            <a>
-              <p className="text-xs opacity-30"> 전체보기 {">"} </p>
-            </a>
-          </Link>
-        </div>
+        {/* 큐피트웰 활용법*/}
+        <section className="w-11/12 mb-8 flex flex-col items-center">
+          <div className="flex flex-row justify-between w-full px-2">
+            <p className="text-sm font-semibold">큐피드웰 활용법</p>
+            <Link href="/guide">
+              <a>
+                <p className="text-xs opacity-30"> 전체보기 {">"} </p>
+              </a>
+            </Link>
+          </div>
 
-        {/*가이드 케러셸*/}
-        <div className="w-full h-[80px] flex justify-center">
-          <Carousel
-            slides={CupidWelGuideData.map((guide, idx) => (
-              <CupidWelGuide key={idx} id={idx} img={guide.svg} />
-            ))}
-          />
-        </div>
-      </section>
+          {/*가이드 케러셸*/}
+          <div className="w-full h-[80px] flex justify-center">
+            <Carousel
+              slides={CupidWelGuideData.map((guide, idx) => (
+                <CupidWelGuide key={idx} id={idx} img={guide.svg} />
+              ))}
+            />
+          </div>
+        </section>
 
-      {/* 추천 장학금 */}
-      <section className="w-11/12 mb-8 h-[240px] flex flex-col items-center ">
-        <div className="w-full">
-          <p className="text-xl font-semibold mb-4 w-[350px]">추천 장학금</p>
-          {isLoading ? (
-            <div className="w-full h-[13rem] flex justify-center items-center">
-              <LoadingButton loading variant="outlined" color="secondary">
-                잠시만 기다려주세요
-              </LoadingButton>
-            </div>
-          ) : (
-            <div className="w-full h-[13rem] ">
-              <Carousel
-                // @ts-ignore
-                slides={data.getAllScholarships
-                  .slice(0, 10)
-                  .map((scholarship, idx) => (
-                    // @ts-ignore
-                    <ScholarshipDetailVer key={idx} {...scholarship} />
-                  ))}
-              />
-            </div>
-          )}
-        </div>
-      </section>
+        {/* 추천 장학금 */}
+        <section className="w-11/12 mb-8 h-[240px] flex flex-col items-center ">
+          <div className="w-full">
+            <p className="text-xl font-semibold mb-4 w-[350px]">추천 장학금</p>
+            {isLoading ? (
+              <div className="w-full h-[13rem] flex justify-center items-center">
+                <LoadingButton loading variant="outlined" color="secondary">
+                  잠시만 기다려주세요
+                </LoadingButton>
+              </div>
+            ) : data ? (
+              <div className="w-full h-[13rem] ">
+                <Carousel
+                  // @ts-ignore
+                  slides={data.getAllScholarships
+                    .slice(0, 10)
+                    .map((scholarship, idx) => (
+                      // @ts-ignore
+                      <ScholarshipDetailVer key={idx} {...scholarship} />
+                    ))}
+                />
+              </div>
+            ) : null}
+          </div>
+        </section>
 
-      {/* footer */}
-      <Footer />
-    </div>
+        {/* footer */}
+        <Footer />
+      </div>
+    </PushNotificationLayout>
   );
 };
 

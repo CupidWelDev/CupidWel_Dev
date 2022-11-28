@@ -1,7 +1,10 @@
 import NavBar from "@components/NavBar";
 import Header from "@components/Header";
+import PushNotificationLayout from "@components/PushNotificationLayout";
+
 export default function Layout({ children }: any): JSX.Element {
   return (
+    // <PushNotificationLayout>
     <div className="flex justify-center">
       <div className="w-full sm:w-[400px] min-h-screen bg-white">
         <Header />
@@ -9,5 +12,6 @@ export default function Layout({ children }: any): JSX.Element {
         <NavBar />
       </div>
     </div>
+    // </PushNotificationLayout>
   );
 }
