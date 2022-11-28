@@ -30,7 +30,7 @@
                 and major_sort like '%${filterInput.department}%'
             </if>
             <if test='filterInput.major != null'>
-                and (major_sort like '%${filterInput.major}%' or qulification_detail like '%${filterInput.major}%')
+                and (major_sort like '%${filterInput.major}%' or qualification_detail like '%${filterInput.major}%')
             </if>
             <if test='filterInput.grade != null'>
                 and grade_stand_detail like '%${filterInput.grade}%'
@@ -50,7 +50,7 @@
                 and (id like '%${address}%' or local_residence_detail like '%${filterInput.address}%')
             </if>
             <if test='filterInput.scholarshipTypes != null'>
-                <foreach collection="filterInput.scholarshipTypes", item="type" open="and (" separator="and" close=")">
+                <foreach collection="filterInput.scholarshipTypes" item="type" open="and (" separator="and" close=")">
                     scholarship_type like '%${type}%'
                 </foreach>
             </if>
