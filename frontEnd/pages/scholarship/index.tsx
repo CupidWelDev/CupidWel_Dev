@@ -7,7 +7,7 @@ import Image from "next/image";
 import Darr from "public/scholarship/darr.svg";
 const Scholarship: NextPage = () => {
   // 콘솔에다가 더미데이터 찍어보기
-  console.log(scholarships);
+  // console.log(scholarships);
 
   return (
     <div className="w-full h-100vh flex flex-col items-center">
@@ -21,12 +21,6 @@ const Scholarship: NextPage = () => {
             <span className="text-xs flex items-center gap-1">
               인기순
               <Darr />
-              {/*<Image*/}
-              {/*  src={"/scholarship/darr.svg"}*/}
-              {/*  alt="darr"*/}
-              {/*  width={10}*/}
-              {/*  height={10}*/}
-              {/*/>*/}
             </span>
           </button>
         </div>

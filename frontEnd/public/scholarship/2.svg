@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+    <g id="그룹_57767" data-name="그룹 57767" transform="translate(-131 -702.027)">
+        <g id="그룹_57766" data-name="그룹 57766" transform="translate(139 711.846)">
+            <g id="타원_1588" data-name="타원 1588" transform="translate(0 0.154)" fill="none" stroke="#fb5230" stroke-width="1.2">
+                <circle cx="7" cy="7" r="7" stroke="none"/>
+                <circle cx="7" cy="7" r="6.4" fill="none"/>
+            </g>
+        </g>
+        <g id="그룹_57768" data-name="그룹 57768" transform="translate(142.05 714.896)">
+            <g id="타원_1588-2" data-name="타원 1588" transform="translate(-0.05 0.104)" fill="none" stroke="#fb5230" stroke-width="1.2">
+                <circle cx="4" cy="4" r="4" stroke="none"/>
+                <circle cx="4" cy="4" r="3.4" fill="none"/>
+            </g>
+        </g>
+        <circle id="타원_1595" data-name="타원 1595" cx="1" cy="1" r="1" transform="translate(145 718)" fill="#fb5230"/>
+        <path id="패스_24330" data-name="패스 24330" d="M0,6.264,5.49,0" transform="translate(146.104 712.64)" fill="none" stroke="#fb5230" stroke-linecap="round" stroke-width="1"/>
+        <g id="그룹_57769" data-name="그룹 57769" transform="translate(148.638 708.054)">
+            <path id="다각형_1" data-name="다각형 1" d="M1.075.894a.5.5,0,0,1,.894,0l.963,1.926a.5.5,0,0,1,0,.447L1.969,5.194a.5.5,0,0,1-.894,0L.112,3.268a.5.5,0,0,1,0-.447Z" transform="translate(1.576 0) rotate(15)" fill="#fb5230"/>
+            <path id="다각형_2" data-name="다각형 2" d="M1.075.894a.5.5,0,0,1,.894,0l.963,1.926a.5.5,0,0,1,0,.447L1.969,5.194a.5.5,0,0,1-.894,0L.112,3.268a.5.5,0,0,1,0-.447Z" transform="translate(2.057 7.703) rotate(-113)" fill="#fb5230"/>
+        </g>
+    </g>
+</svg>
