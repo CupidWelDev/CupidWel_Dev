@@ -127,7 +127,17 @@ type Result{
     resultMsg: String
 }
 
+type CupidToken{
+    accessToken: String
+    refreshToken: String
+    grantType: String 
+}
+
 type Query {
+    signInUp(
+        kakaoAccessToken: String!
+    ): CupidToken
+
     getAllScholarships: [Scholarship]
 
     getScholarshipDetail(
