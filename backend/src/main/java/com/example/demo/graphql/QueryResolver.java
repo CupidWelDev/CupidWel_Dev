@@ -7,6 +7,7 @@ import com.example.demo.service.ScholarshipService;
 import com.example.demo.service.ScrapService;
 import com.example.demo.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -15,12 +16,14 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import com.example.demo.domain.AlertDO;
+import com.example.demo.domain.CupidToken;
 import com.example.demo.domain.FilterDO;
 import com.example.demo.domain.ResultDO;
 import com.example.demo.domain.Scholarship;
 import com.example.demo.domain.UserDO;
 
 @Controller
+@Slf4j
 public class QueryResolver {
     @Autowired
     private ScholarshipService scholarshipService;
@@ -95,5 +98,17 @@ public class QueryResolver {
     @MutationMapping
     public ResultDO checkAlert(@Argument (name = "alertInput") AlertDO alertDO) {
         return alertService.checkAlert(alertDO);
+    }
+
+    @QueryMapping
+    public CupidToken signInUp(@Argument (name = "kakaoAccessToken") String kakaoAccessToken){
+        log.info(kakaoAccessToken);
+
+        CupidToken a = new CupidToken();
+        a.setAccessToken("test_access_token");
+        a.setGrantType("Bearer");
+        a.setRefreshToken("test_refresh_token");
+        
+        return a;
     }
 }
