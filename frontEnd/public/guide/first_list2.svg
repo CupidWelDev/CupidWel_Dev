@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="94" height="94" viewBox="0 0 94 94">
+    <defs>
+        <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ff2b65"/>
+            <stop offset="1" stop-color="#fc5230"/>
+        </linearGradient>
+        <filter id="타원_1602" x="0" y="0" width="94" height="94" filterUnits="userSpaceOnUse">
+            <feOffset dy="3" input="SourceAlpha"/>
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feFlood flood-opacity="0.161"/>
+            <feComposite operator="in" in2="blur"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#타원_1602)">
+        <circle id="타원_1602-2" data-name="타원 1602" cx="38" cy="38" r="38" transform="translate(9 6)" fill="url(#linear-gradient)"/>
+    </g>
+    <text id="둘" transform="translate(47 56)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-width="1" font-size="31" font-family="AppleSDGothicNeo-Regular, Apple SD Gothic Neo"><tspan x="-13.408" y="0">둘</tspan></text>
+</svg>

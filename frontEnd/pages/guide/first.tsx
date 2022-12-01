@@ -11,7 +11,7 @@ export default function FirstGuideDetail() {
   return (
     <div className="flex flex-col items-center w-full">
       {/*  이미지*/}
-      <div className="-mt-4 w-[100%] pb-[100%] bg-[url('/guide/first_img.svg')] bg-cover bg-auto bg-no-repeat" />
+      <div className="-mt-4 w-[100%] pb-[100%] bg-[url('/guide/first_img.svg')] bg-cover bg-no-repeat" />
 
       {/*    Text*/}
       <div className="flex flex-col ">

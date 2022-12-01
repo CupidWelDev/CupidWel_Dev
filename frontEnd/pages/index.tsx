@@ -59,7 +59,7 @@ const Home: NextPage = () => {
         <div className="w-full h-[80px] flex justify-center">
           <Carousel
             slides={CupidWelGuideData.map((guide, idx) => (
-              <CupidWelGuide key={idx} id={idx} img={guide.svg} />
+              <CupidWelGuide key={idx} id={idx + 1} img={guide.svg} />
             ))}
           />
         </div>

@@ -90,7 +90,7 @@ const SearchScholarDetail: NextPage = () => {
         </p>
 
         {/* 배경이미지*/}
-        <ScholarshipBgImg text={dummyData?.product} />
+        <ScholarshipBgImg text={dummyData?.product} type={"big"} />
 
         {/* 세부내용 */}
         <div className="w-11/12 flex flex-col justify-center z-10">
