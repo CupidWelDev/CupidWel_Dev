@@ -48,18 +48,24 @@ CREATE TABLE IF NOT EXISTS public.scholarship
     support_detail text COLLATE pg_catalog."default",
     qualification_detail text COLLATE pg_catalog."default",
     local_residence_detail text COLLATE pg_catalog."default",
-    duration_detail text COLLATE pg_catalog."default",
     selection_way_detail text COLLATE pg_catalog."default",
     selection_num_detail text COLLATE pg_catalog."default",
     qualification_restriction_detail text COLLATE pg_catalog."default",
     recommendation_detail text COLLATE pg_catalog."default",
     documentaion_detail text COLLATE pg_catalog."default",
-    created_dt timestamp without time zone DEFAULT now(),
-    modified_dt timestamp without time zone DEFAULT now(),
-    show_num bigint DEFAULT 0,
-    scrap_num bigint DEFAULT 0,
+    created_dt timestamp without time zone,
+    modified_dt timestamp without time zone,
+    show_num bigint,
+    scrap_num bigint,
+    start_date date,
+    end_date date,
+    grade_stand character varying COLLATE pg_catalog."default",
+    scholarship_type character varying COLLATE pg_catalog."default",
+    income_stand character varying COLLATE pg_catalog."default",
+    allow_multiple boolean,
     CONSTRAINT scholarship_pkey PRIMARY KEY (id)
-);
+)
+
 
 
 CREATE TABLE IF NOT EXISTS public.user_scholar_relation
