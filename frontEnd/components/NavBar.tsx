@@ -35,7 +35,7 @@ export default function NavBar(): JSX.Element {
     <>
       {isNotNavBar.includes(router.pathname) ? null : (
         <div className="fixed -bottom-4 w-full sm:w-[400px] h-20 bg-white border-t-[1px]">
-          <nav className="flex gap-4 justify-around  items-center text-purple-200 shadow">
+          <nav className="flex gap-4 justify-around  items-center text-purple-200   ">
             {tabs.map((tab, idx) => (
               <NavLink
                 key={idx}
