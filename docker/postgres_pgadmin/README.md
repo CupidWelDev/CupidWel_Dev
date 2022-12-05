@@ -54,3 +54,19 @@ $ docker ps
     - postgre
       - id: cupidwel
       - pw: cupidwel123!
+
+## 2022년 12월 02일 금요일 수정사항
+- DB 테이블 스키마 및 샘플 데이터가 변경되었기 때문에 아래 명령어 실행 이후 docker로 DB container를 띄우길 권장함
+
+
+```
+$ docker-compose down
+
+$ docker container rm cupidwel_postgres
+
+$ docker image rm postgres
+
+$ docker-compose build --no-cache
+
+% docker-compose up
+```
