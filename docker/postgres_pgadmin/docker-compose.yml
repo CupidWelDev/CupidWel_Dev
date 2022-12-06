@@ -1,36 +1,35 @@
 version: "3"
 services:
-  postgre:
-    container_name: cupidwel_postgres
-    build:
-      context: .
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: "cupidwel"
-      POSTGRES_PASSWORD: "cupidwel123!"
-      TZ : 'Asia/Seoul'
-    # restart: always
-    volumes:
-      - cupidwel-postgres-volume:/var/lib/postgresql/data
-  
-  pgadmin:
-    container_name: cupidwel_pgadmin
-    image: dpage/pgadmin4
-    ports:
-      - "8090:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "cupidwel@gmail.com" 
-      PGADMIN_DEFAULT_PASSWORD : "cupidwel123!"
-    # restart: always
-    # networks:
-    #  - "cupidwel-bridge"
+    postgre:
+        container_name: cupidwel_postgres
+        build:
+            context: .
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: "cupidwel"
+            POSTGRES_PASSWORD: "cupidwel123!"
+            TZ: "Asia/Seoul"
+        # restart: always
+        volumes:
+            - cupidwel-postgres-volume:/var/lib/postgresql/data
 
+    pgadmin:
+        container_name: cupidwel_pgadmin
+        image: dpage/pgadmin4
+        ports:
+            - "8090:80"
+        environment:
+            PGADMIN_DEFAULT_EMAIL: "cupidwel@gmail.com"
+            PGADMIN_DEFAULT_PASSWORD: "cupidwel123!"
+        # restart: always
+        # networks:
+        #  - "cupidwel-bridge"
 
 volumes:
-  cupidwel-postgres-volume:
+    cupidwel-postgres-volume:
 
 networks:
-  default:
-    external:
-      name: cupidwel-bridge
+    default:
+        external:
+            name: cupidwel-bridge
