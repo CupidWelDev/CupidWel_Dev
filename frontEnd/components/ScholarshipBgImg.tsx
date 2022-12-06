@@ -1,7 +1,7 @@
 import { cls, cutText } from "@libs/utils";
 
 interface IBgImg {
-  text: string;
+  text?: string | null;
   type: string;
 }
 
@@ -19,7 +19,7 @@ export default function ScholarshipBgImg({ text, type }: IBgImg): JSX.Element {
           " text-center font-medium w-9/12 absolute top-[60%] text-center"
         )}
       >
-        {cutText(text, 10)}
+        {text && cutText(text, 10)}
       </p>
     </div>
   );

@@ -3,7 +3,7 @@ import SEO from "@components/SEO";
 import { useEffect, useState } from "react";
 import { NextRouter, useRouter } from "next/router";
 //TODO : API 연동 후 삭제
-import { dummyData, scholarships } from "../../dummyData/schoarship";
+import { detailData, scholarships } from "../../dummyData/schoarship";
 import { IScholarData } from "@ITypes/schoalship";
 import RecentlyVIew from "@components/RecentlyVIew";
 import { addDB } from "@libs/IndexedDB";
@@ -36,13 +36,11 @@ const SearchScholarDetail: NextPage = () => {
 
   const { getScholarshipDetail: detailData } = data || {};
 
-  // !isLoading && addDB(detailData, "scholarship");
-
-  // console.log(detailData);
+  !isLoading && addDB(detailData, "scholarship");
 
   const scrap = () => {
     alert(
-      `'${dummyData.product}'이 스크랩 되었습니다. 장학금 번호 : ${router.query.id}`
+      `'${detailData?.product}'이 스크랩 되었습니다. 장학금 번호 : ${router.query.id}`
     );
   };
 
@@ -68,14 +66,14 @@ const SearchScholarDetail: NextPage = () => {
       });
   };
 
-  // if (isLoading)
-  //   return (
-  //     <div className="w-full h-[13rem] flex justify-center items-center">
-  //       <LoadingButton loading variant="outlined" color="secondary">
-  //         잠시만 기다려주세요
-  //       </LoadingButton>
-  //     </div>
-  //   );
+  if (isLoading)
+    return (
+      <div className="w-full h-[13rem] flex justify-center items-center">
+        <LoadingButton loading variant="outlined" color="secondary">
+          잠시만 기다려주세요
+        </LoadingButton>
+      </div>
+    );
 
   return (
     <div className="flex flex-col relative">
@@ -83,14 +81,14 @@ const SearchScholarDetail: NextPage = () => {
       <section className="w-full flex flex-col items-center relative">
         {/*장학금 이름 */}
         <p className="text-xl text-center font-bold mt-6">
-          {dummyData?.product}
+          {detailData?.product}
         </p>
         <p className="text-sm text-center font-[400] mb-2">
-          {dummyData?.institution}
+          {detailData?.institution}
         </p>
 
         {/* 배경이미지*/}
-        <ScholarshipBgImg text={dummyData?.product} type={"big"} />
+        <ScholarshipBgImg text={detailData?.product} type={"big"} />
 
         {/* 세부내용 */}
         <div className="w-11/12 flex flex-col justify-center z-10">
@@ -102,7 +100,7 @@ const SearchScholarDetail: NextPage = () => {
                 장학지원 내용
               </p>
             </div>
-            <p className="text-sm">{dummyData?.supportDetail}</p>
+            <p className="text-sm">{detailData?.supportDetail}</p>
           </div>
 
           {/*선발 대상*/}
@@ -114,13 +112,13 @@ const SearchScholarDetail: NextPage = () => {
               </p>
             </div>
             <p className="font-bold">대학</p>
-            <p className="text-sm">{dummyData?.univSort}</p>
+            <p className="text-sm">{detailData?.univSort}</p>
             <p className="font-bold">학년</p>
-            <p className="text-sm">{dummyData?.gradeSort}</p>
+            <p className="text-sm">{detailData?.gradeSort}</p>
             <p className="font-bold">학과</p>
-            <p className="text-sm">{dummyData?.majorSort}</p>
+            <p className="text-sm">{detailData?.majorSort}</p>
             <p className="font-bold">특정자격</p>
-            <p className="text-sm">{dummyData?.qualificationDetail}</p>
+            <p className="text-sm">{detailData?.qualificationDetail}</p>
           </div>
           <div className="mt-8 shadow-lg  p-4 rounded-2xl flex flex-col">
             <div className="flex justify-center items-center gap-1 mb-2 pb-1 border-b-2 border-amber-400">
@@ -132,7 +130,7 @@ const SearchScholarDetail: NextPage = () => {
             <p className="text-sm text-center">
               {detailData?.selectionNumDetail
                 ? detailData?.selectionNumDetail
-                : "홈페이지 내에서 확인 필수"}{" "}
+                : "홈페이지 내에서 확인 필수"}
             </p>
           </div>
 
@@ -145,7 +143,7 @@ const SearchScholarDetail: NextPage = () => {
               </p>
             </div>
             <div className="flex justify-center gap-10">
-              {dummyData.durationDetail.split("~").join(" ~ ")}
+              {detailData?.startDate} ~ {detailData?.endDate}
             </div>
           </div>
 
@@ -158,6 +156,13 @@ const SearchScholarDetail: NextPage = () => {
               </p>
             </div>
             <p className="text-sm text-center">홈페이지 가서 확인하기</p>
+            <p className="text-sm text-center">{detailData?.supportDetail}</p>
+            <p className="text-sm text-center">
+              {detailData?.qualificationDetail}
+            </p>
+            <p className="text-sm text-center">
+              {detailData?.selectionWayDetail}
+            </p>
           </div>
         </div>
 

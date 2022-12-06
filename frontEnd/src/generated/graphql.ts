@@ -165,19 +165,18 @@ export type Result = {
  */
 export type Scholarship = {
   __typename?: 'Scholarship';
+  allowMultiple?: Maybe<Scalars['Boolean']>;
   createdDt?: Maybe<Scalars['String']>;
   documentationDetail?: Maybe<Scalars['String']>;
-  duplicateBenefit?: Maybe<Scalars['String']>;
-  durationDetail?: Maybe<Scalars['String']>;
-  grade?: Maybe<Scalars['String']>;
+  endDate?: Maybe<Scalars['String']>;
   gradeSort?: Maybe<Scalars['String']>;
+  gradeStand?: Maybe<Scalars['String']>;
   gradeStandDetail?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
-  incomeBracket?: Maybe<Scalars['String']>;
+  incomeStand?: Maybe<Scalars['String']>;
   incomeStandDetail?: Maybe<Scalars['String']>;
   institution?: Maybe<Scalars['String']>;
   institutionSort?: Maybe<Scalars['String']>;
-  likeNum?: Maybe<Scalars['String']>;
   localResidenceDetail?: Maybe<Scalars['String']>;
   majorSort?: Maybe<Scalars['String']>;
   modifiedDt?: Maybe<Scalars['String']>;
@@ -191,6 +190,8 @@ export type Scholarship = {
   scrapNum?: Maybe<Scalars['String']>;
   selectionNumDetail?: Maybe<Scalars['String']>;
   selectionWayDetail?: Maybe<Scalars['String']>;
+  showNum?: Maybe<Scalars['String']>;
+  startDate?: Maybe<Scalars['String']>;
   supportDetail?: Maybe<Scalars['String']>;
   univSort?: Maybe<Scalars['String']>;
 };
@@ -261,7 +262,7 @@ export type GetScholarshipDetailQueryVariables = Exact<{
 }>;
 
 
-export type GetScholarshipDetailQuery = { __typename?: 'Query', getScholarshipDetail?: { __typename?: 'Scholarship', id?: string | null, institution?: string | null, product?: string | null, supportDetail?: string | null, qualificationDetail?: string | null, selectionWayDetail?: string | null, selectionNumDetail?: string | null, univSort?: string | null, gradeSort?: string | null, majorSort?: string | null } | null };
+export type GetScholarshipDetailQuery = { __typename?: 'Query', getScholarshipDetail?: { __typename?: 'Scholarship', id?: string | null, institution?: string | null, product?: string | null, institutionSort?: string | null, univSort?: string | null, gradeSort?: string | null, majorSort?: string | null, supportDetail?: string | null, qualificationDetail?: string | null, localResidenceDetail?: string | null, selectionWayDetail?: string | null, selectionNumDetail?: string | null, qualificationRestrictionDetail?: string | null, recommendationDetail?: string | null, documentationDetail?: string | null, startDate?: string | null, endDate?: string | null, gradeStand?: string | null } | null };
 
 
 export const GetAllScholarshipsDocument = `
@@ -294,13 +295,24 @@ export const GetScholarshipDetailDocument = `
     id
     institution
     product
-    supportDetail
-    qualificationDetail
-    selectionWayDetail
-    selectionNumDetail
+    institutionSort
     univSort
     gradeSort
     majorSort
+    supportDetail
+    qualificationDetail
+    localResidenceDetail
+    selectionWayDetail
+    selectionNumDetail
+    qualificationRestrictionDetail
+    recommendationDetail
+    documentationDetail
+    univSort
+    gradeSort
+    majorSort
+    startDate
+    endDate
+    gradeStand
   }
 }
     `;

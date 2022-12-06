@@ -10,11 +10,11 @@ spring:
         url: jdbc:postgresql://localhost:5432/cupidwel
         username: cupidwel
         password: cupidwel123!
-    # graphql:
-    #     path: /graphql
-    #     cors:
-    #         allowed-origins: http://localhost:3000/
-    #         allowed-methods: GET, POST
+    graphql:
+        path: /graphql
+        cors:
+            allowed-origins: http://localhost:3000/
+            allowed-methods: GET, POST
 
 mybatis:
     type-aliases-package: com.example.demo.domain
