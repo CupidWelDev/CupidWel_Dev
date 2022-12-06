@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS public.scholarship
     grade_stand character varying COLLATE pg_catalog."default",
     scholarship_type character varying COLLATE pg_catalog."default",
     income_stand character varying COLLATE pg_catalog."default",
-    allow_multiple boolean,
+    allow_multiple text COLLATE pg_catalog."default",
     CONSTRAINT scholarship_pkey PRIMARY KEY (id)
 )
 
