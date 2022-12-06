@@ -62,9 +62,9 @@ $ docker ps
 ```
 $ docker-compose down
 
-$ docker container rm cupidwel_postgres
+$ docker image ls --> 이 과정에서 postgreSQL image와 관련된 image찾아 아래 명령어로 다 지우기
 
-$ docker image rm postgres
+$ docker image rm postgres_pgadmin_postgre
 
 $ docker-compose build --no-cache
 
