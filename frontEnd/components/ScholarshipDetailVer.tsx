@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cutText } from "@libs/utils";
+import ScholarshipBgImg from "@components/ScholarshipBgImg";
 
 interface IProps {
   img: string;
@@ -31,7 +32,7 @@ export default function ScholarshipDetailVer({
     <Link href={`/scholarship/${id}`}>
       <div className="w-[140px] h-full">
         {/*<Image src={img} width="140px" height="140px" />*/}
-        <div className="w-[140px] h-[140px] bg-gray-300 rounded-md" />
+        <ScholarshipBgImg text={product} type={"small"} />
         <p className="text-[12px] opacity-50">{cutText(institution, 10)}</p>
         <p className="text-[15px]">{cutText(product, 8)}</p>
         {/*<p className="text-[15px]">{`${startPeriod} ~ ${endPeriod}`}</p>*/}

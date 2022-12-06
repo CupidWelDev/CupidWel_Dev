@@ -32,7 +32,7 @@ export default function Header() {
     <>
       <div
         className={cls(
-          "fixed bg-white w-full sm:w-[400px] h-[60px] flex justify-between p-4 bg-white z-10 shadow",
+          "fixed bg-white w-full sm:w-[400px] h-[60px] flex justify-between p-4 bg-white z-50 shadow",
           isNotLine.includes(router.pathname) ? "" : "shadow"
         )}
       >

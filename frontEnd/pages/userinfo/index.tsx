@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import SEO from "@components/SEO";
 import Link from "next/link";
 import { useState } from "react";
-import Carousel from "@components/Carousel";
 import Image from "next/image";
 
 const UserInfo: NextPage = () => {
@@ -53,14 +52,48 @@ const UserInfo: NextPage = () => {
           <p>장학금 맞춤필터</p>
           <p> {user.end}/3완료</p>
         </div>
-        {/*    TODO 캐러셸*/}
-        <ul className=" border-4 rounded-2xl mb-4">
-          필터링 항목들
-          <li>학교/소속/전공/학점/재학유무</li>
-          <li>소득분위/특수계층/월소득</li>
-          <li>주소/가구원/결혼유무</li>
-          <li>부모님 직장/거주지역</li>
-        </ul>
+        <div className="mb-4 flex w-full justify-around">
+          {/*학교 관련*/}
+          <div className="w-5/12 h-[13rem] drop-shadow-lg border-2 rounded-2xl flex flex-col justify-center items-center gap-[0.3rem] m-4 ">
+            <Image
+              src={"/userInfo/filter/school.svg"}
+              alt="학교"
+              width="40"
+              height="40"
+            />
+            <p className="text-center font-semibold text-lg">학교/학과 설정</p>
+            <p className="text-center font-medium text-sm w-11/12 opacity-50">
+              재학중인 학교와 학과등을 등록해주세요.
+            </p>
+            <Link href={"/userinfo/filter/school"} className={"w-full"}>
+              <a>
+                <button className="bg-blue-500 text-white rounded-lg w-[6rem] h-[2rem] bg-[#FC5230] rounded-3xl w-[4.6rem]">
+                  등록하기
+                </button>
+              </a>
+            </Link>
+          </div>
+          {/*소득/거주 관련*/}
+          <div className="w-5/12 h-[13rem] drop-shadow-lg border-2 rounded-2xl flex flex-col justify-center items-center gap-[0.3rem] m-4 ">
+            <Image
+              src={"/userInfo/filter/income.svg"}
+              alt="학교"
+              width="40"
+              height="40"
+            />
+            <p className="text-center font-semibold text-lg ">소득/거주 설정</p>
+            <p className="text-center font-medium text-sm w-11/12 opacity-50">
+              소득분위 및 거주지를 등록해주세요.
+            </p>
+            <Link href={"/userinfo/filter/income"} className={"w-full"}>
+              <a>
+                <button className="bg-blue-500 text-white rounded-lg w-[6rem] h-[2rem] bg-[#FC5230] rounded-3xl w-[4.6rem]">
+                  등록하기
+                </button>
+              </a>
+            </Link>
+          </div>
+        </div>
       </section>
 
       <div className="border-2 border-gray-100 -ml-4 -mr-4 mb-4" />

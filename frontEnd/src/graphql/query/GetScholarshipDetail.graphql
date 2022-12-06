@@ -4,14 +4,29 @@ query GetScholarshipDetail($scholarshipId: String!){
         institution
         product
 
+        institutionSort
+        univSort
+        gradeSort
+        majorSort
+
+
         supportDetail
         qualificationDetail
+        localResidenceDetail
         selectionWayDetail
         selectionNumDetail
+        qualificationRestrictionDetail
+        recommendationDetail
+        documentationDetail
 
         univSort
         gradeSort
         majorSort
+
+        startDate
+        endDate
+
+        gradeStand
 
 
     }
