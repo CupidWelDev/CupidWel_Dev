@@ -34,5 +34,5 @@ public class Scholarship {
     private String gradeStand;
     private String scholarshipType;
     private String incomeStand;
-    private boolean allowMultiple;
+    private String allowMultiple;
 }

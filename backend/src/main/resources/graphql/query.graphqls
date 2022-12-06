@@ -43,7 +43,7 @@ type Scholarship {
     gradeStand: String
     scholarshipType: String
     incomeStand: String
-    allowMultiple: Boolean
+    allowMultiple: String
 }
 
 type Alert {
