@@ -1,4 +1,4 @@
-FROM postgres
+FROM postgres:14.6
 
 ADD ./init /docker-entrypoint-initdb.d/
 

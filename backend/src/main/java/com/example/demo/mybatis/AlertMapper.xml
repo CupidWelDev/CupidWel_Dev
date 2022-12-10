@@ -10,21 +10,22 @@
     </select>
 
     <insert id="addAlert">
-        insert into alert values (#{userId}, #{scholarshipId}, true, false);
+        insert into alert (email, scholarship_id, sent_time, is_sent, is_checked)
+            values (#{alertInput.email}, #{alertInput.scholarshipId}, NOW(), false, false);
     </insert>
 
     <insert id="deleteAlert">
-        delete from alert where email =  #{userId} and scholarship_id = #{scholarshipId};
+        delete from alert where email =  #{alertInput.email} and (scholarship_id = #{alertInput.scholarshipId} or notice_id = #{alertInput.noticeId});
     </insert>
     
     <insert id="checkAlert">
         update alert
             set is_checked = true
-        where email = #{userId} and scholarship_id = #{scholarshipId};
+        where email = #{alertInput.email} and (scholarship_id = #{alertInput.scholarshipId} or notice_id = #{alertInput.noticeId});
     </insert>
 
     <select id="isAlert" resultType="String">
-        select count(1) from alert where email = #{userId} and scholarship_id = #{scholarshipId};
+        select count(1) from alert where email = #{alertInput.email} and (scholarship_id = #{alertInput.scholarshipId} or notice_id = #{alertInput.noticeId});
     </select>
 
 </mapper>

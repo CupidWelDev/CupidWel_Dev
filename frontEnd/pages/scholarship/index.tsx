@@ -20,17 +20,11 @@ const Scholarship: NextPage = () => {
           <button>
             <span className="text-xs flex items-center gap-1">
               인기순
-              {/*<Darr />*/}
-              <Image
-                src={"/scholarship/darr.svg"}
-                alt="darr"
-                width={10}
-                height={10}
-              />
+              <Darr />
             </span>
           </button>
         </div>
-        {/*<CategoryScholarship />*/}
+        <CategoryScholarship />
       </section>
 
       {/* 장학금 목록 */}

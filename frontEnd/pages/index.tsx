@@ -55,45 +55,45 @@ const Home: NextPage = () => {
             </Link>
           </div>
 
-          {/*가이드 케러셸*/}
-          <div className="w-full h-[80px] flex justify-center">
-            <Carousel
-              slides={CupidWelGuideData.map((guide, idx) => (
-                <CupidWelGuide key={idx} id={idx} img={guide.svg} />
-              ))}
-            />
-          </div>
-        </section>
+        {/*가이드 케러셸*/}
+        <div className="w-full h-[80px] flex justify-center">
+          <Carousel
+            slides={CupidWelGuideData.map((guide, idx) => (
+              <CupidWelGuide key={idx} id={idx + 1} img={guide.svg} />
+            ))}
+          />
+        </div>
+      </section>
 
-        {/* 추천 장학금 */}
-        <section className="w-11/12 mb-8 h-[240px] flex flex-col items-center ">
-          <div className="w-full">
-            <p className="text-xl font-semibold mb-4 w-[350px]">추천 장학금</p>
-            {isLoading ? (
-              <div className="w-full h-[13rem] flex justify-center items-center">
-                <LoadingButton loading variant="outlined" color="secondary">
-                  잠시만 기다려주세요
-                </LoadingButton>
-              </div>
-            ) : data ? (
-              <div className="w-full h-[13rem] ">
-                <Carousel
-                  // @ts-ignore
-                  slides={data.getAllScholarships
-                    .slice(0, 10)
-                    .map((scholarship, idx) => (
-                      // @ts-ignore
-                      <ScholarshipDetailVer key={idx} {...scholarship} />
-                    ))}
-                />
-              </div>
-            ) : null}
-          </div>
-        </section>
+      {/* 추천 장학금 */}
+      <section className="w-11/12 mb-8 h-[240px] flex flex-col items-center ">
+        <div className="w-full">
+          <p className="text-xl font-semibold mb-4 w-[350px]">추천 장학금</p>
+          {isLoading ? (
+            <div className="w-full h-[13rem] flex justify-center items-center">
+              <LoadingButton loading variant="outlined" color="secondary">
+                잠시만 기다려주세요
+              </LoadingButton>
+            </div>
+          ) : data ? (
+            <div className="w-full h-[13rem] ">
+              <Carousel
+                // @ts-ignore
+                slides={data.getAllScholarships
+                  .slice(0, 10)
+                  .map((scholarship, idx) => (
+                    // @ts-ignore
+                    <ScholarshipDetailVer key={idx} {...scholarship} />
+                  ))}
+              />
+            </div>
+          ) : null}
+        </div>
+      </section>
 
-        {/* footer */}
-        <Footer />
-      </div>
+      {/* footer */}
+      <Footer />
+    </div>
     </PushNotificationLayout>
   );
 };

@@ -29,7 +29,6 @@ type Scholarship {
     supportDetail: String
     qualificationDetail: String
     localResidenceDetail: String
-    durationDetail: String
     selectionWayDetail: String
     selectionNumDetail: String
     qualificationRestrictionDetail: String
@@ -37,8 +36,14 @@ type Scholarship {
     documentationDetail: String
     createdDt: String
     modifiedDt: String
-    likeNum: String
+    showNum: String
     scrapNum: String
+    startDate: String
+    endDate: String
+    gradeStand: String
+    scholarshipType: String
+    incomeStand: String
+    allowMultiple: Boolean
 }
 
 type Alert {
@@ -50,18 +55,23 @@ type Alert {
     isChecked: Boolean
 }
 
+input AlertInput {
+    email: String!
+    scholarshipId: String
+    noticeId: Int
+}
+
 input FilterInput {
     school: String
     department: String
     major: String
     grade: String
     attendance: String
-    incomeSection: [Int] # enumeration 타입
+    incomeBracket: String
     specialClass: [String]
     address: String
-    scholarshipNature: String
-    doubleBenefit: Boolean
-    allFalse: Boolean
+    scholarshipTypes: [String]
+    duplicateBenefit: Boolean
 }
 input UserInput {
     name: String!
@@ -117,7 +127,17 @@ type Result{
     resultMsg: String
 }
 
+type CupidToken{
+    accessToken: String
+    refreshToken: String
+    grantType: String 
+}
+
 type Query {
+    signInUp(
+        kakaoAccessToken: String!
+    ): CupidToken
+
     getAllScholarships: [Scholarship]
 
     getScholarshipDetail(
@@ -158,15 +178,12 @@ type Mutation {
     ): Result
 
     addAlert(
-        userId: String!
-        scholarshipId: String!
+        alertInput: AlertInput
     ): Result
     deleteAlert(
-        userId: String!
-        scholarshipId: String!
+        alertInput: AlertInput
     ): Result
     checkAlert(
-        userId: String!
-        scholarshipId: String!
+        alertInput: AlertInput
     ): Result
 }

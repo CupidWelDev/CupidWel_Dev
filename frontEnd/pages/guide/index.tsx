@@ -9,7 +9,7 @@ const Guide: NextPage = () => {
       <SEO title="가이드" />
       <p className="text-2xl mt-10">CupidWel 알아보기</p>
       {CupidWelGuideData.map((guide, idx) => (
-        <CupidWelGuide key={idx} id={idx} img={guide.svg} />
+        <CupidWelGuide key={idx} id={idx + 1} img={guide.svg} />
       ))}
     </div>
   );
