@@ -176,7 +176,7 @@ const SearchScholarDetail: NextPage = () => {
       </section>
 
       {/*TODO NavBar로 옮기기*/}
-      <footer className="w-full fixed bottom-0 p-2 flex justify-center justify-around bg-white z-20 ">
+      <footer className="w-full sm:w-[400px] fixed bottom-0 p-2 flex justify-center justify-around bg-white z-20 ">
         <button
           className="text-xl w-[150px] h-[50px] shadow-lg bg-[#FB5230] rounded-2xl"
           onClick={scrap}

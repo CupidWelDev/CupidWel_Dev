@@ -30,66 +30,83 @@ export default function Header() {
 
   return (
     <>
-      <div
-        className={cls(
-          "fixed bg-white w-full sm:w-[400px] h-[60px] flex justify-between p-4 bg-white z-50 shadow",
-          isNotLine.includes(router.pathname) ? "" : "shadow"
-        )}
-      >
-        {isNotGoBack.includes(router.pathname) ? null : <GoBackButton />}
-        {isSearchBar.includes(router.pathname) ? (
-          <SearchBar />
-        ) : (
-          <>
-            <div className="flex gap-1 justify-center items-center">
-              {/*Logo + AppName*/}
-              <Link href="/">
-                <a>
-                  <div className="flex flex-row items-center">
-                    <Image src="/header/logo.svg" width="34px" height="34px" />
+      {/* admin에서는 header안 띄움*/}
+      {router.pathname.split("/").includes("admin") ? (
+        <Link href={"/admin"}>
+          <a className="flex justify-center items-center border-2">
+            <p>admin</p>
+          </a>
+        </Link>
+      ) : (
+        <div
+          className={cls(
+            "fixed bg-white w-full sm:w-[400px] h-[60px] flex justify-between p-4 bg-white z-50 shadow",
+            isNotLine.includes(router.pathname) ? "" : "shadow"
+          )}
+        >
+          {isNotGoBack.includes(router.pathname) ? null : <GoBackButton />}
+          {isSearchBar.includes(router.pathname) ? (
+            <SearchBar />
+          ) : (
+            <>
+              <div className="flex gap-1 justify-center items-center">
+                {/*Logo + AppName*/}
+                <Link href="/">
+                  <a>
+                    <div className="flex flex-row items-center">
+                      <Image
+                        src="/header/logo.svg"
+                        width="34px"
+                        height="34px"
+                      />
+                      <Image
+                        src="/header/appName.svg"
+                        width="92px"
+                        height="26px"
+                      />
+                    </div>
+                  </a>
+                </Link>
+              </div>
+
+              <div className="flex gap-4 justify-center items-center ">
+                {/*searchIco*/}
+                {inNotSearch.includes(router.pathname) ? null : (
+                  <Link href="/scholarship/search">
                     <Image
-                      src="/header/appName.svg"
-                      width="92px"
-                      height="26px"
+                      src="/header/searchScholarship.svg"
+                      width="30px"
+                      height="30px"
                     />
-                  </div>
-                </a>
-              </Link>
-            </div>
+                  </Link>
+                )}
 
-            <div className="flex gap-4 justify-center items-center ">
-              {/*searchIco*/}
-              {inNotSearch.includes(router.pathname) ? null : (
-                <Link href="/scholarship/search">
-                  <Image
-                    src="/header/searchScholarship.svg"
-                    width="30px"
-                    height="30px"
-                  />
-                </Link>
-              )}
+                {/*notificationIco*/}
+                {isNotNotification.includes(router.pathname) ? null : (
+                  <Link href="/userinfo/notification">
+                    <Image
+                      src="/header/notification.svg"
+                      width="30px"
+                      height="30px"
+                    />
+                  </Link>
+                )}
 
-              {/*notificationIco*/}
-              {isNotNotification.includes(router.pathname) ? null : (
-                <Link href="/userinfo/notification">
-                  <Image
-                    src="/header/notification.svg"
-                    width="30px"
-                    height="30px"
-                  />
-                </Link>
-              )}
-
-              {/*setting */}
-              {inSetting.includes(router.pathname) && (
-                <Link href="/userinfo/setting">
-                  <Image src="/header/setting.svg" width="30px" height="30px" />
-                </Link>
-              )}
-            </div>
-          </>
-        )}
-      </div>
+                {/*setting */}
+                {inSetting.includes(router.pathname) && (
+                  <Link href="/userinfo/setting">
+                    <Image
+                      src="/header/setting.svg"
+                      width="30px"
+                      height="30px"
+                    />
+                  </Link>
+                )}
+              </div>
+            </>
+          )}
+        </div>
+      )}
     </>
   );
 }

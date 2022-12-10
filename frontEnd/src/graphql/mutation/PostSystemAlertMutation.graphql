@@ -1,0 +1,7 @@
+mutation PostSystemAlertMutation($title: String!,$content: String!) {
+    addAlert(alertInput: { title: $title, content: $content }) {
+        errorMsg
+        resultCode
+        resultMsg
+    }
+}

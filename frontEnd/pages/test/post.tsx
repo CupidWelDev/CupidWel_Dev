@@ -29,7 +29,7 @@
 //       <p className="text-2xl text-center">POST GRAPHQL</p>
 //       <button
 //         type="button"
-//         onClick={() => mutate({ text: "post test", userId: "2" })}
+//         onClick={() => mutate({ text: "post scholarship", userId: "2" })}
 //         className="border-black border-2 w-full rounded-2xl "
 //       >
 //         add tweet
