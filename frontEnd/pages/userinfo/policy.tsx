@@ -11,7 +11,7 @@ const Notification: NextPage = () => {
       <hr />
       <div>
         {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => (
-          <div>
+          <div key={i}>
             <p className="text-xl font-bold px-3 py-3">제1장 총칙</p>
             <p className="text-lg font-bold px-3 py-2">제1조 (목적)</p>
             <p className="text-base px-3 py-1">
