@@ -60,6 +60,16 @@ input NoticeInput {
     content: String
 }
 
+type FCMToken {
+    email: String
+    token: String
+}
+
+input FCMTokenInput {
+    email: String!
+    token: String
+}
+
 input FilterInput {
     school: String
     department: String
@@ -159,6 +169,10 @@ type Query {
     ): User
 
     getNoticeList: [Notice]
+
+    getFCMTokenList(
+        fcmTokenInput: FCMTokenInput
+    ): [FCMToken]
 }
 
 type Mutation {
@@ -184,5 +198,13 @@ type Mutation {
 
     modifyNotice(
         noticeInput: NoticeInput
+    ): Result
+
+    addFCMToken(
+        fcmTokenInput: FCMTokenInput
+    ): Result
+
+    deleteFCMToken(
+        fcmTokenInput: FCMTokenInput
     ): Result
 }

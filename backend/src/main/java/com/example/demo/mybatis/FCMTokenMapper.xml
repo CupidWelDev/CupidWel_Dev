@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mybatis.FCMTokenMapper">
+
+    <select id="getFCMTokenList" resultType="com.example.demo.domain.FCMToken">
+        select * from fcm_token where email = #{fcmTokenInput.email};
+    </select>
+
+    <insert id = "addFCMToken">
+        insert into fcm_token (email, token)
+            values (#{fcmTokenInput.email}, #{fcmTokenInput.token});
+    </insert>
+
+    <insert id="deleteFCMToken">
+        delete from fcm_token where email = #{fcmTokenInput.email} and token = #{fcmTokenInput.token};
+    </insert>
+
+    <select id="isEmail" resultType="int">
+        select count(1) from fcm_token where email = #{email};
+    </select>
+
+    <select id="isToken" resultType="int">
+        select count(1) from fcm_token where token = #{token};
+    </select>
+
+</mapper>
