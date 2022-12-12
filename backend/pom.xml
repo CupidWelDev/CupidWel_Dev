@@ -63,6 +63,13 @@
 			<version>0.10.2</version>
 		</dependency>
 
+		<!-- firebase dependency -->
+		<dependency>
+    		<groupId>com.google.firebase</groupId>
+    		<artifactId>firebase-admin</artifactId>
+    		<version>8.1.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

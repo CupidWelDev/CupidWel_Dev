@@ -2,7 +2,7 @@ package com.example.demo.graphql;
 
 import java.util.List;
 
-import com.example.demo.service.AlertService;
+import com.example.demo.service.NoticeService;
 import com.example.demo.service.ScholarshipService;
 import com.example.demo.service.ScrapService;
 import com.example.demo.service.UserService;
@@ -15,9 +15,9 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
-import com.example.demo.domain.AlertDO;
 import com.example.demo.domain.CupidToken;
 import com.example.demo.domain.FilterDO;
+import com.example.demo.domain.NoticeDO;
 import com.example.demo.domain.ResultDO;
 import com.example.demo.domain.Scholarship;
 import com.example.demo.domain.UserDO;
@@ -35,7 +35,7 @@ public class QueryResolver {
     private UserService userService;
 
     @Autowired
-    private AlertService alertService;
+    private NoticeService noticeService;
 
     @QueryMapping
     public List<Scholarship> getAllScholarships() {
@@ -81,23 +81,23 @@ public class QueryResolver {
         return userService.updateUserDetail(userDO);
     }
     @QueryMapping
-    public List<AlertDO> getAlertList(@Argument (name = "userId") String userId) {
-        return alertService.getAlertList(userId);
+    public List<NoticeDO> getNoticeList() {
+        return noticeService.getNoticeList();
     }
 
     @MutationMapping
-    public ResultDO addAlert(@Argument (name = "alertInput") AlertDO alertDO) {
-        return alertService.addAlert(alertDO);
+    public ResultDO addNotice(@Argument (name = "noticeInput") NoticeDO noticeDO) {
+        return noticeService.addNotice(noticeDO);
     }
 
     @MutationMapping
-    public ResultDO deleteAlert(@Argument (name = "alertInput") AlertDO alertDO) {
-        return alertService.deleteAlert(alertDO);
+    public ResultDO deleteNotice(@Argument (name = "noticeInput") NoticeDO noticeDO) {
+        return noticeService.deleteNotice(noticeDO);
     }
 
     @MutationMapping
-    public ResultDO checkAlert(@Argument (name = "alertInput") AlertDO alertDO) {
-        return alertService.checkAlert(alertDO);
+    public ResultDO modifyNotice(@Argument (name = "noticeInput") NoticeDO noticeDO) {
+        return noticeService.modifyNotice(noticeDO);
     }
 
     @QueryMapping

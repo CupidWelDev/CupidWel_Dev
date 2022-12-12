@@ -21,6 +21,10 @@ mybatis:
     configuration:
         mapUnderscoreToCamelCase: true #auto change snake_case to camelCase
 
+app:
+    firebase-configuration-file: ./serviceAccountKey.json
+    firebase-bucket: cupidwel-a193a.appspot.com
+
 # logging:
 #     level:
 #         root: DEBUG
