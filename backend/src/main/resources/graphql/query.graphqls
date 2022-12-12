@@ -46,19 +46,18 @@ type Scholarship {
     allowMultiple: Boolean
 }
 
-type Alert {
-    email: String
-    scholarshipId: String
-    noticeId: Int
-    sentTime: String
-    isSent: Boolean
-    isChecked: Boolean
+type Notice {
+    id: Int
+    title: String
+    content: String
+    createdDt: String
+    modifiedDt: String
 }
 
-input AlertInput {
-    email: String!
-    scholarshipId: String
-    noticeId: Int
+input NoticeInput {
+    id: Int!
+    title: String
+    content: String
 }
 
 input FilterInput {
@@ -159,9 +158,7 @@ type Query {
         userId: String!
     ): User
 
-    getAlertList(
-        userId: String!
-    ): [Alert]
+    getNoticeList: [Notice]
 }
 
 type Mutation {
@@ -177,13 +174,15 @@ type Mutation {
         userInput: UserInput
     ): Result
 
-    addAlert(
-        alertInput: AlertInput
+    addNotice(
+        noticeInput: NoticeInput
     ): Result
-    deleteAlert(
-        alertInput: AlertInput
+
+    deleteNotice(
+        noticeInput: NoticeInput
     ): Result
-    checkAlert(
-        alertInput: AlertInput
+
+    modifyNotice(
+        noticeInput: NoticeInput
     ): Result
 }
