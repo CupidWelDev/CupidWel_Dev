@@ -46,7 +46,11 @@ export default function Header() {
         >
           {isNotGoBack.includes(router.pathname) ? null : <GoBackButton />}
           {isSearchBar.includes(router.pathname) ? (
-            <SearchBar />
+            <Link href={"/scholarship/search"}>
+              <a className="w-full">
+                <SearchBar />
+              </a>
+            </Link>
           ) : (
             <>
               <div className="flex gap-1 justify-center items-center">

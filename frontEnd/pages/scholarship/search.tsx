@@ -7,6 +7,7 @@ import { deleteDB, getDB } from "@libs/IndexedDB";
 interface ISearch {
   id: number;
   search: string;
+  create: number;
 }
 
 const Search: NextPage = () => {
@@ -18,9 +19,10 @@ const Search: NextPage = () => {
 
   //todo : 최근 검색어 삭제하기
   const deleteSearch = (str: any) => {
-    console.log(str.target.value);
     setRecentlySearch(
-      recentlySearch?.filter((data: any) => data.search !== str.target.value)
+      recentlySearch?.filter(
+        (data: any) => data.id !== Number(str.target.value)
+      )
     );
     deleteDB(str.target.value, "search");
   };
@@ -40,7 +42,7 @@ const Search: NextPage = () => {
                 className="border-2 border-amber-400 rounded-xl bg-amber-400 flex px-1 gap-2"
               >
                 <p>{str.search}</p>
-                <button onClick={(str) => deleteSearch(str)} value={str.search}>
+                <button onClick={(str) => deleteSearch(str)} value={str.id}>
                   x
                 </button>
               </div>

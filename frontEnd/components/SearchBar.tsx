@@ -13,7 +13,14 @@ export default function SearchBar() {
   const [recentlySearch, setRecentlySearch] = useState<any[]>();
 
   const onSubmit = (data: FieldValues) => {
-    addDB({ id: recentlySearch?.length, ...data }, "search");
+    addDB(
+      {
+        id: new Date().getTime(),
+        ...data,
+      },
+      "search"
+    );
+    console.log(data);
     reset({ search: "" });
   };
 

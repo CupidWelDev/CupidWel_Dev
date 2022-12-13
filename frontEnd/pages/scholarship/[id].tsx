@@ -36,7 +36,8 @@ const SearchScholarDetail: NextPage = () => {
 
   const { getScholarshipDetail: detailData } = data || {};
 
-  !isLoading && addDB(detailData, "scholarship");
+  !isLoading &&
+    addDB({ create: new Date().getTime(), ...detailData }, "scholarship");
 
   const scrap = () => {
     alert(

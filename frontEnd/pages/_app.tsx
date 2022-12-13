@@ -21,7 +21,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     //indexedDB open
     openDB();
-
     //  PWA SW connect
   }, []);
 
