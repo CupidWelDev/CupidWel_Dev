@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29">
+    <g id="그룹_57788" data-name="그룹 57788" transform="translate(-15 -128.671)">
+        <rect id="사각형_4623" data-name="사각형 4623" width="29" height="29" transform="translate(15 128.671)" fill="none"/>
+        <g id="구성_요소_3_1" data-name="구성 요소 3 – 1" transform="translate(18 133.171)">
+            <g id="그룹_57787" data-name="그룹 57787" transform="translate(0 7.146)">
+                <g id="사각형_21324" data-name="사각형 21324" transform="translate(0 0.354)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1.2">
+                    <rect width="23" height="14" rx="2" stroke="none"/>
+                    <rect x="0.6" y="0.6" width="21.8" height="12.8" rx="1.4" fill="none"/>
+                </g>
+                <g id="사각형_21325" data-name="사각형 21325" transform="translate(4.54 0.354)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1.2">
+                    <rect width="13.858" height="13.981" rx="1" stroke="none"/>
+                    <rect x="0.6" y="0.6" width="12.658" height="12.781" rx="0.4" fill="none"/>
+                </g>
+            </g>
+            <g id="그룹_57786" data-name="그룹 57786" transform="translate(7.646 10.013)">
+                <g id="타원_1596" data-name="타원 1596" transform="translate(0.354 0.487)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1.2">
+                    <circle cx="3.5" cy="3.5" r="3.5" stroke="none"/>
+                    <circle cx="3.5" cy="3.5" r="2.9" fill="none"/>
+                </g>
+                <path id="패스_34104" data-name="패스 34104" d="M15,10.873V12.59l1.288.416" transform="translate(-11.142 -8.348)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.9"/>
+            </g>
+            <g id="패스_34105" data-name="패스 34105" transform="translate(3.784 -0.803)" fill="none">
+                <path d="M6.889,1.145a1.1,1.1,0,0,1,1.59,0l5.86,7.065c.423.51-.032,1.194-.8,1.194H1.824c-.763,0-1.219-.684-.8-1.194Z" stroke="none"/>
+                <path d="M 7.683999538421631 2.065788269042969 L 2.59276008605957 8.204065322875977 L 12.77513408660889 8.203952789306641 L 7.683999538421631 2.065788269042969 M 7.683998107910156 0.8027734756469727 C 7.987020492553711 0.8027734756469727 8.290042877197266 0.9167938232421875 8.479187965393066 1.144833564758301 L 14.33904838562012 8.209814071655273 C 14.76245784759521 8.720293998718262 14.30716800689697 9.404073715209961 13.54385757446289 9.404073715209961 L 1.824137687683105 9.404073715209961 C 1.06082820892334 9.404073715209961 0.6055383682250977 8.720293998718262 1.028947830200195 8.209814071655273 L 6.888808250427246 1.144833564758301 C 7.077953338623047 0.9167938232421875 7.380975723266602 0.8027734756469727 7.683998107910156 0.8027734756469727 Z" stroke="none" fill="#000"/>
+            </g>
+        </g>
+    </g>
+</svg>

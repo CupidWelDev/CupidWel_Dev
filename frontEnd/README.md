@@ -25,3 +25,6 @@
   ```shell
     npm install @mui/material @emotion/react @emotion/styled
   ```
+
+- indexedDB편하게 사용하는 라이브러리
+  - localforage : https://www.npmjs.com/package/localforage

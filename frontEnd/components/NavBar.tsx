@@ -29,13 +29,23 @@ export default function NavBar(): JSX.Element {
   const router = useRouter();
   // console.log(router.pathname);
   //TODO NavBar 안 띄울 라우터들
-  const isNotNavBar = ["/scholarship/detail", "/scholarship/[id]", "/register"];
+  const isNotNavBar = [
+    "/scholarship/detail",
+    "/scholarship/[id]",
+    "/register",
+    "/admin",
+  ];
 
   return (
     <>
-      {isNotNavBar.includes(router.pathname) ? null : (
+      {/* admin에서는 header안 띄움*/}
+      {router.pathname
+        .split("/")
+        .includes("admin") ? null : isNotNavBar.includes(
+          router.pathname
+        ) ? null : (
         <div className="fixed -bottom-4 w-full sm:w-[400px] h-20 bg-white border-t-[1px]">
-          <nav className="flex gap-4 justify-around  items-center text-purple-200 shadow">
+          <nav className="flex gap-4 justify-around  items-center text-purple-200   ">
             {tabs.map((tab, idx) => (
               <NavLink
                 key={idx}
