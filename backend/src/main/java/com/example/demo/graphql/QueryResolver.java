@@ -2,6 +2,7 @@ package com.example.demo.graphql;
 
 import java.util.List;
 
+import com.example.demo.service.FCMService;
 import com.example.demo.service.NoticeService;
 import com.example.demo.service.ScholarshipService;
 import com.example.demo.service.ScrapService;
@@ -16,6 +17,7 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import com.example.demo.domain.CupidToken;
+import com.example.demo.domain.FCMToken;
 import com.example.demo.domain.FilterDO;
 import com.example.demo.domain.NoticeDO;
 import com.example.demo.domain.ResultDO;
@@ -37,6 +39,9 @@ public class QueryResolver {
     @Autowired
     private NoticeService noticeService;
 
+    @Autowired
+    private FCMService fcmService;
+
     @QueryMapping
     public List<Scholarship> getAllScholarships() {
         return scholarshipService.getAllScholarships();
@@ -52,6 +57,7 @@ public class QueryResolver {
        return scholarshipService.scholarshipFilter(filterDO);
    }
 
+    @QueryMapping
     public List<Scholarship> searchScholarships(@Argument(name = "searchWord") String searchWord) {
         return scholarshipService.searchScholarships(searchWord);
     }
@@ -110,5 +116,20 @@ public class QueryResolver {
         a.setRefreshToken("test_refresh_token");
         
         return a;
+    }
+
+    @QueryMapping
+    public List<FCMToken> getFCMTokenList(@Argument (name = "fcmTokenInput") FCMToken fcmToken) {
+        return fcmService.getFCMTokenList(fcmToken);
+    }
+
+    @MutationMapping
+    public ResultDO addFCMToken(@Argument (name = "fcmTokenInput") FCMToken fcmToken) {
+        return fcmService.addFCMToken(fcmToken);
+    }
+
+    @MutationMapping
+    public ResultDO deleteFCMToken(@Argument (name = "fcmTokenInput") FCMToken fcmToken) {
+        return fcmService.deleteFCMToken(fcmToken);
     }
 }
