@@ -58,10 +58,10 @@
                 and duplicate_benefit = TRUE
             </if>
         </trim>
-   </select>
+    </select>
 
     <select id="searchScholarships" resultType="com.example.demo.domain.Scholarship">
-        select * from scholarship where id like '%${searchWord}%' order by duration_detail asc;
+        select * from scholarship where id like '%${searchWord}%'
     </select>
 
     <select id="isScholarshipExisting" resultType="int">

@@ -57,6 +57,7 @@ public class QueryResolver {
        return scholarshipService.scholarshipFilter(filterDO);
    }
 
+    @QueryMapping
     public List<Scholarship> searchScholarships(@Argument(name = "searchWord") String searchWord) {
         return scholarshipService.searchScholarships(searchWord);
     }
