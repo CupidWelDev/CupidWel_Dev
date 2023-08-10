@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface ScrapMapper {
     public void addScrap (@Param(value = "userId") String userId, @Param(value = "scholarshipId") String scholarshipId);
+//    this is a test
     public void deleteScrap (@Param(value = "userId") String userId, @Param(value = "scholarshipId") String scholarshipId);
     public List<String> getScrapList (@Param(value = "userId") String userId);
     public int isScraped (@Param(value = "userId") String userId, @Param(value = "scholarshipId") String scholarshipId);

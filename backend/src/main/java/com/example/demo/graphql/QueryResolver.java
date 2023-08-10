@@ -6,6 +6,7 @@ import com.example.demo.service.NoticeService;
 import com.example.demo.service.ScholarshipService;
 import com.example.demo.service.ScrapService;
 import com.example.demo.service.UserService;
+import com.example.demo.service.LoginService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,6 +38,9 @@ public class QueryResolver {
     @Autowired
     private NoticeService noticeService;
 
+    @Autowired
+    private LoginService loginService;
+
     @QueryMapping
     public List<Scholarship> getAllScholarships() {
         return scholarshipService.getAllScholarships();
@@ -52,6 +56,7 @@ public class QueryResolver {
        return scholarshipService.scholarshipFilter(filterDO);
    }
 
+   @QueryMapping
     public List<Scholarship> searchScholarships(@Argument(name = "searchWord") String searchWord) {
         return scholarshipService.searchScholarships(searchWord);
     }
@@ -103,12 +108,22 @@ public class QueryResolver {
     @QueryMapping
     public CupidToken signInUp(@Argument (name = "kakaoAccessToken") String kakaoAccessToken){
         log.info(kakaoAccessToken);
+        //1st: check if user exists
+        //2nd: if not, create user
+        //3rd: get user detail from DB
+
+        UserDO user = userService.getUserDetail("alswo9853@gmail.com");
+
+        CupidToken cupidToken = loginService.login(user);
+
+        
+
 
         CupidToken a = new CupidToken();
         a.setAccessToken("test_access_token");
         a.setGrantType("Bearer");
         a.setRefreshToken("test_refresh_token");
-        
-        return a;
+           
+        return cupidToken;
     }
 }

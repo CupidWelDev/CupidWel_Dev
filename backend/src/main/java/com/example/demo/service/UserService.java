@@ -10,6 +10,7 @@ import com.example.demo.mybatis.UserMapper;
 
 
 
+
 @Service
 public class UserService {
     @Autowired
@@ -80,4 +81,5 @@ public class UserService {
         }
 
     }
+
 }

@@ -10,21 +10,31 @@ spring:
         url: jdbc:postgresql://localhost:5432/cupidwel
         username: cupidwel
         password: cupidwel123!
-    graphql:
-        path: /graphql
-        cors:
-            allowed-origins: http://localhost:3000/
-            allowed-methods: GET, POST
+    # graphql:
+    #     path: /graphql
+    #     cors:
+    #         allowed-origins: http://localhost:3000/
+    #         allowed-methods: GET, POST
 
 mybatis:
     type-aliases-package: com.example.demo.domain
     configuration:
         mapUnderscoreToCamelCase: true #auto change snake_case to camelCase
 
+ssh:
+  remoteIp: 20.198.3.61
+  sshPort: 22
+  user: azureuser
+  privateKey: ./cupidwel-db.pem
+  remotePort: 5432
+
+
 app:
     firebase-configuration-file: ./serviceAccountKey.json
     firebase-bucket: cupidwel-a193a.appspot.com
+jwt:
+    secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
 
-# logging:
-#     level:
-#         root: DEBUG
+logging:
+    level:
+        root: DEBUG
